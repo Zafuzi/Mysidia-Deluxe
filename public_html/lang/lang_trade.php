@@ -3,8 +3,9 @@
 //Language variables used for Trade Page
 
 $lang['title'] = "The Trade Station";
-$lang['default'] = "Welcome to the Trade Station.  Here you can trade your adoptables or items with someone else.  
-                    If you do not have any clues, use the search feature to browse for available adoptables and items from other users.<br>";
+$lang['default'] ="<center><img src='http://i68.tinypic.com/n2z88p.jpg'></center>";
+$lang['default'].= "<center><b>Pria says: </b> Welcome to the Trade Station.  Here you can trade your adoptables or items with someone else.  
+                    If you do not have any clues, use the <a href='http://atrocity.mysidiahost.com/search'>search</a> feature to browse for available adoptables and items from other users.</center><br>";
 $lang['section'] = "<br><br><b><u>The trade station offers the following additional services!</u></b><br>"; 
 $lang['section2'] = "<br><br><b><u>Sounds Interesting? Wanna start a trade offer now? Oh wait!</u></b><br>";
 $lang['tax'] = "Note that a trade offer will incur a tax of: ";
@@ -13,7 +14,7 @@ $lang['moderate'] = "The site requires all trade offers be moderated before they
 $lang['multiple'] = "The site allows multiple adopts/items trade between users, simply press the ctrl button while clicking on the options from selection list.<br>";
 $lang['partial'] = "The site allows partial/incomplete trade offers to be made, in this way you can send a trade request to your partner asking for what he/she wants from you.<br>
                     You can view all available partial trade offers by visiting the link below: <br>
-                    <a href='trade/partials'>View Partial Trade Offers</a><br><br>";
+                    <a href='trade/partials'>View Partial Trade Offers</a><br><br><a href='/mytrades'>View Trades Sent To You</a><br><br>";
 $lang['partial_disabled'] = "It seems that the admin has disabled partial trade offers from this site.";
 $lang['public'] = "The site allows public trade offers to be made, which do not target a specific user but can be received and revised by any users browsing Trade Station.
                    You can view all available public trade offers by visiting the link below: <br>
@@ -22,7 +23,8 @@ $lang['public_disabled'] = "It seems that the admin has disabled public trade of
 $lang['start'] = "To begin a trade offer, click the link below or use the search function to specify your target:<br>";
 $lang['start2'] = "Alternatively, you may revise your own trade offers by clicking this url:<br>";
 $lang['offer_title'] = "Make a Trade Offer";
-$lang['offer'] = "Here you can send out trade offers for adoptables and items, please fill in the form below to complete your request.";
+$lang['offer_title'].="<center><img src='http://i68.tinypic.com/n2z88p.jpg'></center>";
+$lang['offer'] = "<center><b>Pria says:</b>Here you can send out trade offers for adoptables and items, please fill in the form below to complete your request.</center>";
 $lang['recipient'] = "You are trading with ";
 $lang['recipient_none'] = "You have not selected a trade partner yet<br>
                            Search for a recipient to initiate a trade offer, this will make the process easier and faster as you can use the selection box to pick his/her adoptables and items.<br>

@@ -13,7 +13,7 @@
  *
  */
 
-class ShopTableHelper extends TableHelper{
+class ShopTableHelper extends TableHelper {
 
     /**
      * Constructor of ShopTableHelper Class, it simply serves as a wrap-up.
@@ -106,7 +106,7 @@ class ShopTableHelper extends TableHelper{
      * @return String
      */
     public function __toString(){
-	    return new Mystring("This is an instance of Mysidia ShopTableHelper class.");
+	    return new Str("This is an instance of Mysidia ShopTableHelper class.");
 	}    
 } 
 ?>

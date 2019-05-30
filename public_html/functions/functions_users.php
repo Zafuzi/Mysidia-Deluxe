@@ -29,8 +29,18 @@ function cando($usergroup, $do) {
 	//This function determines if a usergroup is allowed to do a specific task
     $mysidia = Registry::get("mysidia");
 	$cando = $usergroup->getpermission($do);
-	if($cando == "" or $usergroup == 0) $cando = "no";
+	if($cando == "") $cando = "no";
+	if ($do == 'canadopt') return hasTooManyPets();
 	return $cando;
+}
+
+function hasTooManyPets() {
+	$mysidia = Registry::get("mysidia");
+	$max = $mysidia->user->getStatus()->max_pets;
+
+	$total = $mysidia->db->select('owned_adoptables', ['aid'], "owner='{$mysidia->user->username}'")->rowCount();
+	if ($total+1 > $max) throw new \Exception($mysidia->lang->global_maximum_pets_reached . " ($max pets)");
+	return 'yes';
 }
 
 function canadopt($aid, $cond, $promocode, $row) {
@@ -94,6 +104,14 @@ function canadopt($aid, $cond, $promocode, $row) {
 			}	
 		}
 	} // end conditions
+
+	// Now we check if the user has space to adopt more pets
+	try{
+		hasTooManyPets();
+	} catch (Exception $e) {
+		return 'no';
+	}
+	
 	return "yes";
 }
 

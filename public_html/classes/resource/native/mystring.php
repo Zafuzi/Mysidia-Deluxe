@@ -23,7 +23,7 @@ use Resource\Exception\ClassCastException;
  *
  */
 
-final class Mystring extends Object implements Iterator, Primitive{
+final class Mystring extends Obj implements Iterator, Primitive{
 
     /**
 	 * Alpha constant, wraps a string literal of available alphabetic chars.

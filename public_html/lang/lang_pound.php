@@ -3,7 +3,8 @@
 //Language variables used for Pound Page
 
 $lang['title'] = "Welcome to Pound Center";
-$lang['default'] = "This page lists all of the pounded adoptables available for adoption. You may acquire any abandoned pets here at a certain amount of cost.<br>";
+$lang['default'] = "<center><img src='http://i63.tinypic.com/eimmqc.jpg/'></center>";
+$lang['default'].= "<b>Christina says:</b> This page lists all of the pounded adoptables available for adoption. You may acquire any abandoned pets here at a certain amount of cost. All pets are deleted within 24 hours...so grab them while you can!<br>";
 $lang['pound_title'] = "Pound Adoptables";
 $lang['pound'] = "This page allows you to abandon an adoptable. You will need to confirm this action here, and keep in mind that it cannot be undone. Once an adoptable is pounded, it will be eligible for adoption by any other users.";
 $lang['pound_warning'] = "<img src='../../templates/icons/warning.gif'><b>WARNING:</b> Pounding this adoptable will permanently remove it from your account, be careful with this decision since it cannot be undone.";
@@ -23,6 +24,6 @@ $lang['unlucky'] = "Oops, another user has just taken a step ahead and grabbed t
 $lang['pound_complete'] = "Adoptable Pounded Successfully";
 $lang['pound_success'] = "You have successfully abandoned this adoptable";
 $lang['afterwards'] = ", it will no longer show up from your myadopts.php page.";	 
-$lang['readopt_success'] = "Congratulations, you have obtained an adoptable from pound center";
+$lang['readopt_success'] = "Congratulations, you have obtained an adoptable from the pound";
 
 ?>

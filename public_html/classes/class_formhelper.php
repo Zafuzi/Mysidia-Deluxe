@@ -13,7 +13,7 @@
  *
  */
 
-class FormHelper extends GUIHelper{
+class FormHelper extends GUIHelper {
 	
     /**
      * Constructor of FormHelper Class, which assigns basic helper properties	 
@@ -169,7 +169,7 @@ class FormHelper extends GUIHelper{
      * @return String
      */
     public function __toString(){
-	    return new Mystring("This is an instance of Mysidia FormHelper class.");
+	    return new Str("This is an instance of Mysidia FormHelper class.");
 	}    
 } 
 ?>

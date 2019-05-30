@@ -1,0 +1,122 @@
+/* / / / / / / / / / Hello! 
+Thanks for stopping by the CSS file. 
+If you can't find what you're looking for here, there's a 
+chance a class is being added to it via jQuery and that 
+class is registered in Bootstrap's CSS, not here!
+
+/ / / / / / / / / / jQuery is currently adding classes to:
+- button
+- .ddmenu (and children inside of it)
+- .sidebar (and children inside of it)
+- .submit
+- .footer
+
+/ / / / / / / / / / WARNING:
+Do not DELETE the contents of this stylesheet, as everything
+here is pertinent to getting Bootstrap to work with Mysidia!
+Append your edits at the end, or, I highly suggest making your
+own stylesheet and linking to it in the header.tpl in addition!
+
+/ / / / / / / / / / Need help with this template?
+You can contact me (Kyttias) on AIM, GoogleTalk, Skype, Tumblr, 
+DeviantART or @gmail.com. I prefer chatting over AIM, and email
+is your best bet if I've not been recently active on Tumblr or
+DeviantART. I can use GoogleTalk or Skype if it is of preference
+to you.
+*/
+
+html, body { height: 100%;  margin: 0; padding: 0; }
+select, textarea, input { margin-bottom: 5px; }
+#page-wrap { margin: 0px; width: 100%; }
+#profile { background-color: transparent; border:0px; margin-bottom:0px; }
+/*
+*
+*
+*
+* 
+*
+*
+*
+*
+* 
+/ / / / / / / / / Responsive Media Queries */
+@media all and (max-width: 566px) {
+/*iPhone portrait and smaller*/ 
+.sidebar input.form-control { width: 100%; }
+input.form-control, select.form-control, textarea.form-control  { width: 100%; display: inline-block;}
+
+} @media all and (min-width: 567px) and (max-width: 766px) {
+/*iPhone landscape to anything smaller than iPad portrait*/ 
+.sidebar input.form-control { width: 200px; }
+input.form-control, select.form-control, textarea.form-control  { width: 100%; display: inline-block;}
+
+} @media all and (min-width: 767px) {
+/*iPad portrait and larger, desktop defaults*/ 
+.sidebar input.form-control { width: 100%; }
+input.form-control, select.form-control { width: 200px; display: inline-block;}
+textarea.form-control  { width: 350px; display: inline-block;}
+#form #table { width: 50%; }
+
+} 
+/* End Responsive Media Queries / / / / / / / / /
+*
+*
+*
+* 
+*
+*
+*
+*
+* 
+/ / / / / / / / / Top Navigation */
+/* Do not link to the default menu css in your template header! */
+.dropdown-menu { border-bottom: 1px solid #eee;}
+.ddmenu ul li a:after {content:'\25BC'; font-size: .5em;} /* arrow symbol */
+.ddmenu ul li ul a:after {content:'';}
+.ddmenu .btn {border: 0px; background-color: transparent; }
+
+/* Chunk of defaults */
+.ddmenu {position:relative; z-index:100;} 
+.ddmenu ul li a, .ddmenu ul li a:visited { display:block; width: 100%; text-decoration:none; text-align:center; }
+.ddmenu ul {padding:0; margin:0; list-style: none;}
+.ddmenu ul li {float:left; position:relative;} 
+.ddmenu ul li ul {display: none; } 
+.ddmenu ul li:hover ul {display:block; position:absolute; left:0;}
+.ddmenu ul li:hover ul li ul {display: none;}
+.ddmenu ul li:hover ul li a {display:block; }
+.ddmenu ul li:hover ul li a:hover { width: 100%; }
+.ddmenu ul li:hover ul li:hover ul {display:block; }
+.ddmenu ul li:hover ul li:hover ul.left {left:-182px;}
+
+@media all and (max-width: 767px)
+{ /* Anything smaller than iPad portrait */
+.ddmenu ul li a:after {content:'';} 
+.ddmenu ul li { float: none; }
+.ddmenu ul li:hover ul {display:none; position:relative; left: auto; float: none;}
+}
+/* End Top Navigation / / / / / / / / /
+*
+*
+*
+* 
+*
+*
+*
+*
+* 
+/ / / / / / / / / Footer */
+/* Wrapper for page content to push down footer */
+#wrap {
+  min-height: 100%;
+  height: auto;
+  /* Negative indent footer by its height */
+  margin: 0 auto -60px;
+  /* Pad bottom by footer height */
+  padding: 0 0 60px;
+}
+/* Set the fixed height of the footer here */
+.footer { text-align: center; margin-bottom: 0px; }
+#footer { height: 60px; }
+#footer p:first { font-size: .1em; font-weight:bold; background:#000;};
+/* End Footer / / / / / / / / / 
+*/                   

@@ -15,7 +15,7 @@ use Resource\Collection\ArrayList;
  *
  */
  
-class FormBuilder extends Form{
+class FormBuilder extends Form {
 
 	/**
 	 * The Helper property, determines the helper class used to process form content.
@@ -192,7 +192,7 @@ class FormBuilder extends Form{
      * @return String
      */
     public function __toString(){
-	    return new Mystring("This is The FormBuilder class.");
+	    return new Str("This is The FormBuilder class.");
 	}
 }
 ?>

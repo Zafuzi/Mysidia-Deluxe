@@ -1,0 +1,8 @@
+[22-Oct-2017 00:57:04 GMT] PHP Fatal error:  Call to a member function rowCount() on boolean in /home/atrocity/public_html/freichat/server/drivers/base.php on line 215
+[22-Oct-2017 00:57:09 GMT] PHP Fatal error:  Call to a member function rowCount() on boolean in /home/atrocity/public_html/freichat/server/drivers/base.php on line 215
+[27-Oct-2017 04:19:30 GMT] PHP Fatal error:  Call to a member function rowCount() on boolean in /home/atrocity/public_html/freichat/server/drivers/base.php on line 215
+[27-Oct-2017 04:19:33 GMT] PHP Fatal error:  Call to a member function rowCount() on boolean in /home/atrocity/public_html/freichat/server/drivers/base.php on line 215
+[22-Nov-2017 14:22:23 GMT] PHP Fatal error:  Call to a member function rowCount() on boolean in /home/atrocity/public_html/freichat/server/drivers/base.php on line 215
+[22-Nov-2017 16:05:37 GMT] PHP Fatal error:  Call to a member function rowCount() on boolean in /home/atrocity/public_html/freichat/server/drivers/base.php on line 215
+[22-Nov-2017 16:05:42 GMT] PHP Fatal error:  Call to a member function rowCount() on boolean in /home/atrocity/public_html/freichat/server/drivers/base.php on line 215
+[16-Mar-2018 22:19:08 GMT] PHP Fatal error:  Call to a member function rowCount() on boolean in /home/atrocity/public_html/freichat/server/drivers/base.php on line 215

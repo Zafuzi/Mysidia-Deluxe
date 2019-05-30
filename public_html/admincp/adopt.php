@@ -1,6 +1,6 @@
 <?php
 
-use Resource\Native\Mystring;
+use Resource\Native\String;
 
 class ACPAdoptController extends AppController{
 
@@ -49,8 +49,8 @@ class ACPAdoptController extends AppController{
 			
 			$eggimage = ($mysidia->input->post("imageurl") and $mysidia->input->post("existingimageurl") == "none")?$mysidia->input->post("imageurl"):$mysidia->input->post("existingimageurl");
 			// insert into table adoptables
-			$mysidia->db->insert("adoptables", array("id" => NULL, "type" => $mysidia->input->post("type"), "class" => $mysidia->input->post("class"), "description" => $mysidia->input->post("description"), "eggimage" => $eggimage, "whenisavail" => $mysidia->input->post("cba"),
-				                                     "alternates" => $mysidia->input->post("alternates"), "altoutlevel" => $mysidia->input->post("altoutlevel"), "altchance" => $mysidia->input->post("altchance"), "shop" => $mysidia->input->post("shop"), "cost" => $mysidia->input->post("cost")));
+                    $mysidia->db->insert("adoptables", array("id" =>  NULL, "type" => $mysidia->input->post("type"), "class" =>  $mysidia->input->post("class"), "description" =>  $mysidia->input->post("description"), "eggimage" => $eggimage,  "whenisavail" => $mysidia->input->post("cba"), "alternates"  => $mysidia->input->post("alternates"), 
+                                                     "altoutlevel" =>  $mysidia->input->post("altoutlevel"), "altchance" =>  $mysidia->input->post("altchance"), "shop" =>  $mysidia->input->post("shop"), "cost" =>  $mysidia->input->post("cost"), "dropitem" =>  $mysidia->input->post("dropitem"), "droprate" =>  $mysidia->input->post("droprate")));  
 				
             // insert into table adoptables_conditions	
 		    $mysidia->db->insert("adoptables_conditions", array("id" => NULL, "type" => $mysidia->input->post("type"), "whenisavail" => $mysidia->input->post("cba"), "freqcond" => $mysidia->input->post("freqcond"), "number" => $mysidia->input->post("number"), "datecond" => $mysidia->input->post("datecond"),
@@ -113,7 +113,7 @@ class ACPAdoptController extends AppController{
 		    if($adopt->getWhenAvailable() != "always" and $adopt->getWhenAvailable() != "") $availtext = "<b>This adoptable currently has adoption restrictions on it.</b>";
 			else $availtext = "This adoptable currently does not have adoption restrictions on it.";
             $this->setField("adopt", $adopt);
-            $this->setField("availtext", new Mystring($availtext));	
+            $this->setField("availtext", new String($availtext));	
 	    }
     }
 

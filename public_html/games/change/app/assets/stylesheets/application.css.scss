@@ -1,0 +1,142 @@
+@import 'compass';
+@import 'font-awesome';
+@import 'game';
+
+$background-color: #081a2a;
+
+@mixin mobile{
+  @media screen and (max-width: 640px) {
+    @content;
+  }
+
+}
+
+html, body{
+  margin: 0;
+  padding: 0;
+  font-family: 'Helvetica', 'Arial', san-serif;
+}
+
+body{
+  background: $background-color;
+}
+
+.less-space {
+  margin-bottom: -10px;
+}
+
+#game{
+  margin: 40px auto;
+  @include mobile{
+    margin: 0 auto;
+    display: none;
+  }
+}
+.no-mobile{
+  display: none;
+  @media screen and (max-width: 640px) {
+    display: block;
+    margin: 0 auto;
+    @include background-image(image-url('no-mobile.png'));
+    background-size: 100%;
+    background-repeat: no-repeat;
+
+    width: 480px;
+    height: 270px;
+  }
+  @media screen and (max-width: 480px) {
+    width: 320px;
+    height: 180px;
+  }
+}
+
+footer{
+  background: darken($background-color, 2);
+  font-size: 11px;
+  color: #595b75;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  border-top: 1px solid #484a5f;
+
+  @include mobile{
+    position: relative;
+  }
+
+  a{
+    color: #7f83a7;
+    text-decoration: none;
+    &:hover{
+      text-decoration: underline;
+    }
+  }
+}
+
+.mixpanel{
+  position: absolute;
+  left: 10px;
+  bottom: 10px;
+  @include mobile{
+    position: relative;
+    bottom: 0;
+    margin: 5px;
+  }
+}
+
+.container{
+  width: 520px;
+  margin: 0 auto;
+  height: 100%;
+  background: lighten($background-color, 20);
+  padding: 20px;
+  @include box-sizing(border-box);
+  margin-top: 20px;
+  h1{
+    text-align: center;
+    color: #2b2b2b;
+    margin-bottom: 5px;
+  }
+  table{
+    margin: 0 auto;
+    width: 460px;
+    text-align: center;
+    color: #2b2b2b;
+  }
+  img{
+    width: 50px;
+  }
+  tr,td{
+    padding:0;
+    margin: 0;
+  }
+}
+
+
+.safari-mavericks{
+  display: none;
+  position: fixed;
+  width: 100%;
+  top: 100px;
+  left: 0;
+  z-index: 1000000;
+  h1{
+    text-align: center;
+  }
+  .msg{
+    width: 480px;
+    margin: 0 auto;
+    background-color: #484a5f;
+    color: white;
+    padding: 40px;
+    border-radius: 5px;
+    box-shadow: 2px 2px 2px rgba(0,0,0,0.5);
+    a{
+      color: #a7acdd;
+    }
+    .dismiss-p{
+      text-align: right;
+    }
+  }
+}

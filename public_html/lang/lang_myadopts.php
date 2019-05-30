@@ -9,7 +9,7 @@ $lang['permission'] = "You do not have permission to manage adoptables of other 
 $lang['nonfound_title'] = "Adoptable not found";
 $lang['nonfound'] = "It appears that the specified adoptable either does not exist at all, or does not belong to you.";
 $lang['voters'] = "The chart below shows the last 10 people who clicked on your adoptable.  You can also view their profiles or send them a PM if you wish.";
-$lang['clicks'] = "<br>Clicks Required for Level Increase: ";
+$lang['clicks'] = "<br><b>Clicks Required for Level Increase:</b> ";
 $lang['maximum'] = "This adoptable is at its maximum level";
 $lang['stats'] = "'s Statistics:";
 $lang['bbcode'] = "BBCodes for ";
@@ -17,6 +17,7 @@ $lang['bbcode_info'] = "This page allows you to get BBCodes and HTML codes for y
                         Remember, your adoptables grow faster the more clicks they get.<br><br>To select a code you can press CTRL-A to select all and then press CTRL-C to copy the code.
                         Then on your website or forum post, you can press CTRL-P to paste the code.";
 $lang['rename'] = "Rename ";
+$lang['updatebio'] = 'Update Biography of ';
 $lang['trade'] = "Setting trade status for ";
 $lang['pound'] = "Pound ";
 $lang['rename_default'] = "This page allows you to rename ";
@@ -37,5 +38,5 @@ $lang['freeze_warning'] = "<b>WARNING:</b> Freezing an adoptable REJECTS any cli
                            a freeze on this adoptable you are essentially rejecting all further clicks until the adoptable is unfrozen.  In addition, some management features of this adoptable may be disabled until you unfreeze it.";
 $lang['freeze_success'] = " Frozen Successfully";
 $lang['freeze_reverse'] = " Unfrozen Successfully";
-
-?>
+$lang['released'] = 'Pet Released!';
+$lang['pet_released'] = 'Your pet has been released into the wilds, forever to roam free, never to be tamed again.';

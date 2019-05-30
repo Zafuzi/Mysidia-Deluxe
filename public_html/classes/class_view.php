@@ -1,7 +1,7 @@
 <?php
 
-use Resource\Native\Object;
-use Resource\Native\Mystring;
+use Resource\Native\Obj;
+use Resource\Native\Str;
 use Resource\Collection\MapEntry;
 
 /**
@@ -18,7 +18,7 @@ use Resource\Collection\MapEntry;
  *
  */
  
-abstract class View extends Object{
+abstract class View extends Obj{
 
  	/**
 	 * The action property, it stores the view action to execute.
@@ -163,7 +163,7 @@ abstract class View extends Object{
      * @return Objective
      */		
 	public function getField($key){
-        return $this->fields->get(new Mystring($key)); 
+        return $this->fields->get(new Str($key)); 
 	}	
 	
 	/**
@@ -306,7 +306,7 @@ abstract class View extends Object{
      * @return String
      */
     public function __toString(){
-	    return new Mystring("This is an instance of Mysidia View class.");
+	    return new Str("This is an instance of Mysidia View class.");
 	}
 }
 ?>

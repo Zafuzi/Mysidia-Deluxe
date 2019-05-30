@@ -15,7 +15,7 @@ namespace Resource\Native;
  *
  */
 
-class Null extends Object implements Primitive{
+class Null extends Obj implements Primitive{
  
 	/**
 	 * The value property, which stores the primitive value for this Null object. 

@@ -1,0 +1,9 @@
+.container.receipt
+  %h1 High Score Table
+  %table
+    - @scores.each_with_index do |score, idx|
+      %tr
+        %td= "#{idx + 1 })"
+        %td= identicon(score.identifier)
+        %td= score.score
+        %td= score.created_at.to_formatted_s(:short)

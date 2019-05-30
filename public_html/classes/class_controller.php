@@ -1,7 +1,7 @@
 <?php
 
-use Resource\Native\Object;
-use Resource\Native\Mystring;
+use Resource\Native\Obj;
+use Resource\Native\Str;
 use Resource\Collection\MapEntry;
 
 /**
@@ -18,7 +18,7 @@ use Resource\Collection\MapEntry;
  *
  */
  
-abstract class Controller extends Object{
+abstract class Controller extends Obj {
 
 	/**
 	 * The action property, defines the action for this controller.
@@ -130,7 +130,7 @@ abstract class Controller extends Object{
      * @access public
      * @return View
      */	
-	public function loadView(mystring $name){
+	public function loadView(Str $name){
 		$view = $name->capitalize()->concat("View")->getValue();
 		$this->view = new $view($this);
 	}
@@ -154,7 +154,7 @@ abstract class Controller extends Object{
      */		
 	public function setFlags($param, $param2 = NULL){
 	    if(!$param2) $param2 = $param;
-        $this->flags = new MapEntry(new Mystring($param), new Mystring($param2));
+        $this->flags = new MapEntry(new Str($param), new Str($param2));
 	}
 	
 	/**

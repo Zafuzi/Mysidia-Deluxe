@@ -1,6 +1,6 @@
 <?php
 
-use Resource\Native\Mystring;
+use Resource\Native\String;
 use Resource\Collection\LinkedHashMap;
 
 class ACPImageView extends View{

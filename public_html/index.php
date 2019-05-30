@@ -1,15 +1,18 @@
 <?php
+$before = microtime(true);
+
+require ('vendor/autoload.php');
 
 require("classes/resource/native/objective.php");
-require("classes/resource/native/object.php");
+require("classes/resource/native/obj.php");
 require("classes/class_controller.php");
 require("classes/class_frontcontroller.php");
 require("classes/class_initializer.php");
 
+
 //***************//
 //  START SCRIPT //
 //***************//
-
 class IndexController extends FrontController{
 		
 	public function handleRequest(){
@@ -76,4 +79,11 @@ class IndexController extends FrontController{
 }
 
 IndexController::main();
-?>
+
+$after = microtime(true);
+//echo ($after-$before) . " sec";
+
+// $command = "grep -ri '\Object;' classes/* | sort -t: -n -k2";
+// $output = shell_exec($command);
+// echo "$output";
+// echo "Grep job over.";

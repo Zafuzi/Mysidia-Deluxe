@@ -14,7 +14,7 @@
  *
  */
  
-abstract class GUIHelper extends GUI{
+abstract class GUIHelper extends GUI {
 	
 	/**
 	 * The resource property, specifies which GUI resource this helper belongs to.
@@ -57,7 +57,7 @@ abstract class GUIHelper extends GUI{
      * @return String
      */
     public function __toString(){
-	    return new Mystring("This is the GUIHelper Class.");
+	    return new Str("This is the GUIHelper Class.");
 	}
 }
 ?>

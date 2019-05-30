@@ -1,10 +1,10 @@
 <?php
 
-use Resource\Native\Object;
-use Resource\Native\Mystring;
+use Resource\Native\Obj;
+use Resource\Native\Str;
 use Resource\Collection\ArrayList;
 
-final class Trade extends Object{
+final class Trade extends Obj {
 
     private $offer;
     private $settings;
@@ -19,7 +19,7 @@ final class Trade extends Object{
 	    if(func_num_args() == 0) throw new InvalidActionException("global_action");
         $validations = $this->getValidations(func_get_arg(0), func_get_args());
 		$validationList = new ArrayList;
-		foreach($validations as $validation) $validationList->add(new Mystring($validation));		
+		foreach($validations as $validation) $validationList->add(new Str($validation));		
 	    $this->validator = new TradeValidator($this->offer, $this->settings, $validationList);
 		return $this->validator;
 	}

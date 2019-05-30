@@ -31,10 +31,16 @@ class LevelupController extends AppController{
 		$date = new DateTime;
 		$ip = secure($_SERVER['REMOTE_ADDR']);
 
+		if ($this->adopt->isdead == true) {
+			throw new LevelupException('dead');
+		}
+
 		if($this->settings->system != "enabled") throw new NoPermissionException("disabled");
         elseif($this->adopt->hasVoter($mysidia->user, $date)){
 		    $message = ($mysidia->user instanceof Member)?"already_leveled_member":"already_leveled_guest";
-			throw new LevelupException($message);		
+		    $message2 = " Or <a href='/pet/profile/{$this->adopt->aid}'>click here</a> to visit the pet's profile.";
+		    $lang = Registry::get("lang");
+		    throw new LevelupException($lang->lang[$message] . $message2);
 	    }
 		elseif($this->adopt->isFrozen() == "yes") throw new LevelupException("frozen");
         elseif($mysidia->user->getVotes() > $this->settings->number) throw new LevelupException("number");
@@ -52,10 +58,39 @@ class LevelupController extends AppController{
 	            if($requiredClicks and $newClicks >= $requiredClicks) $this->adopt->setCurrentLevel($nextLevel->getLevel(), "update");
 	        }
 			
+            $plugin = $mysidia->db->select("acp_hooks", array(), "pluginname = 'itemdrop' and pluginstatus = 1")->fetchObject();
+            if($mysidia->user instanceof Member and is_object($plugin)){
+                $item = $mysidia->db->select("adoptables", array("dropitem", "droprate"), "type = '{$this->adopt->getType()}'")->fetchObject();
+                if(!empty($item->dropitem) and $item->droprate > 0){
+                    $candrop = "yes";
+                    $droprand = mt_rand(0, 99);
+                    if($droprand < $item->droprate){
+                        // Item has dropped, now process the event!
+                        $itemrand = explode(",", $item->dropitem);
+                        $num = count($itemrand);
+
+                        if(count($itemrand) == 1) $actualitem = $itemrand[0];
+                        else{
+                            $actualrand = mt_rand(0, $num - 1);
+                            $actualitem = $itemrand[$actualrand];
+                        }
+
+                        $newitem = new StockItem($actualitem, 1);
+                        $newitem->assign($mysidia->user->username);
+                        $newitem->append(1); 
+                        $dropstatus = new Integer(1);
+                    }
+                }    
+            }  			
+			
 			$reward = $mysidia->user->clickreward($this->settings->reward);
 		    $mysidia->user->changecash($reward);			
             $this->setField("adopt", $this->adopt);
-            $this->setField("reward", new Integer($reward));			
+            $this->setField("reward", new Integer($reward));
+            if(!isset($dropstatus)) $dropstatus = false;
+            $this->setField("dropstatus", ($dropstatus)?$dropstatus:new Integer(0));
+            $this->setField("dropitem", $newitem?$newitem:new Integer(0));
+         
 		}
 	}
 
@@ -64,6 +99,15 @@ class LevelupController extends AppController{
         // The adoptable is available, let's collect its info
 	    $usingimage = "no";
 	    $image = $this->adopt->getImage(); 
+
+	    if ($this->adopt->getClass() == 'Colorful') {
+	    	$i = Registry::get('cImage');
+	    	$file = $this->adopt->getAdoptID(). '-'.$this->adopt->getCurrentLevel();
+			$filename = $_SERVER['DOCUMENT_ROOT'].'/picuploads/pets/'.$file.'.png';
+	    	$i->setImage($filename)->addName($this->adopt->getOwner());
+	    	$i->display();
+	    	return;
+	    }
 	  
 	    $usegd = $mysidia->settings->gdimages;
 	    $imageinfo = @getimagesize($image);
@@ -148,5 +192,10 @@ class LevelupController extends AppController{
 		$adopts = $daycare->getAdopts();
 		$this->setField("daycare", $daycare);
 	}
+	
+	public function raising(){		
+		$raising = new Raising;
+		$adopts = $raising->getAdopts();
+		$this->setField("raising", $raising);
+	}
 }
-?>

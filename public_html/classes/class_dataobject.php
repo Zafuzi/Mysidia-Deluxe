@@ -1,7 +1,7 @@
 <?php
 
-use Resource\Native\Object;
-use Resource\Native\Mystring;
+use Resource\Native\Obj;
+use Resource\Native\Str;
 
 /**
  * The DataObject Class, it is part of the utility package and extends from the Object Class.
@@ -15,7 +15,7 @@ use Resource\Native\Mystring;
  * @todo Not much at this moment
  */
 
-class DataObject extends Object{
+class DataObject extends Obj {
 
 	/**
 	 * The data property, it stores the wrapped PDO object.
@@ -68,6 +68,6 @@ class DataObject extends Object{
      * @return String
      */
     public function __toString(){
-	    return new Mystring("This is The DataObject Class.");
+	    return new Str("This is The DataObject Class.");
 	}	
 }

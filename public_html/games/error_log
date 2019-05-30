@@ -1,0 +1,1 @@
+[16-May-2019 04:55:08 UTC] PHP Fatal error:  Cannot redeclare sanitizeInput() (previously declared in /home/atrocity/public_html/ajax/useful_ajax.php:5) in /home/atrocity/public_html/ajax/useful_ajax.php on line 27

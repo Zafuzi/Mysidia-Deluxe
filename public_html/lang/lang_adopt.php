@@ -3,11 +3,10 @@
 //Language variables used for Adopt Page
 
 $lang['title'] = "Available Adoptables";
-$lang['member'] = "This page lists all of the adoptables available to you for FREE.<br>  
-                   Adoptables that are not available due to restrictions or promo code requirements are not shown.<br>
-                   If none of the adoptables intrigue you, you may visit the <a href='shop'>MarketPlace</a> and buy one from adoptables shop.<br>
-                   Or if you have a promo code, you may enter it on the <a href='promo'>Promo Code Page</a> to get that adoptable.<br>";
-$lang['guest'] =  "<br><b>You are browsing this site as a guest.  Guests cannot adopt pets.  Please <a href='login'>Log In</a> or <a href='register'>Register</a> if you wish to adopt a pet.<br>";
+$lang['member']= "<center><img src='http://i63.tinypic.com/eimmqc.jpg/'></center>";
+$lang['member'] .= "<center><b>Christina Says:</b> Here is where you can Adopt a new friend! Or you can go to the lab to create a friend!<center><br>";
+$lang['guest']= "<center><img src='http://i65.tinypic.com/fnviaq.jpg/'></center>";				   
+$lang['guest'] .=  "<br><b>You are browsing this site as a guest.  Guests cannot adopt pets.  Please <a href='login'>Log In</a> or <a href='register'>Register</a> if you wish to adopt a pet.<br>";
 $lang['guest_title'] = "Guests cannot adopt pets";
 $lang['guest_error'] = "Guests cannot adopt pets.  Please <a href='login'>Log In</a> or <a href='register'>Register</a> to adopt this pet.";
 $lang['id_title'] = "Invalid Adoptable ID Specified";

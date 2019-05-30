@@ -18,7 +18,7 @@ use Resource\Utility\Comparable;
  *
  */
 
-final class Boolean extends Object implements Comparable, Primitive{
+final class Boolean extends Obj implements Comparable, Primitive{
   	
 	/**
 	 * Size constant, specifies the size a boolean value occupies.

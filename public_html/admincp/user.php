@@ -50,6 +50,9 @@ class ACPUserController extends AppController{
 			}
 				
 			$mysidia->db->update("users", array("email" => $mysidia->input->post("email")), "uid='{$mysidia->input->get("uid")}'");
+			$mysidia->db->update("users", array("money" => $mysidia->input->post("money")), "uid='{$mysidia->input->get("uid")}'");
+			$mysidia->db->update("users", array("alignment" => $mysidia->input->post("alignment")), "uid='{$mysidia->input->get("uid")}'");
+			$mysidia->db->update("users", array("premiumcurrency" => $mysidia->input->post("premiumcurrency")), "uid='{$mysidia->input->get("uid")}'");
 			if(is_numeric($mysidia->input->post("level"))) $mysidia->db->update("users", array("usergroup" => $mysidia->input->post("level")), "uid='{$mysidia->input->get("uid")}'");
 			
             //Carry out user banning options
@@ -61,6 +64,10 @@ class ACPUserController extends AppController{
             if($mysidia->input->post("canpound") == "no") $mysidia->db->update("users_status", array("canpound" => 'no'), "uid='{$mysidia->input->get("uid")}'");  
             if($mysidia->input->post("canshop") == "no") $mysidia->db->update("users_status", array("canshop" => 'no'), "uid='{$mysidia->input->get("uid")}'");
             if($mysidia->input->post("unban") == "yes") unbanuser($user->username);
+
+            // Update number of pets that can be owned.
+            $newMax = (int) $mysidia->input->post('maximumpets');
+            $mysidia->db->update('users_status', ['max_pets'=>$newMax], "uid='{$mysidia->input->get('uid')}'");
 		}
 	}
 	

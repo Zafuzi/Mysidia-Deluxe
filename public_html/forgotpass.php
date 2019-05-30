@@ -1,6 +1,6 @@
 <?php
 
-use Resource\Native\Mystring as Mystring;
+use Resource\Native\Str;
 
 class ForgotpassController extends AppController{
 
@@ -37,7 +37,7 @@ class ForgotpassController extends AppController{
 		    if(!is_object($passwordResets)) throw new InvalidCodeException("invalidcode");		
 	        else{		
 		        $newPass = $mysidia->user->reset($passwordResets->username, $passwordResets->email); 
-                $this->setField("newPass", new Mystring($newPass));				
+                $this->setField("newPass", new Str($newPass));				
 	        }		 	    
 			return;
 		}

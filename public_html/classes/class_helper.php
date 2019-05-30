@@ -1,7 +1,7 @@
 <?php
 
-use Resource\Native\Object;
-use Resource\Native\Mystring;
+use Resource\Native\Obj;
+use Resource\Native\Str;
 
 /**
  * The abstract Helper Class, extends from the root object class.
@@ -17,7 +17,7 @@ use Resource\Native\Mystring;
  *
  */
  
-abstract class Helper extends Object{
+abstract class Helper extends Obj {
    
 	/**
      * Constructor of Helper Class, which simply serves as a marker for helper classes.
@@ -34,7 +34,7 @@ abstract class Helper extends Object{
      * @return String
      */
     public function __toString(){
-	    return new Mystring("This is an instance of Mysidia Helper class.");
+	    return new Str("This is an instance of Mysidia Helper class.");
 	}
 }
 ?>

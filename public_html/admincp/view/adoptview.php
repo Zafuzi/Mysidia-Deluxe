@@ -95,11 +95,19 @@ class ACPAdoptView extends View{
 								          So, for an equal chance of using say male or female images, put 2 in the box to have a 1 out of 2 or 50% chance of using the alternate image. 
 								          If you want to have the alternate images be rare images, use a higher number, like 100 for a 1 out of 100 chance of using the alternates.)"));
 		
+        $itemdrop = new FieldSetBuilder("Item Drop Settings");
+        $itemdrop->add(new Comment("Items dropped by clicking this adopt: (if multiple items are possible, separate them by comma)"));
+        $itemdrop->add(new TextField("dropitem"));
+        $itemdrop->add(new Comment("Items dropped rate: (must be somewhere between 0 and 100"));
+        $itemdrop->add(new TextField("droprate"));		
+		
 		$adoptForm->add($basicInfo);
 		$adoptForm->add($shopSettings);
 		$adoptForm->add($conditions);
 		$adoptForm->add($miscellaneous);
+        $adoptForm->add($itemdrop);
         $adoptForm->add(new Button("Create this Adoptable", "submit", "submit"));
+        $document->add($adoptForm); 
 		$document->add($adoptForm);								   
     }
 

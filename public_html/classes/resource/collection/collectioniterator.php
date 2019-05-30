@@ -1,7 +1,7 @@
 <?php
 
 namespace Resource\Collection;
-use Resource\Native\Object;  
+use Resource\Native\Obj;  
 
 /**
  * The CollectionIterator Class, extending from root Object Class and implements the Iterative interface.
@@ -17,7 +17,7 @@ use Resource\Native\Object;
  *
  */
  
-abstract class CollectionIterator extends Object implements Iterative{
+abstract class CollectionIterator extends Obj implements Iterative{
 
     /**
 	 * The cursor property, it specifies the current index location for the iterator.

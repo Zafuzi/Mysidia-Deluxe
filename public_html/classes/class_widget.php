@@ -13,7 +13,7 @@
  *
  */
 
-class Widget extends GUI implements Renderable{
+class Widget extends GUI implements Renderable {
 
 	/**
 	 * The wid property, it defines the unique ID of a given Widget.

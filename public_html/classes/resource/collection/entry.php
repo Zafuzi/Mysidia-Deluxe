@@ -2,8 +2,8 @@
 
 namespace Resource\Collection;
 use Resource\Native\Objective;
-use Resource\Native\Object; 
-use Resource\Native\Mystring; 
+use Resource\Native\Obj; 
+use Resource\Native\Str; 
 use Resource\Exception\UnsupportedOperationException; 
 
 /**
@@ -20,7 +20,7 @@ use Resource\Exception\UnsupportedOperationException;
  *
  */
  
-abstract class Entry extends Object{
+abstract class Entry extends Obj {
 
     /**
 	 * The key property, it defines the key of this entry.
@@ -112,7 +112,7 @@ abstract class Entry extends Object{
      * @return String
      */	
 	public function __toString(){
-        return new Mystring("{$this->key} => {$this->value}");
+        return new Str("{$this->key} => {$this->value}");
 	}	
 }
 ?>

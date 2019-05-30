@@ -35,6 +35,10 @@ class ACPInventoryController extends AppController{
 			    $mysidia->db->insert("inventory", array("iid" => NULL, "category" => $item->category, "itemname" => $mysidia->input->post("itemname"),
 			                                            "owner" => $mysidia->input->post("owner"), "quantity" => $mysidia->input->post("quantity"), "status" => 'Available'));	
 			}
+			$message = new PrivateMessage;
+$message->setrecipient($mysidia->input->post("owner"));
+$message->setmessage("You have received an item from Admin", "Dear {$mysidia->input->post("owner")}, you have received {$mysidia->input->post("quantity")} {$mysidia->input->post("itemname")} by a staff member!  No need to reply to this message! We were just letting you know it was now in your inventory! Enjoy!<br> ~Atrocity staff");
+$message->post();
 		}
 	}
 	

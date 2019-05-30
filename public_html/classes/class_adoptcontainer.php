@@ -1,6 +1,6 @@
 <?php
 
-use Resource\Native\Object;
+use Resource\Native\Obj;
 
 abstract class AdoptContainer extends Model implements Container{
   // The abstract ItemContainer class

@@ -13,7 +13,7 @@
  *
  */
 
-class RadioButton extends ButtonComponent{
+class RadioButton extends ButtonComponent {
 
     /**
 	 * The type property, which is a radio button.
@@ -86,7 +86,7 @@ class RadioButton extends ButtonComponent{
      * @return String
      */
     public function __toString(){
-	    return new Mystring("This is an instance of Mysidia RadioButton class.");
+	    return new Str("This is an instance of Mysidia RadioButton class.");
 	}    
 }
     

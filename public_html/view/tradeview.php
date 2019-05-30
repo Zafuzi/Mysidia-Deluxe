@@ -1,6 +1,6 @@
 <?php
 
-use Resource\Native\Mystring;
+use Resource\Native\String;
 use Resource\Collection\LinkedList;
 use Resource\Collection\LinkedHashMap;
 
@@ -8,9 +8,52 @@ class TradeView extends View{
 	
 	public function index(){
 		$document = $this->document;
+		$mysidia = Registry::get('mysidia');
 		$document->setTitle($this->lang->title);
-		$document->addLangvar($this->lang->default.$this->lang->section);	
+
+		$document->addLangvar($this->lang->default);
+
+		$path = $mysidia->path->getAbsolute().'picuploads/trades/';
+		$document->addLangvar("<style>
+			* { 
+			    -moz-box-sizing: border-box; 
+			    -webkit-box-sizing: border-box; 
+			     box-sizing: border-box; 
+			}
+
+			.tradebg {
+				background:url({$path}bg.png); 
+				position:relative; 
+				height:366px; 
+				width:716px;
+				padding: 10px;
+			}
+
+			.postit {
+				height: 162px;
+				width: 150px;
+				display:inline-block;
+			}
+
+			.postit img{
+				padding-top: 18%;
+				width: 100px;
+			}
+
+		</style>");
+		$document->addLangvar("<center><div class='tradebg'>
+				<div class='postit' style='background:url({$path}bluepostit.png)'><a href='/mytrades'><img src='{$path}myltrade1.png'><br>My Trades</a></div><br>
+				<div class='postit' style='background:url({$path}pinkpostit.png)'><a href='/trade/partials'><img src='{$path}partialtradeoffer1.png'><br>Partial Trades</a></div>
+				<div class='postit' style='background:url({$path}greenpostit.png)'><a href='/trade/publics'><img src='{$path}publictrade1.png'><br>Public Trades</a></div>
+				<div class='postit' style='background:url({$path}purplepostit.png)'><a href='/trade/offer'><img src='{$path}starttradetrade1.png'><br>Start New Trade</a></div>
+				<div class='postit' style='background:url({$path}orangepostit.png)'><a href='/trade/privates'><img src='{$path}revisetradetrade1.png'><br>Revise Trades</a></div>
+			</div></center>");
 		
+
+		return;
+		// OLD LAYOUT CODING
+		$document->addLangvar($this->lang->default.$this->lang->section);
+
 		$tax = $this->getField("tax");
 		$additionalList = $this->getField("additional");
 		$additionalIterator = $additionalList->iterator();
@@ -165,26 +208,81 @@ class TradeView extends View{
 		if($stmt->rowCount() == 0){
 		    $document->addLangvar($this->lang->view_private_empty);
 		    return;
-		}		
+		}
+
+
+
+		$path = $mysidia->path->getAbsolute().'picuploads/trades/';
+		$document->addLangvar("<style>
+			* { 
+			    -moz-box-sizing: border-box; 
+			    -webkit-box-sizing: border-box; 
+			     box-sizing: border-box; 
+			}
+
+			.tradebg {
+				background:url({$path}bg.png);
+				background-size: 100% 100%;
+    			background-repeat: no-repeat; 
+				position:relative; 
+				padding: 40px;
+			}
+
+			.postit {
+				height: 162px;
+				width: 100px;
+				display:inline-block;
+				padding-top: 18%;
+			}
+
+			.postititem {
+				background-size: 100% 100%;
+				height: 92px;
+				width: 75px;
+				display:inline-block;
+			}
+
+			.tinypostit {
+				background:url({$path}yellowpostit.png);
+				background-size: 100% 100%;
+    			background-repeat: no-repeat; 
+				height: 50px;
+				width: 50px;
+				display:inline-block;
+				padding-top: 25%;
+			}
+		</style>");
+
 		$tradeTable = new TableBuilder("tradetable", 700);
 		$tradeTable->setAlign(new Align("center", "middle"));
 		$tradeTable->buildHeaders("ID", "Sender", "Adopt Offered", "Adopt Wanted", "Item Offered", "Item Wanted", "Cash Offered", "Message", "Revise");
 		
 		while($tid = $stmt->fetchColumn()){
 		    $trade = new TradeOffer($tid);
+			$sender = $trade->getSender('model');
 			$cells = new LinkedList;
-		    $cells->add(new TCell($tid));
-			$cells->add(new TCell($trade->getSender()));
-			$cells->add(new TCell($tradeHelper->getAdoptImages($trade->getAdoptOffered())));
-			$cells->add(new TCell($tradeHelper->getAdoptImages($trade->getAdoptWanted())));			
-			$cells->add(new TCell($tradeHelper->getItemImages($trade->getItemOffered())));
-			$cells->add(new TCell($tradeHelper->getItemImages($trade->getItemWanted())));	
-			$cells->add(new TCell($trade->getCashOffered()));			
-			$cells->add(new TCell($trade->getMessage()));
+		    $cells->add(new TCell("<div class='tinypostit'>$tid</div>"));
+			$cells->add(new TCell("<div class='postit' style='background:url({$path}pinkpostit.png);background-size: 100px 162px;'>{$sender->username}<br>{$sender->getAvatar(80)->render()}</div>"));
+			$class = 'postit';
+			if ($trade->getAdoptOffered() == null) $class = null;
+			$cells->add(new TCell("<div class='$class' style='background:url({$path}greenpostit.png);background-size: 100px 162px;'>{$tradeHelper->getAdoptImages($trade->getAdoptOffered())->render()}</div>"));
+			$class = 'postit';
+			if ($trade->getAdoptWanted() == null) $class = null;
+			$cells->add(new TCell("<div class='$class' style='background:url({$path}orangepostit.png);background-size: 100px 162px;'>{$tradeHelper->getAdoptImages($trade->getAdoptWanted())->render()}</div>"));			
+			$cells->add(new TCell("<div class='postititem' style='background:url({$path}greenpostit.png);background-size: 80px 100px;background-repeat: no-repeat; '>{$tradeHelper->getItemImages($trade->getItemOffered())->render()}</div>"));
+			$cells->add(new TCell("<div class='postititem' style='background:url({$path}orangepostit.png);background-size: 80px 100px;background-repeat: no-repeat; '>{$tradeHelper->getItemImages($trade->getItemWanted())->render()}</div>"));	
+			$cash = $trade->getCashOffered();
+			if ($cash <= 0) {
+				$cash = "<img src='/picuploads/trades/postitx.png' height='100px' width='80px'>";
+			}
+			$cells->add(new TCell("<div class='postititem' style='background:url({$path}purplepostit.png);background-size: 80px 100px;background-repeat: no-repeat;'>{$cash}</div>"));			
+			$cells->add(new TCell("<div class='postit' style='background:url({$path}yellowpostit.png);background-size: 100px 162px;'>{$trade->getMessage()}</div>"));
 			$cells->add(new TCell(new Link("trade/privates/tid/{$tid}", new Image("templates/icons/cog.gif"))));
 			$tradeTable->buildRow($cells);
 		}		
+		$document->addLangvar('<div class="tradebg"><br>');
 		$document->add($tradeTable);		
+		$document->addLangvar('<br><br></div>');
 	}
 
 	public function partials(){
@@ -229,6 +327,50 @@ class TradeView extends View{
 		    $document->addLangvar($this->lang->view_partial_empty);
 		    return;
 		}		
+
+
+		$path = $mysidia->path->getAbsolute().'picuploads/trades/';
+		$document->addLangvar("<style>
+			* { 
+			    -moz-box-sizing: border-box; 
+			    -webkit-box-sizing: border-box; 
+			     box-sizing: border-box; 
+			}
+
+			.tradebg {
+				background:url({$path}bg.png);
+				background-size: 100% 100%;
+    			background-repeat: no-repeat; 
+				position:relative; 
+				padding: 40px;
+			}
+
+			.postit {
+				height: 162px;
+				width: 100px;
+				display:inline-block;
+				padding-top: 18%;
+			}
+
+			.postititem {
+				background-size: 100% 100%;
+				height: 92px;
+				width: 75px;
+				display:inline-block;
+			}
+
+			.tinypostit {
+				background:url({$path}yellowpostit.png);
+				background-size: 100% 100%;
+    			background-repeat: no-repeat; 
+				height: 50px;
+				width: 50px;
+				display:inline-block;
+				padding-top: 25%;
+			}
+		</style>");
+
+
 		$tradeTable = new TableBuilder("tradetable", 700);
 		$tradeTable->setAlign(new Align("center", "middle"));
 		$tradeTable->buildHeaders("ID", "Sender", "Adopt Offered", "Adopt Wanted", "Item Offered", "Item Wanted", "Cash Offered", "Message", "View");
@@ -236,18 +378,28 @@ class TradeView extends View{
 		while($tid = $stmt->fetchColumn()){
 		    $trade = new TradeOffer($tid);
 			$cells = new LinkedList;
-		    $cells->add(new TCell($tid));
-			$cells->add(new TCell($trade->getSender()));
-			$cells->add(new TCell($tradeHelper->getAdoptImages($trade->getAdoptOffered())));
-			$cells->add(new TCell($tradeHelper->getAdoptImages($trade->getAdoptWanted())));			
-			$cells->add(new TCell($tradeHelper->getItemImages($trade->getItemOffered())));
-			$cells->add(new TCell($tradeHelper->getItemImages($trade->getItemWanted())));	
-			$cells->add(new TCell($trade->getCashOffered()));			
-			$cells->add(new TCell($trade->getMessage()));
+		    $cells->add(new TCell("<div class='tinypostit'>$tid</div>"));
+		    $sender = $trade->getSender('model');
+			$cells->add(new TCell("<div class='postit' style='background:url({$path}pinkpostit.png);background-size: 100px 162px;'>{$sender->username}<br>{$sender->getAvatar(80)->render()}</div>"));
+			$class = 'postit';
+			if ($trade->getAdoptOffered() == null) $class = null;
+			$cells->add(new TCell("<div class='$class' style='background:url({$path}greenpostit.png);background-size: 100px 162px;'>{$tradeHelper->getAdoptImages($trade->getAdoptOffered())->render()}</div>"));
+			$class = 'postit';
+			if ($trade->getAdoptWanted() == null) $class = null;
+			$cells->add(new TCell("<div class='$class' style='background:url({$path}orangepostit.png);background-size: 100px 162px;'>{$tradeHelper->getAdoptImages($trade->getAdoptWanted())->render()}</div>"));			
+			$cells->add(new TCell("<div class='postititem' style='background:url({$path}greenpostit.png);background-size: 80px 100px;background-repeat: no-repeat; '>{$tradeHelper->getItemImages($trade->getItemOffered())->render()}</div>"));
+			$cells->add(new TCell("<div class='postititem' style='background:url({$path}orangepostit.png);background-size: 80px 100px;background-repeat: no-repeat; '>{$tradeHelper->getItemImages($trade->getItemWanted())->render()}</div>"));	
+			$cash = $trade->getCashOffered();
+			if ($cash <= 0) {
+				$cash = "<img src='/picuploads/trades/postitx.png' height='100px' width='80px'>";
+			}
+			$cells->add(new TCell("<div class='postititem' style='background:url({$path}purplepostit.png);background-size: 80px 100px;background-repeat: no-repeat;'>{$cash}</div>"));			
+			$cells->add(new TCell("<div class='postit' style='background:url({$path}yellowpostit.png);background-size: 100px 162px;'>{$trade->getMessage()}</div>"));
 			$cells->add(new TCell(new Link("trade/partials/tid/{$tid}", new Image("templates/icons/cog.gif"))));
 			$tradeTable->buildRow($cells);
 		}		
+		$document->addLangvar('<div class="tradebg"><br>');
 		$document->add($tradeTable);		
+		$document->addLangvar('<br><br></div>');		
 	}
 }
-?>

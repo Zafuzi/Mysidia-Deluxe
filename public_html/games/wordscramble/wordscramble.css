@@ -1,0 +1,50 @@
+.wordscramble {
+    width: 452px;
+    margin: 10px auto;
+    text-align: center;
+    color: #373737;
+    font-family: sans-serif;
+}
+
+.wordscramble #scrambledword {
+    width: 430px;
+    height: 100px;
+    background-color: #999999;
+    border-radius: 15px;
+    text-align: center;
+    line-height: 100px;
+    border: 4px solid;
+    font-size: 40px;
+}
+
+.wordscramble #userword {
+    width: 430px;
+    font-size: 20px;
+    text-align: center;
+    padding: 20px;
+}
+
+.wordscramble input[type="text"] {
+    border: 3px solid #373737;
+    border-radius: 5px;
+    height: 25px;
+    color: #373737;
+    font-size: 20px;
+}
+
+.wordscramble .guess {
+    width: 50px;
+    height: 10px;
+    text-align: center;
+    background-color: #999999;
+    border: 3px solid #999999;
+    padding: 5px;
+    border-radius: 5px;
+}
+ 
+.wordscramble .guess:hover {
+    color: #373737;
+    cursor: pointer;
+}
+
+.hidden { opacity: 0; }

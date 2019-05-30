@@ -2,7 +2,7 @@
 
 namespace Resource\Utility;
 use ArrayObject;
-use Resource\Native\Object;
+use Resource\Native\Obj;
 
 /**
  * The MetaMethod Class, it is part of the utility package and extends from the Object Class.
@@ -16,7 +16,7 @@ use Resource\Native\Object;
  * @todo Not sure, but will come in handy.
  */
 
-final class MetaMethod extends Object{
+final class MetaMethod extends Obj {
 
 	/**
 	 * The args property, it stores an array of arguments.

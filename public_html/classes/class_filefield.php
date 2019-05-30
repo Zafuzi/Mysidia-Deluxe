@@ -15,7 +15,7 @@ use Resource\Collection\HashSet;
  *
  */
 
-class FileField extends TextField{
+class FileField extends TextField {
 
     /**
 	 * The type property, specifies the type of this file field.
@@ -119,7 +119,7 @@ class FileField extends TextField{
      * @return String
      */
     public function __toString(){
-	    return new Mystring("This is an instance of Mysidia FileField class.");
+	    return new Str("This is an instance of Mysidia FileField class.");
 	}    
 }
     

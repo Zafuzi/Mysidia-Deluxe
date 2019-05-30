@@ -14,7 +14,7 @@
  *
  */
  
-abstract class GUIAccessory extends GUIComponent{
+abstract class GUIAccessory extends GUIComponent {
 	
 	/**
 	 * The containers property, specifies which containers can hold this accessory object.
@@ -49,7 +49,7 @@ abstract class GUIAccessory extends GUIComponent{
      * @return String
      */
     public function __toString(){
-	    return new Mystring("This is the GUIAccessory Class.");
+	    return new Str("This is the GUIAccessory Class.");
 	}
 }
 ?>

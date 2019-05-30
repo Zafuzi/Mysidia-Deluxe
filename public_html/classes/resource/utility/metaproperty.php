@@ -1,7 +1,7 @@
 <?php
 
 namespace Resource\Utility;
-use Resource\Native\Object;
+use Resource\Native\Obj;
 
 /**
  * The MetaProperty Class, it is part of the utility package and extends from the Object Class.
@@ -15,7 +15,7 @@ use Resource\Native\Object;
  * @todo Not sure, but will come in handy.
  */
 
-final class MetaProperty extends Object{
+final class MetaProperty extends Obj {
 
 	/**
 	 * The type property, it stores the type of a property/variable.

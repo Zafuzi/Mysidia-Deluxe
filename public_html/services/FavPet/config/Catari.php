@@ -1,0 +1,56 @@
+<?php
+
+return [
+	'found item' => 'Look what the Catari dragged in! A :item!',
+	'sayings' =>
+	[
+		'Meow',
+		'*purr*',
+		'Do you have catnip?',
+		'I saw a squirrel today!',
+		'I should catch that mouse!',
+		'I love you!',
+		'I feel special being owned by you!',
+		'Time spent with a cat is never wasted',
+		'Way down deep, we are all motivated by the same urges. Cats have the courage to live by them',
+		'Cats rule the world.',
+		'There are few things in life more heartwarming than to be welcomed by a cat.',
+		'If cats could talk, they wouldnt.',
+		'Cats are rather delicate creatures and they are subject to a good many ailments, but I never heard of one who suffered from insomnia. ',
+		'As every cat owner knows, nobody owns a cat.',
+		'Cats can work out mathematically the exact place to sit that will cause most inconvenience.',
+		'A cat is an example of sophistication minus civilization',
+		'If there is one spot of sun spilling onto the floor, a cat will find it and soak it up.',
+		'No amount of time can erase the memory of a good cat, and no amount of masking tape can ever totally remove his fur from your couch',
+		'A cat pours his body on the floor like water.',
+		'A cat improves the garden wall in sunshine, and the hearth in foul weather.',
+		'Cats come and go without ever leaving.',
+		'Dogs come when they are called, cats take a message and get back to you later',
+		'What greater gift than the love of a cat?',
+		'It is in the nature of cats to do a certain amount of unescorted roaming',
+		'Like a graceful vase, a cat, even when motionless, seems to flow',
+		'To err is human, to purr is feline.',				
+	],
+'items' =>
+	[
+		'Worm',
+		'Cloverleafs' => 'I picked some Cloverleafs for you! Hope I bring you some luck!',
+		'Flowers' => 'I picked some flowers for you.',
+		'Fools gold',
+		'Old bottle' => 'I bet the Bakeneko would love this old bottle!',
+		'Pearls'  => 'These pearls were soooo shiny! I had to grab them! Even if that old lady didnt want me to!',
+		'Plastic bracelet',
+		'Rocks',
+		'Rope piece',
+		'Tin can'  => 'Lets make a phone out of this tin can and talk to each other all the time!',
+		'Trash' => 'Im sorry I picked up this trash...but I couldnt resist..',
+		'Wood logs',
+		'Small Block of Cheese',
+		'Ice worm',
+		'Ice Cube',
+		'Rock worm',
+		'Scions casino coin' => 'I bet we could win big if we used it!',
+		
+
+	],
+];

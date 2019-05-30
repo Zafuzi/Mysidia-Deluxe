@@ -5,12 +5,18 @@ class RegisterView extends View{
 	public function index(){
 	    $mysidia = Registry::get("mysidia");
 		$document = $this->document;		
-	    if($mysidia->input->post("submit")){
-		    $document->setTitle($this->lang->success_title);
-            $document->addLangvar($this->lang->success.$mysidia->input->post("username").$this->lang->success2);	
-			return;
-		}
+if($mysidia->input->post("submit")){
+    $document->setTitle($this->lang->success_title);
+    $document->addLangvar($this->lang->success.$mysidia->input->post("username").$this->lang->success2);
 
+    $pm = new PrivateMessage(); // Send them a welcoming message
+    $pm->setsender('Ittermat');
+    $pm->setrecipient(htmlentities(addslashes(trim($mysidia->input->post("username")))));
+    $pm->setmessage("Welcome to Atrocity!", "Hi there and Welcome to Atrocity! I sincerely hope you enjoy your time here! Please feel free to inquire if you have any questions, and for up to date details and some more fun we have a facebook page and a Forum, and please make sure you read and follow the rules and Terms of service! Have a great day!! ~Ittermat");
+    $pm->post();  
+    
+    return;
+}  
         $document->setTitle($this->lang->title);
         $document->addLangvar($this->lang->default);		
 		$registerForm = new Form("regform", "", "post");
@@ -37,18 +43,31 @@ class RegisterView extends View{
         $additionalField->add(new Comment("(mm/dd/yyyy)"));	
         $additionalField->add(new TextField("birthday"));
 		$additionalField->add(new Comment("Avatar: ", FALSE, "b"));
-        $additionalField->add(new Comment("Enter the url of your avatar beginning with http://www."));	
-        $additionalField->add(new TextField("avatar", "templates/icons/default_avatar.gif"));
+        $additionalField->add(new Comment("Enter the url of your avatar beginning with http://www. and 100 x 100 size only"));	
+        $additionalField->add(new TextField("avatar"));
 		$additionalField->add(new Comment("Nickname: ", FALSE, "b"));
         $additionalField->add(new Comment("A nickname for yourself, do not use inappropriate words! "));	
         $additionalField->add(new TextField("nickname"));
 		$additionalField->add(new Comment("Gender: ", FALSE, "b"));
-        $additionalField->add(new Comment("Male, Female or Not specified"));
+        $additionalField->add(new Comment("Male, Female, Other or not specified"));
 
         $genderList = new RadioList("gender");	
 		$genderList->add(new RadioButton("Male", "gender", "male"));
         $genderList->add(new RadioButton("Female", "gender", "female"));
+        $genderList->add(new RadioButton("Other", "gender", "other"));
         $genderList->add(new RadioButton("Unknown", "gender", "unknown"));
+        $genderList->add(new RadioButton("Agender", "gender", "agender"));
+	    $genderList->add(new RadioButton("Cisgender", "gender", "cisgender"));
+	    $genderList->add(new RadioButton("Gender fluid", "gender", "gender fluid"));
+	    $genderList->add(new RadioButton("Bi gender", "gender", "bi gender"));
+	    $genderList->add(new RadioButton("Gender nonconforming", "gender", "gender nonconforming"));
+	    $genderList->add(new RadioButton("Genderqueer", "gender", "genderqueer"));
+	    $genderList->add(new RadioButton("Intersex", "gender", "intersex"));
+	    $genderList->add(new RadioButton("Non binary", "gender", "non binary"));
+	    $genderList->add(new RadioButton("Pangender", "gender", "pangender"));
+	    $genderList->add(new RadioButton("Transgender mtf", "gender", "transgender mtf"));
+	    $genderList->add(new RadioButton("Transgender ftm", "gender", "transgender ftm"));
+	    $genderList->add(new RadioButton("Two spirit", "gender", "two spirit"));
         $genderList->check("unknown");
         $additionalField->add($genderList);
 

@@ -1,6 +1,6 @@
 <?php
 
-use Resource\Native\Mystring;
+use Resource\Native\Str;
 use Resource\Collection\Collective;
 use Resource\Collection\LinkedList;
 use Resource\Collection\LinkedHashMap;
@@ -18,7 +18,7 @@ use Resource\Collection\LinkedHashMap;
  *
  */
 
-class DropdownList extends GUIContainer{
+class DropdownList extends GUIContainer {
 	
 	/**
 	 * The autofocus property, checks if the input component is autofocused.
@@ -179,7 +179,7 @@ class DropdownList extends GUIContainer{
      * @return String
      */
     public function __toString(){
-	    return new Mystring("This is an instance of Mysidia DropDownList class.");
+	    return new Str("This is an instance of Mysidia DropDownList class.");
 	}    
 }    
 ?>

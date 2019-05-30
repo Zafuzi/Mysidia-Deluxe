@@ -13,7 +13,7 @@
  *
  */
 
-class OptGroup extends GUIContainer{
+class OptGroup extends GUIContainer {
 
 	/**
 	 * The label property, stores the label of this OptGroup.
@@ -71,7 +71,7 @@ class OptGroup extends GUIContainer{
      * @return String
      */
     public function __toString(){
-	    return new Mystring("This is an instance of Mysidia OptGroup class.");
+	    return new Str("This is an instance of Mysidia OptGroup class.");
 	}    
 }
     

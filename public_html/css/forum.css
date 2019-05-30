@@ -1,0 +1,106 @@
+.guest {width:600px;padding:5px;border:1px solid grey;border-radius:5px;margin:15px auto 15px auto;background-color:white;}
+
+.forumbtn{
+    background-color:#b70721;
+    color:#fff !important;
+    font-family:'Helvetica Neue',sans-serif !important;
+    font-size:18px !important;
+    line-height:30px !important;
+    border-radius:20px !important;
+    -webkit-border-radius:20px !important;
+    -moz-border-radius:20px !important;
+    border:0 !important;
+    text-shadow:#C17C3A 0 -1px 0 !important;
+    width:100px !important;
+    height:32px !important;
+    padding: 10px;
+    text-decoration: none !important;
+}
+
+.subforumbtn{
+    background-color:#b70721;
+    color:#fff !important;
+    font-family:'Helvetica Neue',sans-serif !important;
+    font-size:12px !important;
+    line-height:30px !important;
+    border-radius:20px !important;
+    -webkit-border-radius:20px !important;
+    -moz-border-radius:20px !important;
+    border:0 !important;
+    text-shadow:#C17C3A 0 -1px 0 !important;
+    width:100px !important;
+    height:32px !important;
+    padding: 10px;
+    text-decoration: none !important;
+}
+
+.boardhead {
+    overflow: hidden;
+    background-color: #4a9170;
+    display: block;
+    color: #f2f2f2;
+    text-align: left;
+    padding: 15px 10px;
+    text-decoration: none;
+}
+
+.board_holder{
+	width:700px;
+    border:5px solid #3e7a5e;
+    height:auto;
+    text-align:center;
+}
+.sub_board_holder{
+	width:650px;
+    border:5px solid #3e7a5e;
+    height:auto;
+    text-align:center;
+}
+
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+/* thread table. sticky threads have gold bg. normal are cream */
+.forum_thread {border:0px dotted green;text-align;center;font-size:15px;} 
+.forum_top {background-color:white;display:table-cell;vertical-align:top;padding:5px;}
+.forum_sticky {background-color:#ede3c4;border-top:1px solid #f9f3de; border-left:1px solid #f9f3de;border-right:1px solid #998b5e;border-bottom:1px solid #998b5e;display:table-cell;vertical-align:top;padding:5px;} 
+.forum_normal {background-color:#f9f8f4;border-top:1px solid #fffefc; border-left:1px solid #fffefc;border-right:1px solid #c4beac;border-bottom:1px solid #c4beac;display:table-cell;vertical-align:top;padding:5px;}
+/* now using divs instead of table */
+.divicon {width:35px;} .divtitle {width:380px;} .divauthor {width:175px;} .divreplies {width:35px;} .divlatest {width:175px;}
+
+/* viewing threads, posts */
+.forum_posthold {width:840px;margin:auto;}
+.forum_postbit {width:190px;min-height:100px;padding:10px;height:100%;border-top:1px solid #fffefc;border-left:1px solid #fffefc;border-right:1px  solid #c4beac;border-bottom:1px solid #c4beac;border-radius:5px;display:table-cell;vertical-align:top;}
+/* different postbit styles for some usergroups */
+.admin {background-color:#4a9170;}
+.mod {background-color:#d6d5d4;}
+.banned {background-color:#efb1a5;}
+.member {background-color:#f2edde;}
+/* contents of post */
+.forum_posttext {width:600px;padding:5px 10px 10px 10px;height:100%;border-top:1px solid #fffefc; border-left:1px solid #fffefc;border-right:1px solid #c4beac;border-bottom:1px solid #c4beac;background-color:#f7f6f4;display:table-cell; vertical-align:top;}
+.forum_postinfo {border-bottom:1px dotted #efc323;text-align:right;font-size:13px;}
+
+.forum_report_btn {width:20px;height:20px;padding:0px 8px 0px 8px;margin:0px 0px 0px 10px;background-color:#890902;color:white;border-radius:10px; text-align:center;display:inline;}
+.forum_report_btn:hover {background-color:red;cursor:pointer;}
+
+.forum_edit_btn {width:20px;height:20px;padding:0px 8px 0px 8px;margin:0px 0px 0px 10px;background-color:#087708;color:white;border-radius:10px;text-align:center;display:inline;}
+.forum_edit_btn:hover {background-color:#57c657;cursor:pointer;}
+
+.edit_btn {width:20px;height:20px;padding:0px 8px 0px 8px;margin:0px 0px 0px 10px;background-color:#087708;color:white;border-radius:10px;text-align:center;display:inline;}
+.edit_btn:hover {background-color:#57c657;cursor:pointer;}
+
+.forum_deletepost_btn {width:50px;height:20px;padding:0px 8px 0px 8px;margin:0px 0px 0px 10px;background-color:#890902;color:white;border-radius:10px; text-align:center;display:inline;}
+.forum_deletepost_btn:hover {background-color:red;cursor:pointer;}
+
+.forum_silence_btn {width:50px;height:20px;padding:0px 8px 0px 8px;margin:0px 0px 0px 10px;background-color:blue;color:white;border-radius:10px; text-align:center;display:inline;}
+.forum_silence_btn:hover {background-color:yellow;cursor:pointer;}
+
+.editarea {padding:5px;margin:0px;width:570px;height:120px;resize:none;}
+#forum_editthread_box {min-height:100px;border:1px solid grey;border-radius:5px;padding:10px;margin:10px;background-color:white;display:none;}
+#forum_edit_box {width:590px;min-height:50px;border:1px solid grey;background-color:#d6d5d4;border-radius:5px;padding:5px;z-index:40;display:none;}
+#forum_edit_hide {width:20px;height:20px;padding:0px 8px 0px 8px;margin:0px 0px 0px 10px;background-color:red;color:white;border-radius:10px;display:inline;}
+#forum_report_box {width:170px;border:1px solid grey;background-color:#efc323;border-radius:5px;padding:10px;z-index:50;display:none;}
+#forum_report_hide {width:20px;height:20px;padding:0px 8px 0px 8px;margin:0px 0px 0px 10px;background-color:red;color:white;border-radius:10px;display:inline;cursor:pointer;}

@@ -1,7 +1,7 @@
 <?php
 
 use Resource\Native\Objective;
-use Resource\Native\Mystring;
+use Resource\Native\Str;
 use Resource\Collection\HashMap;
 
 /**
@@ -18,7 +18,7 @@ use Resource\Collection\HashMap;
  *
  */
  
-abstract class AppController extends Controller{
+abstract class AppController extends Controller {
  
  	/**
 	 * The access property, specifies the access control of this controller.
@@ -59,7 +59,7 @@ abstract class AppController extends Controller{
 		$this->access = $access;
 		$this->action = $mysidia->input->action();
 		$this->name = ($mysidia->input->get("frontcontroller") == "admincp")
-                      ?new Mystring("ACP{$mysidia->input->get("appcontroller")->capitalize()}")
+                      ?new Str("ACP{$mysidia->input->get("appcontroller")->capitalize()}")
                       :$mysidia->input->get("appcontroller");
 		
 		if(!$this->hasAction($this->action)){
@@ -168,7 +168,7 @@ abstract class AppController extends Controller{
      */	
 	public function setField($key, Objective $value){
 	    if(!$this->fields) $this->fields = new HashMap;
-		$this->fields->put(new Mystring($key), $value);
+		$this->fields->put(new Str($key), $value);
 	}
 	
 	/**

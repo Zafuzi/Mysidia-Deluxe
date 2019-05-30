@@ -1,6 +1,6 @@
 <?php
 
-use Resource\Native\Mystring;
+use Resource\Native\Str;
 use Resource\Collection\HashSet;
 
 /**
@@ -91,7 +91,7 @@ abstract class TableContainer extends GUIContainer{
      */
 	public function setTableAttributes($tableAttributes){		
 	    if(!$this->tableAttributes) $this->tableAttributes = new HashSet;
-	    $this->tableAttributes->add(new Mystring($tableAttributes));
+	    $this->tableAttributes->add(new Str($tableAttributes));
 	}
 	
 	/**
@@ -100,7 +100,7 @@ abstract class TableContainer extends GUIContainer{
      * @return String
      */
     public function __toString(){
-	    return new Mystring("This is The TableContainer class.");
+	    return new Str("This is The TableContainer class.");
 	}
 }
 ?>

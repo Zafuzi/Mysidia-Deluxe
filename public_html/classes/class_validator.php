@@ -1,8 +1,8 @@
 <?php
 
-use Resource\Native\Object;
+use Resource\Native\Obj;
 
-abstract class Validator extends Object implements Validative{
+abstract class Validator extends Obj implements Validative{
   // The abstract Validator class offers basic functionalities 
   protected $action;
   protected $value;

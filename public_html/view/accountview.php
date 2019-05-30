@@ -14,13 +14,13 @@ class AccountView extends View{
         $document->add(new Comment);
         $document->add($settings);
    
-        $document->add(new Link("myadopts", "Manage Adoptables", TRUE));
-        $document->add(new Link("profile/view/{$mysidia->user->username}", "View Profile", TRUE));
-        $document->add(new Link("account/password", "Change Password", TRUE));
-        $document->add(new Link("account/email", "Change Email Address", TRUE));
-        $document->add(new Link("account/friends", "View and Manage FriendList", TRUE));
-        $document->add(new Link("account/profile", "More Profile Settings", TRUE));
-        $document->add(new Link("account/contacts", "Change Other Settings"));	
+        $document->add(new Link("myadopts", "<img src='http://i66.tinypic.com/2zjcroh.jpg'>", FALSE));
+        $document->add(new Link("profile/view/{$mysidia->user->username}", "<img src='http://i67.tinypic.com/23m5t6r.jpg/'>", FALSE));
+        $document->add(new Link("account/password", "<img src='http://i64.tinypic.com/dxg684.jpg/'>", FALSE));
+        $document->add(new Link("account/email", "<img src='http://i67.tinypic.com/2e3a4wj.jpg/'>", TRUE));
+        $document->add(new Link("account/friends", "<img src='http://i65.tinypic.com/2h3yk61.jpg/'>", FALSE));
+        $document->add(new Link("account/profile", "<img src='http://i65.tinypic.com/wlx994.jpg/'>", FALSE));
+        $document->add(new Link("account/contacts", "<img src='http://i64.tinypic.com/e7b3ux.jpg/'>", FALSE));	
 	}
 	
 	public function password(){
@@ -106,7 +106,20 @@ class AccountView extends View{
 	    $genderList = new RadioList("gender");
 	    $genderList->add(new RadioButton("Male", "gender", "male"));
 	    $genderList->add(new RadioButton("Female", "gender", "female"));
+	    $genderList->add(new RadioButton("Other", "gender", "other"));
 	    $genderList->add(new RadioButton("Unknown", "gender", "unknown"));
+	    	    $genderList->add(new RadioButton("Agender", "gender", "agender"));
+	    	    	    $genderList->add(new RadioButton("Cisgender", "gender", "cisgender"));
+	    	    	    	    $genderList->add(new RadioButton("Gender fluid", "gender", "gender fluid"));
+	    	    	    	    	    $genderList->add(new RadioButton("Bi gender", "gender", "bi gender"));
+	    	    	    	    	    	    $genderList->add(new RadioButton("Gender nonconforming", "gender", "gender nonconforming"));
+	    	    	    	    	    	    	    $genderList->add(new RadioButton("Genderqueer", "gender", "genderqueer"));
+	    	    	    	    	    	    	    	    $genderList->add(new RadioButton("Intersex", "gender", "intersex"));
+	    	    	    	    	    	    	    	    	    $genderList->add(new RadioButton("Non binary", "gender", "non binary"));
+	    	    	    	    	    	    	    	    	    	    $genderList->add(new RadioButton("Pangender", "gender", "pangender"));
+	    	    	    	    	    	    	    	    	    	    	    $genderList->add(new RadioButton("Transgender mtf", "gender", "transgender mtf"));
+	    	    	    	    	    	    	    	    	    	    	    	    $genderList->add(new RadioButton("Transgender ftm", "gender", "transgender ftm"));
+	    	    	    	    	    	    	    	    	    	    	    	    	    $genderList->add(new RadioButton("Two spirit", "gender", "two spirit"));
 	    $genderList->check($profile->getGender());
 	   
 	    $profileForm->add($genderList);
@@ -114,7 +127,7 @@ class AccountView extends View{
 	    $profileForm->add(new TextField("color", $profile->getColor()));
 	    $profileForm->add(new Comment("Bio: "));
 	    $profileForm->add(new TextArea("bio", $profile->getBio()));
-	    $profileForm->add(new Comment($lang->bio));
+	    $profileForm->add(new Comment($this->lang->bio));
 	   
 	    $petSpotLight = new Comment("Pet Spotlight Details: ");
         $petSpotLight->setBold();
@@ -128,7 +141,7 @@ class AccountView extends View{
 	    $profileForm->add($favPet);
 	    $profileForm->add(new Comment("Favorite Pet Bio: "));
 	    $profileForm->add(new TextArea("about", $profile->getFavpetInfo()));
-	    $profileForm->add(new Comment($lang->favpet));	   
+	    $profileForm->add(new Comment($this->lang->favpet));	   
 	    $profileForm->add(new PasswordField("hidden", "action", "moreprofile"));
 	    $profileForm->add(new Button("Edit My Profile", "submit", "submit"));
 	    $document->add($profileForm);
@@ -168,4 +181,3 @@ class AccountView extends View{
         $document->add($optionsForm);	
 	}
 }
-?>

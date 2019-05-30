@@ -1,8 +1,8 @@
 <?php
 
-use Resource\Native\Object;
+use Resource\Native\Obj;
 
-abstract class UserCreator extends Object implements Creator{
+abstract class UserCreator extends Obj implements Creator{
   // The abstract factory class UserCreator
   
   abstract public function create();

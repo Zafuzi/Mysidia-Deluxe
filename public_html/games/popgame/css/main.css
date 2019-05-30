@@ -1,0 +1,112 @@
+
+* {
+  -webkit-user-select: none;
+  user-select: none;
+  margin: 0;
+  padding: 0;  
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #fff;
+  font-family: 'pecitamedium';
+}
+
+.game {
+  
+
+}
+canvas{
+    display : block;
+    margin : auto;          
+}
+
+
+body {
+  margin: 0;
+  padding: 0;
+  background: #fff;
+}
+
+.container {
+  width: 200px;
+  height: 100px;
+  padding-top: 100px;
+  margin: 0 auto;
+}
+
+.ball {
+  width: 40px;
+  height: 40px;
+  margin: 10px auto;
+  border-radius: 50px;
+  }  
+
+
+  .ball:nth-child(1) {
+    background: #ee5454;
+    -webkit-animation: right 1s infinite ease-in-out;
+    -moz-animation: right 1s infinite ease-in-out;
+    animation: right 1s infinite ease-in-out;    
+  }
+
+  .ball:nth-child(2) {
+    background: #ee8f54;
+    -webkit-animation: left 1.1s infinite ease-in-out;
+    -moz-animation: left 1.1s infinite ease-in-out;
+    animation: left 1.1s infinite ease-in-out;
+  }
+
+  .ball:nth-child(3) {
+    background: #ba54ee;
+    -webkit-animation: right 1.05s infinite ease-in-out;
+    -moz-animation: right 1.05s infinite ease-in-out;
+    animation: right 1.05s infinite ease-in-out;
+  }
+
+  .ball:nth-child(4) {
+    background: #54eed1;
+    -webkit-animation: left 1.15s infinite ease-in-out;
+    -moz-animation: left 1.15s infinite ease-in-out;
+    animation: left 1.15s infinite ease-in-out;
+   }
+
+
+
+@-webkit-keyframes right {
+0%   { -webkit-transform: translate(-40px);   }
+50%  { -webkit-transform: translate(40px);    }
+100% { -webkit-transform: translate(-40px);   }
+}
+
+@-webkit-keyframes left {
+0%   { -webkit-transform: translate(40px);    }
+50%  { -webkit-transform: translate(-40px);   }
+100% { -webkit-transform: translate(40px);    }
+}
+
+@-moz-keyframes right {
+0%   { -moz-transform: translate(-40px);   }
+50%  { -moz-transform: translate(40px);    }
+100% { -moz-transform: translate(-40px);   }
+}
+
+@-moz-keyframes left {
+0%   { -moz-transform: translate(40px);    }
+50%  { -moz-transform: translate(-40px);   }
+100% { -moz-transform: translate(40px);    }
+}
+
+@keyframes right {
+0%   { transform: translate(-40px);  }
+50%  { transform: translate(40px);   }
+100% { transform: translate(-40px);  }
+}
+
+@keyframes left {
+0%   { transform: translate(40px);   }
+50%  { transform: translate(-40px);  }
+100% { transform: translate(40px);   }
+}

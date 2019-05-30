@@ -1,6 +1,6 @@
 <?php
 
-use Resource\Native\Mystring;
+use Resource\Native\String;
 use Resource\Collection\LinkedHashMap;
 
 class ACPInventoryView extends View{
@@ -12,12 +12,12 @@ class ACPInventoryView extends View{
         $document = $this->document;
 		
         $fields = new LinkedHashMap;
-		$fields->put(new Mystring("iid"), NULL);
-		$fields->put(new Mystring("itemname"), NULL);
-		$fields->put(new Mystring("owner"), NULL);
-		$fields->put(new Mystring("quantity"), NULL);		
-		$fields->put(new Mystring("iid::edit"), new Mystring("getEditLink"));
-		$fields->put(new Mystring("iid::delete"), new Mystring("getDeleteLink"));	
+		$fields->put(new String("iid"), NULL);
+		$fields->put(new String("itemname"), NULL);
+		$fields->put(new String("owner"), NULL);
+		$fields->put(new String("quantity"), NULL);		
+		$fields->put(new String("iid::edit"), new String("getEditLink"));
+		$fields->put(new String("iid::delete"), new String("getDeleteLink"));	
 		
 		$inventoryTable = new TableBuilder("inventory");
 		$inventoryTable->setAlign(new Align("center", "middle"));

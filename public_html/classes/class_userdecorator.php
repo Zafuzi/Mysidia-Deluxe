@@ -1,8 +1,8 @@
 <?php
 
-use Resource\Native\Object;
+use Resource\Native\Obj;
 
-abstract class UserDecorator extends Object implements Decorator{
+abstract class UserDecorator extends Obj implements Decorator{
   // The abstract class UserDecorator used in Mysidia Adoptables
   protected $user;
   

@@ -11,7 +11,7 @@ $lang['add_title'] = "Create a new promocode for user";
 $lang['add'] = "This page allows you to create a new promocode for your user to use.
 				Please fill in the form below and hit the <i>Create Promocode</i> button below when you're ready to complete this action.";
 $lang['added_title'] = "Promocode Created Successfully";
-$lang['added'] = "Your Promode has been created successfully. You may go back to the previous page.";
+$lang['added'] = "Your Promode has been created successfully. You can now <a href='../reward'>add adoptables/items as rewards for this promocode user.";
 $lang['edit_title'] = "Editing a promocode";
 $lang['edit'] = "This page allows you to edit an old promocode from your database.
 				 Please fill in the form below and hit the <i>Edit Promocode</i> button below when you're ready to complete this action.";

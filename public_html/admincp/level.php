@@ -1,7 +1,7 @@
 <?php
 
 use Resource\Native\Integer;
-use Resource\Native\Mystring;
+use Resource\Native\String;
 use Resource\Collection\LinkedHashMap;
 
 class ACPLevelController extends AppController{
@@ -77,12 +77,12 @@ class ACPLevelController extends AppController{
 								right now.<br><br><br>";
                 
                 $this->setField("settings", $this->settings);
-                $this->setField("type", new Mystring($type));
-                $this->setField("alt", new Mystring($alt));
+                $this->setField("type", new String($type));
+                $this->setField("alt", new String($alt));
                 $this->setField("currentlevel", new Integer($currentlevel));	
 				$this->setField("previouslevel", new Integer($previouslevel));
 				$this->setField("prevlevelclicks", new Integer($prevlevelclicks));                
-                $this->setField("description", new Mystring($description));               								                
+                $this->setField("description", new String($description));               								                
 			}
             else throw new InvalidIDException("global_id");		
 		}

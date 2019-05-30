@@ -1,0 +1,18 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  database: change
+  host: localhost
+  pool: 5
+
+development:
+  <<: *default
+  database: change_dvlp
+
+test:
+  <<: *default
+  database: change_test
+
+production:
+  <<: *default
+  database: change_production

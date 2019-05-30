@@ -39,6 +39,7 @@ class InventoryController extends AppController{
         $stmt = $mysidia->db->select("owned_adoptables", array("aid", "name"), "owner = '{$mysidia->user->username}'");
         $map = $mysidia->db->fetchMap($stmt);
 		$this->setField("petMap", $map);
+		$this->setField('item', $item);
 	}
 	
 	public function sell(){
@@ -60,6 +61,24 @@ class InventoryController extends AppController{
 			$item->toss();
 	        return;
 		}		
+	}
+	
+	public function alchemy(){
+	    $mysidia = Registry::get("mysidia");
+		$settings = new AlchemySetting($mysidia->db);
+		if($settings->system == "disabled") throw new ItemException("alchemy_disabled");
+		
+		if($mysidia->input->post("iid") and $mysidia->input->post("iid2") and $mysidia->input->post("iid3") and $mysidia->input->post("iid4") and $mysidia->input->post("iid5")){
+		    $alchemy = new Alchemy($mysidia->input->post("iid"), $mysidia->input->post("iid2"), $mysidia->input->post("iid3"), $mysidia->input->post("iid4"), $mysidia->input->post("iid5"), $settings);
+			$alchemy->mix();
+			$this->setField("alchemy", $alchemy);
+            return;
+		}
+		
+		$stmt = $mysidia->db->select("inventory", array("iid", "itemname"), "owner = '{$mysidia->user->username}'");
+		$map = $mysidia->db->fetchMap($stmt);
+		$this->setField("itemMap", $map);
+		$this->setField("settings", $settings);
 	}
 }
 ?>

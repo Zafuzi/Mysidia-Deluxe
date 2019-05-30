@@ -1,7 +1,7 @@
 <?php
 
 use Resource\Native\Objective;
-use Resource\Native\Mystring;
+use Resource\Native\Str;
 
 /**
  * The Template Class, extending from the parent Smarty class and implementing Objective Interface.
@@ -129,7 +129,7 @@ class Template extends Smarty implements Objective{
      * @return String
      */
     public function getClassName(){
-        return new Mystring(get_class($this));
+        return new Str(get_class($this));
     }
 
 	/**
@@ -227,7 +227,7 @@ class Template extends Smarty implements Objective{
      * @return String
      */
     public function __toString(){
-        return new Mystring("This is an instance of the Mysidia Template class.");
+        return new Str("This is an instance of the Mysidia Template class.");
     }    
 }   
 ?>

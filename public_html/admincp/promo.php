@@ -26,7 +26,7 @@ class ACPPromoController extends AppController{
 			$oldcode = $mysidia->db->select("promocodes", array("code"), "code='{$mysidia->input->post("promocode")}'")->fetchColumn();
 		    if($mysidia->input->post("promocode") == $oldcode) throw new DuplicateIDException("code_duplicate");
             $mysidia->db->insert("promocodes", array("pid" => NULL, "type" => $mysidia->input->post("type"), "user" => $mysidia->input->post("user"), "code" => $mysidia->input->post("promocode"), "availability" => $mysidia->input->post("availability"), 
-			                                         "fromdate" => $mysidia->input->post("fromdate"), "todate" => $mysidia->input->post("todate"), "reward" => $mysidia->input->post("reward")));				
+			                                                                "fromdate" => $mysidia->input->post("fromdate"), "todate" => $mysidia->input->post("todate"), "reward" => $mysidia->input->post("reward")));				
 		}			
 	}
 	
@@ -41,7 +41,7 @@ class ACPPromoController extends AppController{
 		elseif($mysidia->input->post("submit")){
 		    $this->dataValidate();
 			$mysidia->db->update("promocodes", array("type" => $mysidia->input->post("type"), "user" => $mysidia->input->post("user"), "code" => $mysidia->input->post("promocode"), "availability" => $mysidia->input->post("availability"), 
-			                                         "fromdate" => $mysidia->input->post("fromdate"), "todate" => $mysidia->input->post("todate"), "reward" => $mysidia->input->post("reward")), "pid='{$mysidia->input->get("pid")}'");
+			                                                                  "fromdate" => $mysidia->input->post("fromdate"), "todate" => $mysidia->input->post("todate"), "reward" => $mysidia->input->post("reward")), "pid='{$mysidia->input->get("pid")}'");
 		    return;
 		}
 		else{
@@ -60,15 +60,13 @@ class ACPPromoController extends AppController{
 		}
         $mysidia->db->delete("promocodes", "pid='{$mysidia->input->get("pid")}'");	
 	}
-	
+
 	private function dataValidate(){
 	    $mysidia = Registry::get("mysidia");
 		if(!$mysidia->input->post("type")) throw new BlankFieldException("type");	
 	    if(!$mysidia->input->post("promocode")) throw new BlankFieldException("code_none");					
 		if(strtotime($mysidia->input->post("fromdate")) > strtotime($mysidia->input->post("todate"))) throw new InvalidActionxception("date");
 		if(!is_numeric($mysidia->input->post("availability"))) throw new BlankFieldException("availability");
-		if(!$mysidia->input->post("reward")) throw new BlankFieldException("reward");
 		return TRUE;
 	}
 }
-?>

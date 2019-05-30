@@ -1,6 +1,6 @@
 <?php
 
-use Resource\Native\Mystring;
+use Resource\Native\Str;
 use Resource\Collection\HashMap;
 
 class RegisterController extends AppController{
@@ -13,10 +13,18 @@ class RegisterController extends AppController{
 	    $mysidia = Registry::get("mysidia");		
 	    if($mysidia->input->post("submit")){
 		    $mysidia->session->validate("register");	
-            $validinput = array("username" => $mysidia->input->post("username"), "password" => $mysidia->input->post("pass1"), "email" => $mysidia->input->post("email"), "birthday" => $mysidia->input->post("birthday"), 
+            $validinput = array("username" => $mysidia->input->post("username"), "password" => $mysidia->input->post("pass1"), "email" => $mysidia->input->post("email"), "birthday" => $mysidia->input->post("birthday"), 'gender' => $mysidia->input->post('gender'),  
                                 "ip" => $mysidia->input->post("ip"), "answer" => $mysidia->input->post("answer"), "tos" => $mysidia->input->post("tos"));
             $validator = new RegisterValidator($mysidia->user, $validinput);
             $validator->validate();
+            
+            $default_avatars = array("hounda_basic", "catari_basic");
+            $rand_avatar = array_rand($default_avatars, 1);
+
+            if($mysidia->input->post('avatar') == NULL || empty($mysidia->input->post('avatar'))){$avatar = "http://atrocity.mysidiahost.com/picuploads/default_avatars/{$default_avatars[$rand_avatar]}.png";}
+            else{$avatar = $mysidia->input->post('avatar');}
+            
+            validate_avatar($avatar);
   
             if(!$validator->triggererror()){
 	            $mysidia->user->register();	

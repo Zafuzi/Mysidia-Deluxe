@@ -13,7 +13,7 @@
  *
  */
 
-class Padding extends Spacing{
+class Padding extends Spacing {
 
     /**
 	 * The type property, defines this spacing element as a padding.
@@ -64,7 +64,7 @@ class Padding extends Spacing{
      * @return String
      */
     public function __toString(){
-	    return new Mystring("This is an instance of Mysidia Padding class.");
+	    return new Str("This is an instance of Mysidia Padding class.");
 	}    
 } 
 ?>

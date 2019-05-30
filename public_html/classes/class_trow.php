@@ -79,7 +79,7 @@ class TRow extends TableContainer{
      * @return String
      */
     public function __toString(){
-	    return new Mystring("This is The Table Row class.");
+	    return new Str("This is The Table Row class.");
 	}
 }
 ?>

@@ -1,0 +1,5 @@
+/vendor
+/.idea
+/templates/compile
+restless_config.php
+sftp-config.json

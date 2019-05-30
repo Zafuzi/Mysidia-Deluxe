@@ -1,6 +1,6 @@
 <?php
 
-use Resource\Native\Mystring;
+use Resource\Native\Str;
 
 /**
  * The ViewHelper Class, extends from abstract helper class.
@@ -15,7 +15,7 @@ use Resource\Native\Mystring;
  *
  */
  
-class ViewHelper extends Helper{
+class ViewHelper extends Helper {
 
  	/**
 	 * The view property, it stores a reference to the calling View Object.
@@ -139,7 +139,7 @@ class ViewHelper extends Helper{
      * @return String
      */
     public function __toString(){
-	    return new Mystring("This is an instance of Mysidia ViewHelper class.");
+	    return new Str("This is an instance of Mysidia ViewHelper class.");
 	}
 }
 ?>

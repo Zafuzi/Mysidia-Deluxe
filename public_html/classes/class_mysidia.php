@@ -1,6 +1,6 @@
 <?php
 
-use Resource\Native\Mystring;
+use Resource\Native\Str;
 use Resource\Exception\ClassNotFoundException;
 
 /**
@@ -18,7 +18,7 @@ use Resource\Exception\ClassNotFoundException;
  *
  */
 
-final class Mysidia extends Core{
+final class Mysidia extends Core {
 
 	/**
 	 * version constant, displays the version of Mysidia Adoptables in String format.
@@ -158,7 +158,7 @@ final class Mysidia extends Core{
      * @return Void
      */
     public function __construct(){
-        Registry::set(new Mystring("mysidia"), $this, TRUE, TRUE);	
+        Registry::set(new Str("mysidia"), $this, TRUE, TRUE);	
         $this->locatePath();
 	    $this->loadCurrentFile();
 	    $this->loadDb();
@@ -193,7 +193,7 @@ final class Mysidia extends Core{
     public function locatePath(){
 	    if(!class_exists('Path')) throw new ClassNotFoundException('Cannot load class Path.');
 	    $this->path = new Path;
-		Registry::set(new Mystring("path"), $this->path, TRUE, TRUE);
+		Registry::set(new Str("path"), $this->path, TRUE, TRUE);
 		return $this->path;
     }
 
@@ -205,7 +205,7 @@ final class Mysidia extends Core{
     public function loadCurrentFile(){
 	    if(!class_exists('File')) throw new ClassNotFoundException('Cannot load class File.');
 		$this->file = new File($_SERVER['SCRIPT_FILENAME']);
-		Registry::set(new Mystring("file"), $this->file, TRUE, TRUE);
+		Registry::set(new Str("file"), $this->file, TRUE, TRUE);
 		return $this->file;
     }  
   
@@ -218,10 +218,10 @@ final class Mysidia extends Core{
         if(!class_exists('Database')) throw new ClassNotFoundException('Cannot load class Database');
   	    try{
 			$this->db = new Database(DBNAME, DBHOST, DBUSER, DBPASS, PREFIX);
-		    Registry::set(new Mystring("database"), $this->db, TRUE, TRUE);
+		    Registry::set(new Str("database"), $this->db, TRUE, TRUE);
         }
         catch(PDOException $pe){
-            die("Could not connect to database, the following error has occurred: <br><b>{$pe->getmessage()}</b>");  
+            die("Could not connect to database, the following error has occurred: <br><b>{$pe}</b>");  
         }
 		return $this->db;
     }
@@ -234,7 +234,7 @@ final class Mysidia extends Core{
     public function getCookies(){
         if(!class_exists('Cookies')) throw new ClassNotFoundException('Cannot load class Cookies.');
 		$this->cookies = new Cookies;
-		Registry::set(new Mystring("cookies"), $this->cookies, TRUE, TRUE);
+		Registry::set(new Str("cookies"), $this->cookies, TRUE, TRUE);
 		return $this->cookies;
     }
   
@@ -246,7 +246,7 @@ final class Mysidia extends Core{
     public function getSession(){
         if(!class_exists('Session')) throw new ClassNotFoundException('Cannot load class Session.');
 		$this->session = new Session;
-		Registry::set(new Mystring("session"), $this->session, TRUE, TRUE);
+		Registry::set(new Str("session"), $this->session, TRUE, TRUE);
 		return $this->session;
     }
     
@@ -272,8 +272,8 @@ final class Mysidia extends Core{
         $this->creator = (UserCreator::logincheck())?new MemberCreator($this->cookies->getcookies("mysuid")):new VisitorCreator($_SERVER['REMOTE_ADDR']);
 	    $this->user = $this->creator->create();
 		$this->usergroup = $this->user->usergroup;
-		Registry::set(new Mystring("user"), $this->user, TRUE, TRUE);
-		Registry::set(new Mystring("usergroup"), $this->usergroup, TRUE, TRUE);
+		Registry::set(new Str("user"), $this->user, TRUE, TRUE);
+		Registry::set(new Str("usergroup"), $this->usergroup, TRUE, TRUE);
 		return $this->user;
     }
   
@@ -285,7 +285,7 @@ final class Mysidia extends Core{
     public function getSettings(){
         if(!class_exists('GlobalSetting')) throw new ClassNotFoundException('Cannot load class GlobalSetting.');
 	    $this->settings = new GlobalSetting($this->db);
-		Registry::set(new Mystring("settings"), $this->settings, TRUE, TRUE);
+		Registry::set(new Str("settings"), $this->settings, TRUE, TRUE);
 		return $this->settings;
     }
  
@@ -298,7 +298,7 @@ final class Mysidia extends Core{
     public function getFrame(){
 	    if(!class_exists('Frame')) throw new ClassNotFoundException('Cannot load class Page.');
 		$this->frame = new Frame;
-		Registry::set(new Mystring("frame"), $this->frame, TRUE, TRUE);
+		Registry::set(new Str("frame"), $this->frame, TRUE, TRUE);
         return $this->frame;
     }
   
@@ -312,7 +312,7 @@ final class Mysidia extends Core{
     public function getLanguage(){
 	    if(!class_exists('Language')) throw new ClassNotFoundException('Cannot load class Language.');
 		$this->lang = new Language($this->path, $this->file);
-		Registry::set(new Mystring("lang"), $this->lang, TRUE, TRUE);
+		Registry::set(new Str("lang"), $this->lang, TRUE, TRUE);
         return $this->lang;
     }
   
@@ -326,7 +326,7 @@ final class Mysidia extends Core{
         require $this->path->getRoot().$templateClass;
 		
 		$this->template = new Template($this->path);
-		Registry::set(new Mystring("template"), $this->template, TRUE, TRUE);
+		Registry::set(new Str("template"), $this->template, TRUE, TRUE);
         return $this->template;
     }
   
@@ -345,7 +345,7 @@ final class Mysidia extends Core{
 	        $this->request = "get";
 	    }	
 	    
-		Registry::set(new Mystring("request"), $this->request, TRUE, TRUE);
+		Registry::set(new Str("request"), $this->request, TRUE, TRUE);
 		return (!$this->request)?FALSE:TRUE;
     }
   
@@ -358,7 +358,7 @@ final class Mysidia extends Core{
     public function parseInput(){
         if(!class_exists('Input')) throw new Exception('Cannot load class Input.');
 		$this->input = new Input;
-		Registry::set(new Mystring("input"), $this->input, TRUE, TRUE);
+		Registry::set(new Str("input"), $this->input, TRUE, TRUE);
         return $this->input;
     }
   

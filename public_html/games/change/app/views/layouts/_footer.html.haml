@@ -1,0 +1,29 @@
+%footer
+  %p.less-space
+    Game created by
+    = link_to 'Rothschild Games', 'https://github.com/RothschildGames/', target: :_blank
+    = '-'
+    = link_to '@shayhdavidson', 'https://twitter.com/shayhdavidson', target: :_blank
+    &
+    = link_to '@yonbergman', 'https://twitter.com/yonbergman', target: :_blank
+  %p
+    for the
+    = link_to 'GitHub Game Off 2013', 'https://github.com/blog/1674-github-game-off-ii', target: :_blank
+    •
+    view the source on
+    = link_to 'GitHub', 'https://github.com/RothschildGames/change', target: :_blank
+  %p.less-space
+    %span{:class => "browser-compatibility"}= 'Works on'
+    = link_to 'Chrome', 'http://www.google.com/chrome', target: :_blank
+    %span or
+    = link_to 'Firefox', 'http://www.mozilla.org/en-US/firefox/new/', target: :_blank
+  %p
+    %span ( and non-Mavericks
+    = link_to 'Safari', 'http://www.apple.com/safari/', target: :_blank
+    %span )
+  %p
+    %span Check out the
+    = link_to 'High Score Table', highscores_path , target: :_blank
+  .mixpanel
+    = link_to 'https://mixpanel.com/f/partner' do
+      = image_tag '//cdn.mxpnl.com/site_media/images/partner/badge_blue.png', alt: 'Mobile Analytics'

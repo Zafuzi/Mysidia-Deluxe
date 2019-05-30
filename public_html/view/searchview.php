@@ -9,10 +9,17 @@ class SearchView extends View{
 		$document = $this->document;
 		$document->setTitle($this->lang->title);
         $document->addLangvar($this->lang->default);
-        $document->add(new Link("search/user", "Search for Users", TRUE));
-        $document->add(new Link("search/adopt", "Search for Adoptables", TRUE));
-        $document->add(new Link("search/item", "Search for Items", TRUE));
-        $document->add(new Link("search/page", "Search for Pages(Not available now)", TRUE));
+        $document->addLangvar('<center><table><tr>');
+        $document->addLangvar("<td><a href='search/user'><center><img src='/picuploads/searchusers.png'></a><center></td>");
+        $document->addLangvar("<td><a href='search/adopt'><center><img src='/picuploads/searchpets.png'></a><center></td>");
+        $document->addLangvar("<td><a href='search/item'><center><img src='/picuploads/searchitems.png'></a><center></td>");
+        $document->addLangvar("<td><a href='search/page'><center><img src='/picuploads/searchpages.png'></a><center></td>");
+        $document->addLangvar('</tr><tr>');
+        $document->addLangvar("<td><a href='search/user'><center>Search <br> Users</a><center></td>");
+        $document->addLangvar("<td><a href='search/adopt'><center>Search <br> Adoptables</a><center></td>");
+        $document->addLangvar("<td><a href='search/item'><center>Search <br>Items</a><center></td>");
+        $document->addLangvar("<td><a href='search/page'><center><s>Search <br> Pages</s></a><center></td>");
+        $document->addLangvar('</center></tr></table>');
     }
 
     public function user(){
@@ -118,11 +125,18 @@ class SearchView extends View{
 			$iterator = $ItemList->iterator();
 			$searchTable = new TableBuilder("searchresult");
 			$searchTable->setAlign(new Align("center"));
-			$searchTable->buildHeaders("ID", "Name", "Category", "Description", "Function", "Shop", "Price");	
+			$searchTable->buildHeaders("ID", "Name", "Category", "Description", "Function", "Shop", "Base Price", "Amount in-game");	
 	        $searchTable->setHelper(new SearchTableHelper); 
 					
 			while($iterator->hasNext()){
 			    $item = $iterator->next();
+			    //gonna need to fetch from inventory...
+			    $item_stmt = $mysidia->db->select("inventory", array("quantity"), "itemname = '$item->itemname' ORDER BY iid");
+			    $item_amount = 0;
+			    while($itemfetch = $item_stmt->fetchColumn()){
+			        $item_amount = $item_amount + $itemfetch;
+			    }
+			    //That should do it I guess?
 			    $cells = new LinkedList;
 				$cells->add(new TCell($item->id));
 				$cells->add(new TCell($item->itemname));
@@ -131,6 +145,7 @@ class SearchView extends View{
 				$cells->add(new TCell($item->function));
 				$cells->add(new TCell($searchTable->getHelper()->getShopLink($item->shop)));
 				$cells->add(new TCell($item->price));
+				$cells->add(new TCell($item_amount));
 				$searchTable->buildRow($cells);
 			}
 		    $document->add($searchTable);			

@@ -1,6 +1,6 @@
 <?php
 
-class Visitor extends User{
+class Visitor extends User {
   public $isloggedin;
   public $error;
   

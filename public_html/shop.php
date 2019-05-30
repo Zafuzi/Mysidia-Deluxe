@@ -25,13 +25,13 @@ class ShopController extends AppController{
         $this->setField("shopList", $shopList);
 	}
 	
-	public function browse(){
-		$mysidia = Registry::get("mysidia");		
-		$shoptype = $mysidia->db->select("shops", array("shoptype"), "shopname = '{$mysidia->input->get("shop")}'")->fetchColumn();
-        $shoplist = new Shoplist($shoptype);
+	    public function browse(){
+        $mysidia = Registry::get("mysidia");        
+        $shoptype = $mysidia->db->select("shops", array("shoptype"), "shopname = '{$mysidia->input->get("shop")}'")->fetchColumn();
+        $shoplist = new Shoplist($shoptype, "all");
         $shop = $shoplist->createshop($mysidia->input->get("shop"));
         $this->setField("shop", $shop);
-	}
+    }
 	
 	public function purchase(){
         $mysidia = Registry::get("mysidia");

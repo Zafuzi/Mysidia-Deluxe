@@ -13,7 +13,7 @@
  *
  */
 
-class Font extends GUIElement{
+class Font extends GUIElement {
 
     /**
 	 * The size property, speficies the font size.
@@ -150,7 +150,7 @@ class Font extends GUIElement{
      * @return String
      */
     public function __toString(){
-	    return new Mystring("This is an instance of Mysidia Font class.");
+	    return new Str("This is an instance of Mysidia Font class.");
 	}    
 } 
 ?>

@@ -12,7 +12,7 @@ class PoundController extends AppController{
 
     public function __construct(){
         parent::__construct("member");
-		$mysidia = Registry::get("mysidia");				
+		$mysidia = Registry::get("mysidia");
 		$status = $mysidia->user->getstatus();		
 		if($status->canpound == "no"){            
 		    throw new NoPermissionException("denied");
@@ -99,13 +99,13 @@ class PoundController extends AppController{
 	protected function getCost(OwnedAdoptable $adopt, $action = ""){
 	    $action = ($action == "pound")?0:1;
 	    if($this->settings->cost->active == "yes"){
-            $costs = explode(",", $this->settings->cost->value);         	 
+            $costs = explode(",", $this->settings->cost->value);    
 	        switch($this->settings->cost->advanced){
 	            case "percent": 
 			        $cost = $adopt->getCost() * (1 + (0.01 * $costs[$action]));
                     break;
                 default:
-			        $cost = $adopt->getCost() + $this->settings->$costs[$action];
+			        $cost = $adopt->getCost() + $costs[$action];
             }	  
 	    }
 	    if($this->settings->levelbonus->active == "yes"){

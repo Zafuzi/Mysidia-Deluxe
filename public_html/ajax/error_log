@@ -1,0 +1,10 @@
+[21-Aug-2018 02:41:37 UTC] PHP Fatal error:  Call to a member function getFavpetID() on null in /home/atrocity/public_html/ajax/monsterfight.php on line 19
+[21-Aug-2018 02:42:10 UTC] PHP Fatal error:  Call to a member function getFavpetID() on null in /home/atrocity/public_html/ajax/monsterfight.php on line 19
+[21-Aug-2018 02:42:52 UTC] PHP Fatal error:  Call to a member function getprofile() on null in /home/atrocity/public_html/ajax/monsterfight.php on line 18
+[21-Aug-2018 02:43:27 UTC] PHP Fatal error:  Call to a member function getprofile() on null in /home/atrocity/public_html/ajax/monsterfight.php on line 18
+[21-Aug-2018 02:43:35 UTC] PHP Fatal error:  Call to a member function getprofile() on null in /home/atrocity/public_html/ajax/monsterfight.php on line 18
+[07-Feb-2019 05:24:42 UTC] PHP Warning:  include(../ajax/ajax_pagination.php): failed to open stream: No such file or directory in /home/atrocity/public_html/ajax/search_forum.php on line 4
+[07-Feb-2019 05:24:42 UTC] PHP Warning:  include(../ajax/ajax_pagination.php): failed to open stream: No such file or directory in /home/atrocity/public_html/ajax/search_forum.php on line 4
+[07-Feb-2019 05:24:42 UTC] PHP Warning:  include(): Failed opening '../ajax/ajax_pagination.php' for inclusion (include_path='.:/opt/cpanel/ea-php56/root/usr/share/pear') in /home/atrocity/public_html/ajax/search_forum.php on line 4
+[07-Feb-2019 05:24:42 UTC] PHP Fatal error:  Call to undefined function getPageButtons() in /home/atrocity/public_html/ajax/search_forum.php on line 72
+[07-Feb-2019 05:25:47 UTC] PHP Fatal error:  Call to a member function fetch_assoc() on boolean in /home/atrocity/public_html/ajax/search_forum.php on line 8

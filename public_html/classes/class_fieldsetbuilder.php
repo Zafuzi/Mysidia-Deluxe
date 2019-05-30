@@ -14,7 +14,7 @@
  *
  */
  
-class FieldSetBuilder extends Fieldset{
+class FieldSetBuilder extends Fieldset {
 
 	/**
 	 * The Helper property, determines the helper class used to process fieldset content.
@@ -101,7 +101,7 @@ class FieldSetBuilder extends Fieldset{
      * @return String
      */
     public function __toString(){
-	    return new Mystring("This is The FieldSetBuilder class.");
+	    return new Str("This is The FieldSetBuilder class.");
 	}
 }
 ?>

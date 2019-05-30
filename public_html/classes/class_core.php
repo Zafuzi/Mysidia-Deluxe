@@ -1,7 +1,7 @@
 <?php
 
-use Resource\Native\Object;
-use Resource\Native\Mystring;
+use Resource\Native\Obj;
+use Resource\Native\Str;
 
 /**
  * The Abstract Core Class, extends from abstract object class.
@@ -17,7 +17,7 @@ use Resource\Native\Mystring;
  *
  */
  
-abstract class Core extends Object{
+abstract class Core extends Obj {
     
 	/**
      * Constructor of Core Class, which simply serves as a marker for child classes.
@@ -34,7 +34,7 @@ abstract class Core extends Object{
      * @return String
      */
     public function __toString(){
-	    return new Mystring("This is an instance of Mysidia Core class.");
+	    return new Str("This is an instance of Mysidia Core class.");
 	}
 }
 ?>

@@ -11,7 +11,7 @@ $lang['profile'] = "{$mysidia->input->get("user")}'s Profile";
 $lang['VM_member'] = "'s Profile Comments:";	
 $lang['VM_guest'] = "Guests cannot post profile comment, sorry...";
 $lang['VM_banned'] = "It seems that you have been banned from sending profile comment.";
-$lang['VM_post'] = "To Post a profile comment, please write your message in the text area below:";
+$lang['VM_post'] = "To post a profile comment, please write your message in the text area below:";
 $lang['VM_complete'] = "Your comment for user has been posted.";
 $lang['noadopts'] = "This user currently does not have any pets.";
 

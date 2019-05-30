@@ -1,6 +1,6 @@
 <?php
 
-use Resource\Native\Mystring;
+use Resource\Native\String;
 use Resource\Collection\LinkedHashMap;
 
 class ACPUserView extends View{
@@ -12,13 +12,13 @@ class ACPUserView extends View{
 		$document = $this->document;		
 
         $fields = new LinkedHashMap;
-		$fields->put(new Mystring("uid"), NULL);
-		$fields->put(new Mystring("username"), new Mystring("getProfileLink"));
-		$fields->put(new Mystring("email"), NULL);
-		$fields->put(new Mystring("ip"), NULL);	
-		$fields->put(new Mystring("usergroup"), NULL);			
-		$fields->put(new Mystring("uid::edit"), new Mystring("getEditLink"));
-		$fields->put(new Mystring("uid::delete"), new Mystring("getDeleteLink"));		
+		$fields->put(new String("uid"), NULL);
+		$fields->put(new String("username"), new String("getProfileLink"));
+		$fields->put(new String("email"), NULL);
+		$fields->put(new String("ip"), NULL);	
+		$fields->put(new String("usergroup"), NULL);			
+		$fields->put(new String("uid::edit"), new String("getEditLink"));
+		$fields->put(new String("uid::delete"), new String("getDeleteLink"));		
 		
 		$userTable = new TableBuilder("user");
 		$userTable->setAlign(new Align("center", "middle"));
@@ -45,6 +45,7 @@ class ACPUserView extends View{
 			$document->setTitle($this->lang->edit_title);
 		    $document->addLangvar($this->lang->edit);
 			$userForm = new FormBuilder("editform", $mysidia->input->get("uid"), "post");
+			$userForm->add(new Comment("<p>When changing alignments, these are the terms to use: light, dark, collector, knowledge</p>"));
 			$userForm->add(new Comment("<br><br>"));
 			$userForm->add(new Image("templates/icons/delete.gif"));
 			$userForm->buildCheckBox(" Delete This User. <strong>This cannot be undone!</strong>", "delete", "yes")
@@ -52,6 +53,9 @@ class ACPUserView extends View{
 					 ->buildComment("Passwords may contain letters and numbers only. Leave the box blank to keep the current password.")
 		             ->buildCheckBox(" Email the user the new password (Only takes effect if setting a new password) ", "emailpwchange", "yes")
 					 ->buildComment("Change Email Address: ", FALSE)->buildTextField("email", $user->getemail())
+					 ->buildComment("Currency: ", FALSE)->buildTextField("money", $user->money)
+					 ->buildComment("Alignment: ", FALSE)->buildTextField("alignment", $user->alignment)
+					 ->buildComment("Premium Currency: ", FALSE)->buildTextField("premiumcurrency", $user->premiumcurrency)
 					 ->buildCheckBox(" Ban this user's rights to click adoptables", "canlevel", "no")
 					 ->buildCheckBox(" Ban this user's rights to post profile comments", "canvm", "no")
 					 ->buildCheckBox(" Ban this user's rights to make trade offers", "cantrade", "no")
@@ -59,10 +63,11 @@ class ACPUserView extends View{
 					 ->buildCheckBox(" Ban this user's rights to breed adoptables", "canbreed", "no")
 					 ->buildCheckBox(" Ban this user's rights to abandon adoptables", "canpound", "no")
 					 ->buildCheckBox(" Ban this user's rights to visit Shops", "canshop", "no");
+			$userForm->buildComment("Maximum Pets:	", FALSE)->buildTextField('maximumpets', $user->getStatus()->max_pets);
 					 
 			$userForm->add(new Comment("<u>{$user->username}'s Current Usergroup:</u> Group {$user->usergroup}"));	
             $userForm->add(new Comment("Change {$user->username}'s Usergroup To:", FALSE));
-	        $userForm->buildDropdownList("level", "UsergroupList", $user->usergroup->gid)					
+	        $userForm->buildDropdownList("level", "UsergroupList", $user->usergroup->gid)				
 			         ->buildButton("Edit User", "submit", "submit");
 			$document->add($userForm);
 		}

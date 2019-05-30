@@ -16,7 +16,7 @@ use Resource\Native;
  * @final
  */
 
-final class Autoboxer extends Native\Object{
+final class Autoboxer extends Native\Obj {
 
 	/**
 	 * The var property, it stores the last supplied variable for autoboxing/autounboxing.
@@ -119,7 +119,7 @@ final class Autoboxer extends Native\Object{
 	 * @return String
      */	
 	private function wrapString(){
-	    return new Native\Mystring($this->var);    
+	    return new Native\Str($this->var);    
 	}			
 }
 ?>

@@ -13,7 +13,7 @@
  *
  */
 
-class Align extends GUIElement{
+class Align extends GUIElement {
 
     /**
 	 * The horizontal property, speficies the horizontal alignment of the component.
@@ -90,7 +90,7 @@ class Align extends GUIElement{
      * @return String
      */
     public function __toString(){
-	    return new Mystring("This is an instance of Mysidia Align class.");
+	    return new Str("This is an instance of Mysidia Align class.");
 	}    
 } 
 ?>

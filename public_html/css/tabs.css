@@ -7,7 +7,7 @@ html { overflow-y: scroll; }
 a { text-decoration: none; }
 a:focus { outline: 0; }
 p { margin: 0 0 20px 0; }
-#page-wrap { width: 640px; margin: 30px;}
+#page-wrap { width: 940px; margin: 30px;}
 h1 { font: bold 40px Sans-Serif; margin: 0 0 20px 0; }
 
 /* Generic Utility */
@@ -34,6 +34,6 @@ h1 { font: bold 40px Sans-Serif; margin: 0 0 20px 0; }
 #profile ul li.nav2 a.current, #profile ul.adopts li a:hover { background-color: #8d01b0; color: white; }
 #profile ul li.nav3 a.current, #profile ul.friends li a:hover { background-color: #FE4902; color: white; }
 #profile ul li.nav4 a.current, #profile ul.contactinfo li a:hover { background-color: #Eac117; color: white; }
-
+#profile ul li.nav4 a.current, #profile ul.Trophies li a:hover { background-color: #Eac117; color: white; }
 
 </style>

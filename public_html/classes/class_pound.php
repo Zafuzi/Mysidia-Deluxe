@@ -1,8 +1,8 @@
 <?php
 
-use Resource\Native\Object;
+use Resource\Native\Obj;
 
-class Pound extends Object{
+class Pound extends Obj {
     public $poid = 0;
     public $aid = 0;
     private $firstowner;

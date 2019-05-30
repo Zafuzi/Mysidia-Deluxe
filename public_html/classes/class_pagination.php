@@ -1,8 +1,8 @@
 <?php
 
-use Resource\Native\Object;
+use Resource\Native\Obj;
 
-class Pagination extends Object{
+class Pagination extends Obj {
 	private $totalrows;
 	private $rowsperpage;
 	private $website;
@@ -57,8 +57,8 @@ class Pagination extends Object{
 		$pagination .= ">";
 				
 		if($this->getLastPage() > 1){
-			if ($page > 1) $pagination .= "<a href='{$this->website}{$this->symbol}page-{$prev}'>« prev</a>";
-			else $pagination .= "<span class='disabled'>« prev</span>";
+			if ($page > 1) $pagination .= "<a href='{$this->website}{$this->symbol}page-{$prev}'>ï¿½ prev</a>";
+			else $pagination .= "<span class='disabled'>ï¿½ prev</span>";
 			
 			
 			if ($this->getLastPage() < 9){	
@@ -108,9 +108,9 @@ class Pagination extends Object{
 			}
 		
 		if ($page < $counter - 1) 
-			$pagination .= "<a href='{$this->website}{$this->symbol}page-{$next}'>next »</a>";
+			$pagination .= "<a href='{$this->website}{$this->symbol}page-{$next}'>next ï¿½</a>";
 		else
-			$pagination .= "<span class='disabled'>next »</span>";
+			$pagination .= "<span class='disabled'>next ï¿½</span>";
 		    $pagination .= "</div>\n";			
 		}	
 					

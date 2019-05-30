@@ -1,7 +1,7 @@
 <?php
 
-use Resource\Native\Object;
-use Resource\Native\Mystring;
+use Resource\Native\Obj;
+use Resource\Native\Str;
 use Resource\Collection\HashMap;
 
 /**
@@ -16,7 +16,7 @@ use Resource\Collection\HashMap;
  * @todo The dispatcher class will be revised once the input class is overhauled.
  */
 
-final class Dispatcher extends Object{
+final class Dispatcher extends Obj {
 
 	/**
 	 * The router property, holds a reference to the Router Object.
@@ -62,18 +62,18 @@ final class Dispatcher extends Object{
 		$this->map = new HashMap;
 		
         $frontcontroller = $this->router->getFrontController();	
-        $this->map->put(new Mystring("frontcontroller"), new Mystring($mysidia->input->secure($frontcontroller)));		
+        $this->map->put(new Str("frontcontroller"), new Str($mysidia->input->secure($frontcontroller)));		
 		
 		$appcontroller = $this->router->getAppController();	
-        $this->map->put(new Mystring("appcontroller"), new Mystring($mysidia->input->secure($appcontroller)));		
+        $this->map->put(new Str("appcontroller"), new Str($mysidia->input->secure($appcontroller)));		
 		
 		$action = $this->router->getAction();
-		$this->map->put(new Mystring("action"), new Mystring($mysidia->input->secure($action)));
+		$this->map->put(new Str("action"), new Str($mysidia->input->secure($action)));
 		
 		$params = $this->router->getParams();
 		if($params){
 		    foreach($params as $key => $param){
-			    $this->map->put(new Mystring($key), new Mystring($mysidia->input->secure($param)));
+			    $this->map->put(new Str($key), new Str($mysidia->input->secure($param)));
 			}
 		}
 		
@@ -84,7 +84,7 @@ final class Dispatcher extends Object{
 		
         $action = $input->getProperty("action");
 		$action->setAccessible(TRUE);
-		$action->setValue($mysidia->input, $this->map->get(new Mystring("action")));	
+		$action->setValue($mysidia->input, $this->map->get(new Str("action")));	
 		$mysidia->lang->load();
 	}
 }     

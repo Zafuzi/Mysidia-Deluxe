@@ -1,6 +1,6 @@
 <?php
 
-use Resource\Native\Mystring;
+use Resource\Native\Str;
 use Resource\Collection\HashMap;
 use Resource\Utility\Autoboxer;
 
@@ -77,7 +77,7 @@ final class Input extends Core implements Initializable{
 		    $this->post = new HashMap;
 		    foreach($_POST as $key => $value){
 			    $value = $this->secure($value);
-			    $this->post->put(new Mystring($key), $this->autoboxer->wrap($value));   
+			    $this->post->put(new Str($key), $this->autoboxer->wrap($value));   
 			}
             unset($_POST);     
 	    }
@@ -85,7 +85,7 @@ final class Input extends Core implements Initializable{
   
     /**
      * The post method, returns a user input var stored in Input::$post property.
-	 * @param Mystring  $key
+	 * @param Str  $key
      * @access public
      * @return Mixed
      */
@@ -93,20 +93,20 @@ final class Input extends Core implements Initializable{
         if(!$this->post) return NULL;
         elseif(empty($key)) return $this->post;
         else{
-		    $value = $this->post->get(new Mystring($key));
+		    $value = $this->post->get(new Str($key));
 		    return ($value == NULL)?NULL:$this->autoboxer->unwrap($value);
         }
     }
   
     /**
      * The get method, returns a user input var stored in Input::$get property.
-	 * @param Mystring  $key
+	 * @param Str  $key
      * @access public
      * @return Object
      */
     public function get($key = ""){
         if(empty($key) and $this->get instanceof HashMap) return $this->get;
-		return $this->get->get(new Mystring($key));
+		return $this->get->get(new Str($key));
     }
 
     /**
@@ -118,7 +118,7 @@ final class Input extends Core implements Initializable{
 	public function set(HashMap $get){
 	    if($this->get) throw new Exception("Cannot reassign get variables.");
 	    $this->get = $get;
-        $this->action = $get->get(new Mystring("action"));
+        $this->action = $get->get(new Str("action"));
 	}
   
     /**

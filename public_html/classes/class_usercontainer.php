@@ -1,8 +1,8 @@
 <?php
 
-use Resource\Native\Object;
+use Resource\Native\Obj;
 
-abstract class UserContainer extends Object implements Container{
+abstract class UserContainer extends Obj implements Container{
   // The abstract UserContainer class
      
   public function getcreator($fetchmode = "Members"){

@@ -16,7 +16,7 @@ use Resource\Native\Objective;
  *
  */
 
-class MapEntry extends Entry{
+class MapEntry extends Entry {
 
 	/**
 	 * serialID constant, it serves as identifier of the object being MapEntry.

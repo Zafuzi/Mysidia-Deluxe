@@ -4,7 +4,7 @@ class AdminCPView extends View{
 
  	const WELCOME = "Welcome to your Admin CP";
     const LOGIN = "Please enter your username and password to log into admin control panel.<br><br>";
-    const SUCCESS = "Login Successful, you are being redirected to the index page.";
+    const SUCCESS = "Login Successful, you are being redictred to the index page.";
 		
 	public function index(){
 	    $mysidia = Registry::get("mysidia");

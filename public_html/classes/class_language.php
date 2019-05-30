@@ -14,7 +14,7 @@
  *
  */
 
-final class Language extends Core implements Initializable{
+final class Language extends Core implements Initializable {
 
 	/**
 	 * The dir property, it stores a reference of the directory of lang file.

@@ -1,8 +1,8 @@
 <?php
 
 namespace Resource\Utility;
-use Resource\Native\Object;
-use Resource\Native\String;
+use Resource\Native\Obj;
+use Resource\Native\Str;
 use Resource\Native\Arrays;
 use Resource\Collection\HashMap;
 
@@ -19,7 +19,7 @@ use Resource\Collection\HashMap;
  * @todo Not sure, but will come in handy.
  */
 
-final class OutputBuffer extends Object{
+final class OutputBuffer extends Obj {
 
 	/**
 	 * The contents property, stores the contents inside the Output buffer.
@@ -154,7 +154,7 @@ final class OutputBuffer extends Object{
     public function getStatus(){
         $status = ob_get_status();
 		foreach($status as $key => $value){
-		    $this->status->put(new String($key), new String($value));
+		    $this->status->put(new Str($key), new Str($value));
 		}
 		return $this->status;
     }	

@@ -1,0 +1,67 @@
+BOOTSTRAP TEMPLATE by Kyttias
+
+* / / / / / / / Updates *
+THIS RELEASE POSTED ON FEB.04.2014:
+- 99% of css related things moved from js-kyt to style-kyt
+- sidebar login inputs no longer clip out of the sidebar
+- all form input fields are now fully mobile ready
+- available adoptables table narrower on desktops
+- all table cells are now vertically aligned
+- tables are pretty now?
+- added first optional mod
+
+* / / / / / / / THREAD: *
+http://mysidiaadoptables.com/forum/showthread.php?p=28882 
+
+* / / / / / / / Need Help? *
+You can contact me (Kyttias) on AIM, GoogleTalk, Skype, Tumblr, DeviantART or @gmail.com. I prefer chatting over AIM, and email is your best bet if I've not been recently active on Tumblr or DeviantART. I can use GoogleTalk or Skype if it is of preference to you.
+
+* / / / / / / / Notice * 
+This is a beta version, and not all Bootstrap features have been implemented over Mysidia's default PHP-rendered HTML! 
+Also? I am in no way affiliated with Bootstrap!! I just really like it, ahaha.
+
+
+* / / / / / / / Features * 
+- Brings you Bootstrap.
+- No editting of php files. (It's done with jQuery!)
+- CDN hosted CSS and jQuery, for faster cache load times.
+- Responsive, mobile-friendly design.
+http://fc06.deviantart.net/fs71/f/2014/031/d/3/mobilefriendly_by_kyttias-d74jv4m.png
+- Bootswatch.com theme changer (thirteen themes)!
+http://fc08.deviantart.net/fs71/f/2014/031/3/b/gif_by_kyttias-d74jv5i.gif
+- Create your own theme easily at StyleBootstrap.info.
+- Fully commented code.
+- Open source and license free - all of it. No credit necessary.
+
+* / / / / / / / Installion * 
+To install this theme, all you need to do is upload one folder inside your templates folder. No edits to Mysidia's PHP class files are required, this is done for you client-side via jQuery.
+
+The theme folder is called 'Bootstrap' and it belongs in templates/. So, for example, the path to your template.tpl will be templates/Bootstrap/template.tpl.
+
+Admin side:
+Once you have the files in place, go to Admin CP and down to Themes and install the theme there. Enter the theme name (Bootstrap) and folder (Bootstrap). Leave the header, body and style part all blank. You must click on the checkbox beside 'The style has been uploaded to the site, and is pending for installation' at the very bottom of the theme creation form. Submit!
+
+It can now be found in your list of themes that members can choose from. (http://YOURSITEHERE/changestyle/)
+
+Please note:
+You will NEED to go into Links > Edit Links and make sure your top-level categories are pointing to pages other than index, as the drop down menus have been removed for devices smaller than tablets! Make pages for your top-level categories that include all relevant links, so users on smaller screens can navigate all parts of your site. You can safely remove the link to 'Home' as it is redundant and will inaccurately display a drop down caret even though it has no drop down children. 
+
+Setting it as default:
+If you would like to set it as your main theme later, in the Admin CP go down to Settings > Basic Settings and this will open up a page for Global Site Settings. Write 'Bootstrap' in the Default Theme input box and hit 'Change Global Settings' to save it. If you'd like to remove people's ability to select other Mysidia themes, in the Admin CP go to Links > Edit Links and it will open up the Site Links Manager. All you have to do is remove the link that would take visitors to changestyle.
+
+Setting default Bootswatch theme:
+The theme changer remembers what the user's preference is, but if YOU have a preference for the initial look of the site, read the commentary in the header.tpl.
+
+Disabling the Bootstrap theme switcher:
+Don't want your users to be able to change the theme on their own? Remove the link to themeswitcher-kyt.js at the bottom of the template.tpl - and/or if you're sure you'll never need it again, just delete themeswitcher-kyt.js. Consider only removing themes just the themes you hate from the list (the list must remain all in one line, sorry). (Said list is also populated within the themeswitcher-kyt.js - if you need help, don't be afraid to contact me.)
+
+Adding your custom StyleBootstrap.info theme:
+If you want it as your site default, again, view the the header.tpl for instructions. If you want to add it to the Bootstrap theme switcher, open up themeswitcher-kyt.js and read the commentary there for instructions.
+
+* / / / / / / / Further Implentating Bootstrap *
+Visit the official Bootstrap site for documentation on other cool features you can add to your page's content.
+
+Read up on Bootstrap's: 
+CSS classes and helpers (including a grid system): http://getbootstrap.com/css/
+Components (wells, panels, thumbnails, etc): http://getbootstrap.com/components/
+and Javascript (tooltips, modal boxes, dismissable notices): http://getbootstrap.com/javascript

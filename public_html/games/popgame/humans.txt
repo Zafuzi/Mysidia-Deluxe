@@ -1,0 +1,35 @@
+/* TEAM */
+
+Name: Glen Henry
+                            
+Site: http://spritewrench.github.io/
+
+                            
+Twitter: @spritewrench
+
+                            
+Location: Kingston, Jamaica
+
+Music: @LimeFaceX
+
+
+							
+/* THANKS */
+
+							
+Name: http://spritewrench.github.io/-pop/
+
+                            
+/* SITE */
+
+                            
+Last update: 2014/03/09
+
+                            
+Standards: HTML5, CSS3
+
+                            
+Components: phaser
+
+                            
+Software: adobe brackets, photoshop

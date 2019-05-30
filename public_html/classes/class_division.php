@@ -13,7 +13,7 @@
  *
  */
  
-class Division extends Paragraph{
+class Division extends Paragraph {
 	
     /**
 	 * The paragraphs property, it is useful for retrieving paragraphs from this division
@@ -131,7 +131,7 @@ class Division extends Paragraph{
      * @return String
      */
     public function __toString(){
-	    return new Mystring("This is The Division class.");
+	    return new Str("This is The Division class.");
 	}
 }
 ?>

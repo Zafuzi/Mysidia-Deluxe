@@ -13,7 +13,7 @@
  *
  */
 
-class Media extends GUIAccessory implements Resizable{
+class Media extends GUIAccessory implements Resizable {
 
     /**
 	 * The type property, specifies the type of this media.
@@ -182,7 +182,7 @@ class Media extends GUIAccessory implements Resizable{
      * @return String
      */
     public function __toString(){
-	    return new Mystring("This is an instance of Mysidia Media class.");
+	    return new Str("This is an instance of Mysidia Media class.");
 	}    
 } 
 ?>

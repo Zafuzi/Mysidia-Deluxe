@@ -2,7 +2,7 @@
 
 namespace Resource\Collection;
 use Resource\Native\Objective;
-use Resource\Native\Object; 
+use Resource\Native\Obj; 
 
 /**
  * The Node Class, extending from the root Object Class.
@@ -17,7 +17,7 @@ use Resource\Native\Object;
  *
  */
 
-class Node extends Object{
+class Node extends Obj {
 
     /**
 	 * The object property, it contains the actual object passed onto this Node.

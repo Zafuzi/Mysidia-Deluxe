@@ -1,6 +1,6 @@
 <?php
 
-use Resource\Native\Mystring;
+use Resource\Native\Str;
 use Resource\Collection\ArrayList;
 use Resource\Collection\HashMap;
 
@@ -209,22 +209,22 @@ final class Frame extends Core implements Renderable{
     public function render(){
         $path = Registry::get("path");
 		$this->renders = new HashMap;
-		$this->renders->put(new Mystring("path"), new Mystring($path->getAbsolute()));	
-		$this->renders->put(new Mystring("frame"), $this);
-        $this->renders->put(new Mystring("header"), $this->header);
-        $this->renders->put(new Mystring("browser_title"), new Mystring($this->header->getBrowserTitle()));		
-        $this->renders->put(new Mystring("site_name"), new Mystring($this->sitename));
-        $this->renders->put(new Mystring("document_title"), new Mystring($this->document->getTitle()));		
-        $this->renders->put(new Mystring("document_content"), $this->document);		
-        $this->renders->put(new Mystring("menu"), $this->menu);
-        $this->renders->put(new Mystring("sidebar"), $this->sidebar);	
-        $this->renders->put(new Mystring("footer"), $this->footer);		
+		$this->renders->put(new Str("path"), new Str($path->getAbsolute()));	
+		$this->renders->put(new Str("frame"), $this);
+        $this->renders->put(new Str("header"), $this->header);
+        $this->renders->put(new Str("browser_title"), new Str($this->header->getBrowserTitle()));		
+        $this->renders->put(new Str("site_name"), new Str($this->sitename));
+        $this->renders->put(new Str("document_title"), new Str($this->document->getTitle()));		
+        $this->renders->put(new Str("document_content"), $this->document);		
+        $this->renders->put(new Str("menu"), $this->menu);
+        $this->renders->put(new Str("sidebar"), $this->sidebar);	
+        $this->renders->put(new Str("footer"), $this->footer);		
 		
 		if($this->widgets instanceof ArrayList){
 		    $iterator = $this->widgets->iterator();
 			while($iterator->hasNext()){
 			    $widget = $iterator->next();
-			    $this->renders->put(new Mystring($widget->getName()), $widget);
+			    $this->renders->put(new Str($widget->getName()), $widget);
 			}
 		}
         return $this->renders;

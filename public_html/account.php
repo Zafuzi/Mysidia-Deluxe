@@ -1,6 +1,6 @@
 <?php
 
-use Resource\Native\Mystring;
+use Resource\Native\Str;
 use Resource\Collection\ArrayList;
 
 class AccountController extends AppController{
@@ -49,7 +49,13 @@ class AccountController extends AppController{
 		$profile = $mysidia->user->getprofile();
 		
 	    if($mysidia->input->post("submit")){
-		    $mysidia->db->update("users_profile", array("avatar" => $mysidia->input->post("avatar"), "nickname" => $mysidia->input->post("nickname"), "gender" => $mysidia->input->post("gender"), "color" => $mysidia->input->post("color"), "bio" => $mysidia->input->post("bio"), "favpet" => $mysidia->input->post("favpet"), "about" => $mysidia->input->post("about")), "username = '{$mysidia->user->username}'");
+	    	$avatar = validate_avatar($mysidia->input->post('avatar'));
+	    	$validGenders = ['male', 'female', 'agender', 'cisgender', 'gender fluid', 'bi gender', 'gender nonconforming', 'genderqueer', 'intersex', 'non binary', 'pan gender', 'transgender mtf', 'transgender ftm', 'two spirit', 'unknown', 'other'];
+		    if (!in_array($mysidia->input->post("gender"), $validGenders)) {
+		      throw new Exception("Invalid gender set ({$mysidia->input->post('gender')}). Please do not edit form fields.");
+		      return;
+		    }
+		    $mysidia->db->update("users_profile", array("avatar" => $avatar, "nickname" => $mysidia->input->post("nickname"), "gender" => $mysidia->input->post("gender"), "color" => $mysidia->input->post("color"), "bio" => $mysidia->input->post("bio"), "favpet" => $mysidia->input->post("favpet"), "about" => $mysidia->input->post("about")), "username = '{$mysidia->user->username}'");
 			return;
 		}
 		
@@ -68,18 +74,16 @@ class AccountController extends AppController{
 	    if($mysidia->input->post("submit")){
 		    $newmsgnotify = ($mysidia->input->post("newmsgnotify") == 1)?1:0;
             $mysidia->db->update("users_options", array("newmessagenotify" => $newmsgnotify), "username='{$mysidia->user->username}'");
-            $mysidia->db->update("users_contacts", array("website" => $mysidia->input->post("website"), "facebook" => $mysidia->input->post("facebook"), "twitter" => $mysidia->input->post("twitter"), "aim" => $mysidia->input->post("aim"), "yahoo" => $mysidia->input->post("yim"), "msn" => $mysidia->input->post("msn"), "skype" => $mysidia->input->post("skype")), "username = '{$mysidia->user->username}'");
+            $mysidia->db->update("users_contacts", array("website" => $mysidia->input->post("website"), "facebook" => $mysidia->input->post("facebook"), "twitter" => $mysidia->input->post("twitter"), "discord" => $mysidia->input->post("discord")), "username = '{$mysidia->user->username}'");
 		    return;
 		}
         
         $contactList = new ArrayList;	
-		$contactList->add(new Mystring("website"));
-		$contactList->add(new Mystring("facebook"));
-		$contactList->add(new Mystring("twitter"));	
-		$contactList->add(new Mystring("msn"));
-		$contactList->add(new Mystring("aim"));
-		$contactList->add(new Mystring("yim"));
-		$contactList->add(new Mystring("skype"));	
+		$contactList->add(new Str("website"));
+		$contactList->add(new Str("facebook"));
+		$contactList->add(new Str("twitter"));	
+		$contactList->add(new Str("discord"));
+
 		$this->setField("contactList", $contactList);
 	}
 }

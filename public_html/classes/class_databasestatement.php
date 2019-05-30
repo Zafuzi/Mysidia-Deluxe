@@ -1,7 +1,7 @@
 <?php
 
-use Resource\Native\Object;
-use Resource\Native\Mystring;
+use Resource\Native\Obj;
+use Resource\Native\Str;
 
 /**
  * The DatabaseStatement Class, it is part of the utility package and extends from the Object Class.
@@ -15,7 +15,7 @@ use Resource\Native\Mystring;
  * @todo Not much at this moment
  */
 
-class DatabaseStatement extends Object{
+class DatabaseStatement extends Obj {
 
 	/**
 	 * The stmt property, it stores the wrapped PDOStatement object.
@@ -68,6 +68,6 @@ class DatabaseStatement extends Object{
      * @return String
      */
     public function __toString(){
-	    return new Mystring("This is The DatabaseStatement Class.");
+	    return new Str("This is The DatabaseStatement Class.");
 	}	
 }

@@ -16,7 +16,7 @@ use Resource\Collection\LinkedList;
  *
  */
  
-class Table extends TableContainer{
+class Table extends TableContainer {
 	
 	/**
 	 * The bordered property, defines if the table comes with a border
@@ -225,7 +225,7 @@ class Table extends TableContainer{
      * @return String
      */
     public function __toString(){
-	    return new Mystring("This is The Table class.");
+	    return new Str("This is The Table class.");
 	}
 }
 ?>

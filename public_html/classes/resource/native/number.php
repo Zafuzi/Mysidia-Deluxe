@@ -18,7 +18,7 @@ use Resource\Utility\Comparable;
  *
  */
 
-abstract class Number extends Object implements Comparable, Primitive{
+abstract class Number extends Obj implements Comparable, Primitive{
 
 	/**
 	 * The value property, which stores the primitive numeric value.

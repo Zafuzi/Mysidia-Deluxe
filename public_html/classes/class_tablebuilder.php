@@ -1,7 +1,7 @@
 <?php
 
 use Resource\Native\Arrays;
-use Resource\Native\Mystring;
+use Resource\Native\Str;
 use Resource\Collection\Collective;
 use Resource\Collection\LinkedList;
 use Resource\Collection\LinkedHashMap;
@@ -94,7 +94,7 @@ class TableBuilder extends Table{
      */
 	public function setMethod($field, $method){
 	    if(!$this->methods) $this->methods = new LinkedHashMap;
-		$this->methods->put(new Mystring($field), new Mystring($method));
+		$this->methods->put(new Str($field), new Str($method));
 	}
 
 	/**
@@ -135,7 +135,7 @@ class TableBuilder extends Table{
      */
 	public function setParams($field, $params){
 	    if(!$this->params) $this->params = new LinkedHashMap;
-	    $this->params->put(new Mystring($field), $params);    
+	    $this->params->put(new Str($field), $params);    
 	}
 	
 	/**
@@ -188,7 +188,7 @@ class TableBuilder extends Table{
 		    while($iterator->hasNext()){
                 $field = $iterator->next();
                 if($field instanceof TCell) $row->add($field);
-                elseif($field instanceof Mystring) $row->add(new TCell($field->getValue()));
+                elseif($field instanceof Str) $row->add(new TCell($field->getValue()));
 				else $row->add(new TCell($field));
             }
 		}
@@ -227,7 +227,7 @@ class TableBuilder extends Table{
 			    while($iterator->hasNext()){
                     $field = $iterator->next();
                     if($field instanceof TCell) $tableRow->add($dataRow->$field);
-                    elseif($field instanceof Mystring) $tableRow->add(new TCell($dataRow->{$field->getValue()}));
+                    elseif($field instanceof Str) $tableRow->add(new TCell($dataRow->{$field->getValue()}));
 				    else $tableRow->add(new TCell($dataRow->$field));
                 }
 			}
@@ -255,7 +255,7 @@ class TableBuilder extends Table{
      * @return String
      */
     public function __toString(){
-	    return new Mystring("This is The TableBuilder class.");
+	    return new Str("This is The TableBuilder class.");
 	}
 }
 ?>

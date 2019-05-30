@@ -1,9 +1,9 @@
 <?php
 
-use Resource\Native\Object;
+use Resource\Native\Obj;
 use Resource\Native\Arrays;
 
-class Inventory extends Object{
+class Inventory extends Obj {
 
     public $owner;
     public $iids;

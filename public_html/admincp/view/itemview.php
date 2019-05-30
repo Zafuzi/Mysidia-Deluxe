@@ -1,6 +1,6 @@
 <?php
 
-use Resource\Native\Mystring;
+use Resource\Native\String;
 use Resource\Collection\LinkedList;
 use Resource\Collection\LinkedHashMap;
 
@@ -12,16 +12,17 @@ class ACPItemView extends View{
 		$stmt = $this->getField("stmt")->get();		
 		$document = $this->document;
         $fields = new LinkedHashMap;
-		$fields->put(new Mystring("imageurl"), new Mystring("getImage"));
-		$fields->put(new Mystring("itemname"), NULL);
-		$fields->put(new Mystring("description"), NULL);
-		$fields->put(new Mystring("function"), NULL);			
-		$fields->put(new Mystring("id::edit"), new Mystring("getEditLink"));
-		$fields->put(new Mystring("id::delete"), new Mystring("getDeleteLink"));	
+		$fields->put(new String("imageurl"), new String("getImage"));
+		$fields->put(new String("itemname"), NULL);
+		$fields->put(new String("description"), NULL);
+		$fields->put(new String("function"), NULL);		
+		$fields->put(new String('rarity'), NULL);	
+		$fields->put(new String("id::edit"), new String("getEditLink"));
+		$fields->put(new String("id::delete"), new String("getDeleteLink"));	
 		
 		$itemTable = new TableBuilder("item");
 		$itemTable->setAlign(new Align("center", "middle"));
-		$itemTable->buildHeaders("Image", "Item", "Description", "Function", "Edit", "Delete");
+		$itemTable->buildHeaders("Image", "Item", "Description", "Function", 'Rarity', "Edit", "Delete");
 		$itemTable->setHelper(new TableHelper);
 		$itemTable->buildTable($stmt, $fields);
         $document->add($itemTable);
@@ -66,10 +67,41 @@ class ACPItemView extends View{
 		$itemForm->add(new TextField("target", "all"));
 		$itemForm->add(new Comment($this->lang->value_explain));
 		$itemForm->add(new TextField("value"));
+		$itemForm->add(new Comment("If your item affects pet stats, pick which one it modifies below:"));
+		$itemForm->buildDropdownList("statmod", "StatList");
+		$itemForm->add(new Comment("If your item has an element, pick which element it is below:"));
+		//minipet elements...
+		$element_list = new DropdownList("element");
+		$element_list->add(new Option("None Selected", "none", FALSE));
+        $element_list->add(new Option("Random", "random", FALSE));
+        $element_list->add(new Option("Arcane", "arcane", FALSE));
+        $element_list->add(new Option("Life", "life", FALSE));
+        $element_list->add(new Option("Sky", "sky", FALSE));
+        $element_list->add(new Option("Void", "void", FALSE));
+        $itemForm->add($element_list);  
+		
+		
+		$itemForm->add(new Comment("<hr>Item Stat Boosts:", TRUE, "b"));
+		    $itemForm->add(new Comment('Decide if this item affects the pet\'s stats. These can be negative values. Remember that the max the basic stats can be is 50.
+		    	<table><tr><td>',false));
+		    $itemForm->add(new Comment("Happiness: ", FALSE));
+		    $itemForm->add(new TextField('happiness', $stats->happiness));
+		    $itemForm->add(new Comment("</td><td>Closeness: ", FALSE));
+		    $itemForm->add(new TextField('closeness', $stats->closeness));
+		    $itemForm->add(new Comment("</td></tr><tr><td>Hunger: ", FALSE));
+		    $itemForm->add(new TextField('hunger', $stats->hunger));
+		    $itemForm->add(new Comment("</td><td>Thirst: ", FALSE));
+		    $itemForm->add(new TextField('thirst', $stats->thirst));
+		
+		
+		$itemForm->add(new Comment('</td></tr></table>', false));
 		$itemForm->add(new Comment("<hr>Item Shop Settings:", TRUE, "b"));
 		$itemForm->add(new Comment("Item Shop: ", FALSE));
 		$itemForm->add(new TextField("shop"));
 		$itemForm->add(new Comment($this->lang->shop_explain));
+		$itemForm->add(new Comment('Item Rarity: ', FALSE));
+		$itemForm->buildDropdownList("rarity", "RarityList");
+		$itemForm->add(new Comment('<a href="/pages/view/rarityguide">Rarity Guide</a>. Rarity determines how often an item restocks.'));
 		$itemForm->add(new Comment("Item Price: ", FALSE));
 		$itemForm->add(new TextField("price"));
 		$itemForm->add(new Comment($this->lang->price_explain));
@@ -101,7 +133,9 @@ class ACPItemView extends View{
 		    return;
 		}
 		else{
-		    $item = $this->getField("item")->get();			
+		    $item = $this->getField("item")->get();	
+		    $stats = $this->getField("itemstats")->get();
+
 		    $document->setTitle($this->lang->edit_title);
 			$document->addLangvar($this->lang->edit);
 			$itemForm = new FormBuilder("editform", $mysidia->input->get("id"), "post");
@@ -116,6 +150,8 @@ class ACPItemView extends View{
 		    $itemForm->add(new Comment($this->lang->itemname_explain));
 		    $itemForm->add(new Comment("Item Category: ", FALSE));
 		    $itemForm->add(new TextField("category", $item->category));
+		    $itemForm->add(new Comment("Item Description: "));
+			$itemForm->add(new TextArea("description", $item->description, 4, 45));
 		    $itemForm->add(new Comment("Item Image: ", FALSE));
 		    $itemForm->add(new TextField("imageurl", $item->imageurl));
 		    $itemForm->add(new Comment($this->lang->image_explain));	
@@ -130,10 +166,31 @@ class ACPItemView extends View{
             $itemForm->add(new Comment("You may also assign a unique value to the item:", FALSE));
 		    $itemForm->add(new TextField("value", $item->value));
 		    $itemForm->add(new Comment($this->lang->value_explain));
+		    $itemForm->add(new Comment("If your item affects pet stats, pick which one it modifies below:"));
+		    $itemForm->buildDropdownList("statmod", "StatList", $item->stat_mod);
+		    //minipet elements...
+		    $itemForm->buildDropdownList("element", "ElementList", $item->element); 
+		    
+		    $itemForm->add(new Comment("<hr>Item Stat Boosts:", TRUE, "b"));
+		    $itemForm->add(new Comment('Decide if this item affects the pet\'s stats. These can be negative values. Remember that the max the basic stats can be is 50.
+		    	<table><tr><td>',false));
+		    $itemForm->add(new Comment("Happiness: ", FALSE));
+		    $itemForm->add(new TextField('happiness', $stats->happiness));
+		    $itemForm->add(new Comment("</td><td>Closeness: ", FALSE));
+		    $itemForm->add(new TextField('closeness', $stats->closeness));
+		    $itemForm->add(new Comment("</td></tr><tr><td>Hunger: ", FALSE));
+		    $itemForm->add(new TextField('hunger', $stats->hunger));
+		    $itemForm->add(new Comment("</td><td>Thirst: ", FALSE));
+		    $itemForm->add(new TextField('thirst', $stats->thirst));
+
+		    $itemForm->add(new Comment('</td></tr></table>', false));
 		    $itemForm->add(new Comment("<hr>Item Shop Settings:", TRUE, "b"));
 		    $itemForm->add(new Comment("Item Shop: ", FALSE));
 		    $itemForm->add(new TextField("shop", $item->shop));
 		    $itemForm->add(new Comment($this->lang->shop_explain));
+		    $itemForm->add(new Comment('Item Rarity: ', FALSE));
+			$itemForm->buildDropdownList("rarity", "RarityList", $item->rarity); 
+            $itemForm->add(new Comment('<a href="/pages/view/rarityguide">Rarity Guide</a>. Rarity determines how often an item restocks.'));
 		    $itemForm->add(new Comment("Item Price: ", FALSE));
 		    $itemForm->add(new TextField("price", $item->price));
 		    $itemForm->add(new Comment($this->lang->price_explain));
@@ -171,10 +228,10 @@ class ACPItemView extends View{
 		$document->addLangvar($this->lang->functions);
 
 		$fields = new LinkedList;
-		$fields->add(new Mystring("ifid"));
-		$fields->add(new Mystring("function"));
-		$fields->add(new Mystring("intent"));
-		$fields->add(new Mystring("description"));
+		$fields->add(new String("ifid"));
+		$fields->add(new String("function"));
+		$fields->add(new String("intent"));
+		$fields->add(new String("description"));
 		
 		$functionsTable = new TableBuilder("functions");
 		$functionsTable->setAlign(new Align("center", "middle"));
@@ -184,4 +241,3 @@ class ACPItemView extends View{
         $document->add($functionsTable);
 	}
 }
-?>

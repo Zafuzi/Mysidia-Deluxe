@@ -3,8 +3,8 @@
 namespace Resource\Collection;
 use Countable, IteratorAggregate;
 use Resource\Native\Objective;
-use Resource\Native\Object;
-use Resource\Native\Mystring;
+use Resource\Native\Obj;
+use Resource\Native\Str;
 
 /**
  * The Collective Interface, extending from the Objective interface.

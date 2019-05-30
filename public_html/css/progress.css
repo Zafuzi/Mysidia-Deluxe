@@ -1,0 +1,15 @@
+proprogress[value] {color:red} /* IE10 */
+progress::-webkit-progress-bar-value {background:red}
+progress::-webkit-progress-value {background:red}
+progress::-moz-progress-bar {background:red;}
+progress {
+   -webkit-appearance: none;
+}
+progress[value]::-webkit-progress-bar {
+  background-color: #eee;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25) inset;
+}
+progress[value]::-webkit-progress-value {
+  border-radius: 5px;
+}  

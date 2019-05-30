@@ -1,5 +1,5 @@
 <?php
-
+use Resource\Collection\ArrayList;
 use Resource\Collection\LinkedList;
 
 class PoundView extends View{
@@ -29,8 +29,22 @@ class PoundView extends View{
 
             $cells = new LinkedList;			
 			$cells->add(new TCell($readoptTable->getHelper()->getPoundButton($adopt->getAdoptID())));
-			$cells->add(new TCell($adopt->getImage("gui")));
-			$cells->add(new TCell($readoptTable->getHelper()->getBasicInfo($adopt->getName(), $cost->getValue())));
+			$cell = new Arraylist;
+			$level = $adopt->getCurrentLevel();
+			$extra = null;
+			if ($adopt->getClass() == 'Colorful'){
+				$type = strtolower($adopt->type);
+				if ($level < 2){
+					$extra = "<div style='background:url({$mysidia->path->getAbsolute()}picuploads/pet_statuses/{$adopt->type}/{$type}eggsadface.png);position:absolute;height:150px; width:150px;z-index:5;bottom:0px'></div>";
+				}
+				else{
+					$extra = "<div style='background:url({$mysidia->path->getAbsolute()}picuploads/pet_statuses/{$adopt->type}/1/{$type}sadexpression1.png);position:absolute;height:200px; width:150px;z-index:5;bottom:0px'></div>";
+				}
+			}
+
+			$cell->add(new Comment("<div style='background:url({$mysidia->path->getAbsolute()}picuploads/cageback.png); position:relative; height:225px; width:216px'><div style='background:url({$mysidia->path->getAbsolute()}picuploads/cagefront.png);height:225px; width:216px;position:absolute;z-index:30;'></div><div style='position:absolute;left:30px;z-index:2;bottom:0px'>".$adopt->getImage("gui") ."$extra</div></div><div style='background:url({$mysidia->path->getAbsolute()}picuploads/poundnametag.png); position:relative; top:-5px; left:30px; height:53px; width:146px'><br><b>{$adopt->getName()}</b></div>"));
+			$cells->add(new TCell($cell));
+			$cells->add(new TCell($readoptTable->getHelper()->getBasicInfo("<a href='/pet/profile/{$adopt->aid}'>{$adopt->getName()}</a>", $cost->getValue())));
 			$cells->add(new TCell($readoptTable->getHelper()->getAdditionalInfo($adopt)));
 		    $readoptTable->buildRow($cells);
 		}
@@ -58,8 +72,8 @@ class PoundView extends View{
 		}
 		
 		$document->setTitle($this->lang->pound_title);
-		$document->add($adopt->getImage("gui"));
-		$document->add(new Comment("<br>{$this->lang->pound}<br><br>{$this->lang->pound_warning}<br>"));		
+		$document->add(new Comment($adopt->getImage("gui"), false));
+           	$document->add(new Comment("<br>{$this->lang->pound}<br><br>{$this->lang->pound_warning}<br>"));		
 		$options = new Division("pound");
 		$options->setAlign(new Align("center"));
 		

@@ -1,9 +1,9 @@
 <?php
 
-use Resource\Native\Object;
+use Resource\Native\Obj;
 use Resource\Native\Arrays;
 
-final class Daycare extends Object{
+final class Daycare extends Obj {
 
 	private $adopts;
 	private $total;

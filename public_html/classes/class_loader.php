@@ -1,6 +1,6 @@
 <?php
 
-use Resource\Native\Object;
+use Resource\Native\Obj;
 
 /**
  * The Loader Class, it is vital to class autoloading mechanism of this script.
@@ -15,7 +15,7 @@ use Resource\Native\Object;
  *
  */
 
-class Loader extends Object{
+class Loader extends Obj{
 
     /**
 	 * The classes property, stores a list of classes already loaded.

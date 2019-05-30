@@ -1,7 +1,7 @@
 <?php
 
 namespace Resource\Utility;
-use Resource\Native\Object;
+use Resource\Native\Obj;
 use Resource\Native\Arrays;
 
 /**
@@ -16,7 +16,7 @@ use Resource\Native\Arrays;
  * @todo Not sure, but will come in handy.
  */
 
-final class Hash extends Object{
+final class Hash extends Obj {
 
 	/**
 	 * The algorithm property, it defines the algorithm for hash function.

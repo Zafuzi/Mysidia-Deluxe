@@ -15,7 +15,7 @@
  *
  */
  
-abstract class GUIElement extends GUI implements Renderable{
+abstract class GUIElement extends GUI implements Renderable {
 	
 	/**
 	 * The component property, specifies which component this element belongs to.
@@ -59,7 +59,7 @@ abstract class GUIElement extends GUI implements Renderable{
      * @return String
      */
     public function __toString(){
-	    return new Mystring("This is the GUIElement Class.");
+	    return new Str("This is the GUIElement Class.");
 	}
 	
 	/**

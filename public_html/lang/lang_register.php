@@ -10,6 +10,7 @@ $lang['tos'] = "You did not agree to the Terms of Service.  Please <a href='regi
 $lang['user'] = "We're sorry, but the username you have selected already exists.  Please <a href='register'>go back</a> and choose another username.";
 $lang['email'] = "We're sorry, but the email address you entered appears to be invalid.  Please <a href='register'>go back</a> and enter in a valid email address.";
 $lang['birthday'] = "The value for birthday field is invalid, please go back and revise it.";
+$lang['gender'] = 'Invalid gender. Please do not edit the form fields.';
 $lang['question'] = "It seems that you did not answer the security question correctly...";
 $lang['success_title'] = "Registration Successful";
 $lang['success'] = "Hey there ";

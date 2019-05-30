@@ -2,8 +2,8 @@
 
 namespace Resource\Collection;
 use Resource\Native\Objective;
-use Resource\Native\Object;
-use Resource\Native\Mystring; 
+use Resource\Native\Obj;
+use Resource\Native\Str; 
 use Resource\Exception\UnsupportedOperationException;
 
 /**
@@ -20,7 +20,7 @@ use Resource\Exception\UnsupportedOperationException;
  *
  */
  
-abstract class Collection extends Object implements Collective{
+abstract class Collection extends Obj implements Collective{
 
  	/**
      * The add method, append an object to the end of the collection.
@@ -199,9 +199,9 @@ abstract class Collection extends Object implements Collective{
      */	
 	public function __toString(){
 	    $iterator = $this->iterator();
-		if(!$iterator->valid()) return new Mystring("[]");
+		if(!$iterator->valid()) return new Str("[]");
 		
-		$stringBuilder = new Mystring("[");
+		$stringBuilder = new Str("[");
 		while($iterator->hasNext()){
 		    $object = $iterator->next();
 			$stringBuilder->add(($object == $this) ? "(this collection)" : $object);

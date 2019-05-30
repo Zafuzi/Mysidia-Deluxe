@@ -3,9 +3,10 @@
 //Language variables used for Breeding Page
 
 $lang['title'] = "Breeding Center";
-$lang['default'] = "You may breed your adoptables here. They must be at least above the minimum required level to breed.<br>"; 
+$lang['default'] = "<center><img src='http://i63.tinypic.com/2pz9xde.jpg/'></center>";
+$lang['default'].= "You may breed your adoptables here. They must be at least <b>Level 2 </b>to breed and you need a <b>love potion #9</b> in your inventory<br>"; 
 $lang['system'] = "The admin has disabled the breeding system, please contact him/her if you have any questions.";
-$lang['money'] = "You currently have {$mysidia->user->getcash()} {$mysidia->settings->cost}, the cost of breeding is: ";
+$lang['money'] = "You currently have {$mysidia->user->getcash()} {$mysidia->settings->cost}, the cost of breeding is: 0";
 $lang['warning'] = "<br>Note that breeding may fail for various reasons. The parents may not breed properly, the offsprings may not survive easily, and more...<br><br>";
 $lang['banned'] = "It appears that you have been banned from breeding your adoptables. Please contact an administrator for assistance.<br>";   
 $lang['select'] = "<br>You may select the two adoptables that you'd like to breed:<br>"; 

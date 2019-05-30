@@ -1,6 +1,6 @@
 <?php
 
-use Resource\Native\Mystring;
+use Resource\Native\String;
 use Resource\Collection\LinkedHashMap;
 
 class ACPModuleView extends View{
@@ -12,13 +12,13 @@ class ACPModuleView extends View{
 		$document = $this->document;		
 
         $fields = new LinkedHashMap;
-		$fields->put(new Mystring("moid"), NULL);
-		$fields->put(new Mystring("widget"), NULL);
-		$fields->put(new Mystring("name"), NULL);
-		$fields->put(new Mystring("order"), NULL);	
-		$fields->put(new Mystring("status"), NULL);	
-		$fields->put(new Mystring("moid::edit"), new Mystring("getEditLink"));
-		$fields->put(new Mystring("moid::delete"), new Mystring("getDeleteLink"));	
+		$fields->put(new String("moid"), NULL);
+		$fields->put(new String("widget"), NULL);
+		$fields->put(new String("name"), NULL);
+		$fields->put(new String("order"), NULL);	
+		$fields->put(new String("status"), NULL);	
+		$fields->put(new String("moid::edit"), new String("getEditLink"));
+		$fields->put(new String("moid::delete"), new String("getDeleteLink"));	
 		
 		$moduleTable = new TableBuilder("modules");
 		$moduleTable->setAlign(new Align("center", "middle"));
@@ -48,16 +48,23 @@ class ACPModuleView extends View{
 		$moduleForm->add(new Comment("Parent Widget: ", FALSE));
         $moduleForm->add($widgetList);
 		$moduleForm->add(new Comment("<b>You may browse a list of available widgets to decide what to enter here.</b>"));
-		$moduleForm->buildComment("Module Name: ", FALSE)->buildTextField("name")
-				   ->buildComment("Module Subtitle: ", FALSE)->buildTextField("subtitle")
-				   ->buildComment("Required Userlevel: ", FALSE)->buildTextField("userlevel")
- 				   ->buildComment("<b>You may enter 'member', 'visitor' or leave the above field blank.</b>")
-				   ->buildComment("Module HTML Code: ")->buildTextArea("html")
-				   ->buildComment("Module PHP Code: ")->buildTextArea("php")
-				   ->buildComment("<b>Be cautious with the PHP code for your module, it may or may not work!</b>")
-				   ->buildComment("Module Order: ", FALSE)->buildTextField("order", 0)
-				   ->buildComment("Module Status:(enabled or disabled) ", FALSE)->buildTextField("status", "enabled")
-		           ->buildButton("Create Module", "submit", "submit");
+		$moduleForm->buildComment("Module Name: ", FALSE)
+		    ->buildTextField("name")
+		    ->buildComment("Module Subtitle: ", FALSE)
+		    ->buildTextField("subtitle")
+			->buildComment("Required Userlevel: ", FALSE)
+			->buildTextField("userlevel")
+ 			->buildComment("<b>You may enter 'member', 'visitor' or leave the above field blank.</b>")
+			->buildComment("Module HTML Code: ")
+			->buildTextArea("html")
+			->buildComment("Module PHP Code: ")
+			->buildTextArea("php")
+			->buildComment("<b>Be cautious with the PHP code for your module, it may or may not work!</b>")
+			->buildComment("Module Order: ", FALSE)
+			->buildTextField("order", 0)
+			->buildComment("Module Status:(enabled or disabled) ", FALSE)
+			->buildTextField("status", "enabled")
+		    ->buildButton("Create Module", "submit", "submit");
 		$document->add($moduleForm);
 	}
 	
@@ -88,16 +95,23 @@ class ACPModuleView extends View{
 		    $moduleForm->add(new Comment("Parent Widget: ", FALSE));
             $moduleForm->add($widgetList);
 		    $moduleForm->add(new Comment("<b>You may browse a list of available widgets to decide what to enter here.</b>"));
-		    $moduleForm->buildComment("Module Name: ", FALSE)->buildTextField("name", $module->name)
-				       ->buildComment("Module Subtitle: ", FALSE)->buildTextField("subtitle", $module->subtitle)
-				       ->buildComment("Required Userlevel: ", FALSE)->buildTextField("userlevel", $module->userlevel)
- 				       ->buildComment("<b>You may enter 'member', 'visitor' or leave the above field blank.</b>")
-				       ->buildComment("Module HTML Code: ")->buildTextArea("html", $module->html)
-				       ->buildComment("Module PHP Code: ")->buildTextArea("php", $module->php)
-				       ->buildComment("<b>Be cautious with the PHP code for your module, it may or may not work!</b>")
-				       ->buildComment("Module Order: ", FALSE)->buildTextField("order", $module->order)
-				       ->buildComment("Module Status:(enabled or disabled) ", FALSE)->buildTextField("status", $module->status)
-		               ->buildButton("Change Module", "submit", "submit");
+		    $moduleForm->buildComment("Module Name: ", FALSE)
+		        ->buildTextField("name", $module->name)
+				->buildComment("Module Subtitle: ", FALSE)
+				->buildTextField("subtitle", $module->subtitle)
+				->buildComment("Required Userlevel: ", FALSE)
+				->buildTextField("userlevel", $module->userlevel)
+ 				->buildComment("<b>You may enter 'member', 'visitor' or leave the above field blank.</b>")
+				->buildComment("Module HTML Code: ")
+				->buildTextArea("html", $module->html)
+				->buildComment("Module PHP Code: ")
+				->buildTextArea("php", $module->php)
+				->buildComment("<b>Be cautious with the PHP code for your module, it may or may not work!</b>")
+				->buildComment("Module Order: ", FALSE)
+				->buildTextField("order", $module->order)
+				->buildComment("Module Status:(enabled or disabled) ", FALSE)
+				->buildTextField("status", $module->status)
+		        ->buildButton("Change Module", "submit", "submit");
 		    $document->add($moduleForm);		 
 		}
 	}

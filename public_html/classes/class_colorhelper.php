@@ -214,7 +214,7 @@ class ColorHelper extends GUIHelper{
      * @return String
      */
     public function __toString(){
-	    return new Mystring("This is an instance of Mysidia ColorHelper class.");
+	    return new Str("This is an instance of Mysidia ColorHelper class.");
 	}    
 } 
 ?>

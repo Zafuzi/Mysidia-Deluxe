@@ -6,24 +6,36 @@ class OnlineView extends View{
 	    $mysidia = Registry::get("mysidia");
 		$document = $this->document;			
 		$document->setTitle($this->lang->title);
-        $document->addLangvar($this->lang->default);
 		
 	    $total = $this->getField("total")->getValue();
 		$stmt = $this->getField("stmt")->get();
+		$document->add(new Comment("
+			<table style='width:100%; text-align:center;'>
+				<tr>
+					<th style='color:#fd1d1d'>Username</th>
+					<th style='color:#983398'>Nickname</th>
+					<th style='color:#358935'>Pets Owned</th>
+					<th style='color:#4242fb'>Cash</th>
+					<th style='color:#ffaa00'>Gender</th>
+					<th>Alignment</th>
+				</tr>
+		"));
 	    while($username = $stmt->fetchColumn()){
 		    $user = new Member($username);
+			$alignment = $mysidia->db->select("users", array("alignment"), "username = '$user->username'")->fetchColumn();
 		    $user->getprofile();
-			$onlineLink = new Link("profile/view/{$username}");
-			$onlineLink->setClass("onlinelist");
-			$onlineText = "<span class='onlinelistt'>{$user->username}</span>
-						   <span class='onlinelistn'>{$user->profile->getnickname()}</span>
-						   <span class='onlinelistj'>{$user->getalladopts()}</span>
-						   <span class='onlinelistp'>{$user->money}</span>
-						   <span class='onlinelistg'>{$user->profile->getgender()}</span>";						  
-			$onlineLink->setText($onlineText);
-			$onlineLink->setLineBreak(TRUE);
-            $document->add($onlineLink);					 
+				$document->add(new Comment("
+						<tr>
+							<td>{$user->username}</td>
+							<td>{$user->profile->getnickname()}</td>
+							<td>{$user->getalladopts()}</td>
+							<td>{$user->money}</td>
+							<td>{$user->profile->getgender()}</td>
+							<td>{$alignment}</td>
+						</tr>
+				", FALSE));
 	    }
+		$document->add(new Comment("</table>"));
 		$document->addLangvar($this->lang->visitors.$total);
 		$this->refresh(30);
 	}

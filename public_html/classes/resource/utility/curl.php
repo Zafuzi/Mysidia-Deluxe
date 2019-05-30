@@ -1,7 +1,7 @@
 <?php
 
 namespace Resource\Utility;
-use Resource\Native\Object;
+use Resource\Native\Obj;
 
 /**
  * The Curl Class, it is part of the utility package and extends from the Object Class.
@@ -15,7 +15,7 @@ use Resource\Native\Object;
  * @todo Not sure, but will come in handy.
  */
 
-final class Curl extends Object{
+final class Curl extends Obj {
 
 	/**
 	 * The handle property, it stores an initialized curl request.

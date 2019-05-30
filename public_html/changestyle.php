@@ -1,6 +1,6 @@
 <?php
 
-use Resource\Native\Mystring;
+use Resource\Native\Str;
 use Resource\Collection\LinkedHashMap;
 
 class ChangeStyleController extends AppController{
@@ -26,7 +26,7 @@ class ChangeStyleController extends AppController{
 		$themes = new LinkedHashMap;
 		$stmt = $mysidia->db->select("themes");	
 	    while($theme= $stmt->fetchObject()){
-		    $themes->put(new Mystring($theme->themename), new Mystring($theme->themefolder));
+		    $themes->put(new Str($theme->themename), new Str($theme->themefolder));
 	    }
         $this->setField("themes", $themes);
 	}

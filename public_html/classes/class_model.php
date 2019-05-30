@@ -1,7 +1,7 @@
 <?php
 
-use Resource\Native\Object;
-use Resource\Native\Mystring;
+use Resource\Native\Obj;
+use Resource\Native\Str;
 
 /**
  * The Abstract Model Class, extends from abstract object class.
@@ -17,7 +17,7 @@ use Resource\Native\Mystring;
  *
  */
  
-abstract class Model extends Object{
+abstract class Model extends Obj {
 
  	/**
 	 * OBJ constant, stores the fetch mode Object.
@@ -64,7 +64,7 @@ abstract class Model extends Object{
      * @return String
      */
     public function __toString(){
-	    return new Mystring("This is an instance of Mysidia Model class.");
+	    return new Str("This is an instance of Mysidia Model class.");
 	}
 	
 	/**

@@ -13,7 +13,7 @@
  *
  */
 
-class FieldSet extends GUIContainer{
+class FieldSet extends GUIContainer {
 
 	/**
 	 * The disabled property, checks if elements in this fieldset is disabled.
@@ -70,7 +70,7 @@ class FieldSet extends GUIContainer{
      * @return String
      */
     public function __toString(){
-	    return new Mystring("This is an instance of Mysidia FieldSet class.");
+	    return new Str("This is an instance of Mysidia FieldSet class.");
 	}    
 }
     

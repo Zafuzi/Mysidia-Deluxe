@@ -1,7 +1,7 @@
 <?php
 
-use Resource\Native\Object;
-use Resource\Native\Mystring;
+use Resource\Native\Obj;
+use Resource\Native\Str;
 
 /**
  * The URL Class, it is part of the utility package and extends from the Object Class.
@@ -16,7 +16,7 @@ use Resource\Native\Mystring;
  * @todo Not sure, but will come in handy.
  */
 
-final class URL extends Object{
+final class URL extends Obj {
 
 	/**
 	 * REGEX constant, it is used to identify valid and invalid url.

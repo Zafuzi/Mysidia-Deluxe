@@ -1,6 +1,6 @@
 <?php
 
-use Resource\Native\Mystring;
+use Resource\Native\String;
 use Resource\Collection\LinkedHashMap;
 
 class ACPPromoView extends View{
@@ -11,17 +11,17 @@ class ACPPromoView extends View{
 		$document = $this->document;		
 		$promoTable = new TableBuilder("promocode");
 		$promoTable->setAlign(new Align("center", "middle"));
-		$promoTable->buildHeaders("ID", "Type", "User", "Code", "Reward", "Edit", "Delete");
+		$promoTable->buildHeaders("ID", "Type", "User", "Code", "Rewards", "Edit", "Delete");
 		$promoTable->setHelper(new TableHelper);
 		
         $fields = new LinkedHashMap;
-		$fields->put(new Mystring("pid"), NULL);
-		$fields->put(new Mystring("type"), NULL);
-		$fields->put(new Mystring("user"), NULL);
-		$fields->put(new Mystring("code"), NULL);	
-		$fields->put(new Mystring("reward"), NULL);			
-		$fields->put(new Mystring("pid::edit"), new Mystring("getEditLink"));
-		$fields->put(new Mystring("pid::delete"), new Mystring("getDeleteLink"));				
+		$fields->put(new String("pid"), NULL);
+		$fields->put(new String("type"), NULL);
+		$fields->put(new String("user"), NULL);
+		$fields->put(new String("code"), NULL);	
+        $fields->put(new String("pid::reward"), new String("getRewardLink"));		
+		$fields->put(new String("pid::edit"), new String("getEditLink"));
+		$fields->put(new String("pid::delete"), new String("getDeleteLink"));			
 		$promoTable->buildTable($stmt, $fields);
         $document->add($promoTable);	
 	}
@@ -32,7 +32,7 @@ class ACPPromoView extends View{
 	    if($mysidia->input->post("submit")){			
 		    $document->setTitle($this->lang->added_title);
 			$document->addLangvar($this->lang->added);
-            header("Refresh:3; URL='../index'");
+            header("Refresh:3; URL='../reward'");
 			return;
 		}
 		
@@ -40,11 +40,12 @@ class ACPPromoView extends View{
 		$document->addLangvar($this->lang->add);		
 		$promoForm = new Form("addform", "add", "post");
 		$promoForm->add(new Comment("<br><u>Create A New Promocode:</u><br>", TRUE, "b"));
-		$promoForm->add(new Comment("Type:(adoptables or items)"));
+		$promoForm->add(new Comment("Type:(adoptables, items, pages, or multi-types)"));
 		$typesList = new RadioList("type");
 		$typesList->add(new RadioButton(" Adoptables", "type", "Adopt"));
 		$typesList->add(new RadioButton(" Items", "type", "Item"));
 		$typesList->add(new RadioButton(" Pages", "type", "Page"));
+		$typesList->add(new RadioButton(" Multi-types", "type", "Multi"));
 		$promoForm->add($typesList);
 		
 		$promoForm->add(new Comment("User:(leave blank if you want it to be available to everyone)"));
@@ -58,7 +59,7 @@ class ACPPromoView extends View{
 		$promoForm->add(new Comment("Expiration Date:(the specified date promocode expires, leave blank if it does not have a deadline)"));
 		$promoForm->add(new TextField("todate"));
 		$promoForm->add(new Comment("Note: Date must follow the format (mm/dd/yyyy)"));
-		$promoForm->add(new Comment("Reward:(the adoptable or item your member can obtain by entering this promocode. Enter 'Page' if this is a page promocode.)"));
+		$promoForm->add(new Comment("Reward: the adoptable or item your member can obtain by entering this promocode. <br>(Enter 'Page' if this is a page promocode, leave blank if this promocode contains multple rewards)"));
 		$promoForm->add(new TextField("reward"));
 		$promoForm->add(new Button("Create Promocode", "submit", "submit"));
 		$document->add($promoForm);				
@@ -89,6 +90,7 @@ class ACPPromoView extends View{
 		    $typesList->add(new RadioButton(" Adoptables", "type", "Adopt"));
 		    $typesList->add(new RadioButton(" Items", "type", "Item"));
 		    $typesList->add(new RadioButton(" Pages", "type", "Page"));
+		    $typesList->add(new RadioButton(" Multi-types", "type", "Multi"));
 			$typesList->check($promo->type);
 		    $promoForm->add($typesList);
 		
@@ -123,4 +125,3 @@ class ACPPromoView extends View{
         header("Refresh:3; URL='../edit'");
 	}
 }
-?>

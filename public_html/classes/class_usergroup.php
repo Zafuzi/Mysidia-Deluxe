@@ -1,8 +1,8 @@
 <?php
 
-use Resource\Native\Object;
+use Resource\Native\Obj;
 
-class Usergroup extends Object{
+class Usergroup extends Obj {
   // The usergroup class, what should I say? umm... Its temporary anyway as the usergroup system will be revised in Mys v1.4.0's new ACP project.
 
   public $gid = 0;

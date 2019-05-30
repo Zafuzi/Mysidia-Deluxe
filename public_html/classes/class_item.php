@@ -1,8 +1,8 @@
 <?php
 
-use Resource\Native\Object;
+use Resource\Native\Obj;
 
-class Item extends Model{
+class Item extends Model {
   // The item class.
 
     public $id;

@@ -18,6 +18,7 @@ class DonateView extends View{
 		}
 
 		$document->setTitle($this->lang->title);	
+        $document->addLangvar($this->lang->default);
 		$document->add(new Comment("This page will allows you to donate your money to other users. "));
 		$document->add(new Comment("You currently have {$mysidia->user->getcash()} {$mysidia->settings->cost} left."));
 		$document->add(new Paragraph(new Comment("")));
@@ -28,6 +29,6 @@ class DonateView extends View{
 				   ->buildTextField("amount")
 				   ->buildButton("Donate", "submit", "submit");
         $document->add($donateForm);	
+
 	}
 }
-?>

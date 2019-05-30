@@ -14,7 +14,7 @@
  *
  */
  
-abstract class FrontController extends Controller{
+abstract class FrontController extends Controller {
  
 	/**
 	 * The appController property, holds a reference to the app-controller available for this front-controller.
@@ -96,7 +96,7 @@ abstract class FrontController extends Controller{
 	public function render(){
 	    if($this->flags) $this->view->triggerError($this->flags);
 		else{ 
-            $action = ($this->action)?(string)$this->action:"index";
+            $action = ($this->action)?$this->action:"index";
             $this->view->$action();
         }
 	    $this->view->render();

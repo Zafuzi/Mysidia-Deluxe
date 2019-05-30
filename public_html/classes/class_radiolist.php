@@ -63,7 +63,7 @@ class RadioList extends GUIContainer{
      * @return String
      */
     public function __toString(){
-	    return new Mystring("This is an instance of Mysidia RadioList class.");
+	    return new Str("This is an instance of Mysidia RadioList class.");
 	}    
 }   
 ?>

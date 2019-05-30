@@ -13,7 +13,7 @@
  *
  */
 
-class PasswordField extends TextField{
+class PasswordField extends TextField {
 
     /**
 	 * The type property, specifies the type of this PasswordField.
@@ -67,7 +67,7 @@ class PasswordField extends TextField{
      * @return String
      */
     public function __toString(){
-	    return new Mystring("This is an instance of Mysidia PasswordField class.");
+	    return new Str("This is an instance of Mysidia PasswordField class.");
 	}    
 }    
 ?>

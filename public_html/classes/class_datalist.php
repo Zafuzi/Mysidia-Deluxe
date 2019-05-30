@@ -13,7 +13,7 @@
  *
  */
 
-class DataList extends GUIContainer{
+class DataList extends GUIContainer {
 	
     /**
      * Constructor of DataList Class, which assigns basic property to this list
@@ -72,7 +72,7 @@ class DataList extends GUIContainer{
      * @return String
      */
     public function __toString(){
-	    return new Mystring("This is an instance of Mysidia DataList class.");
+	    return new Str("This is an instance of Mysidia DataList class.");
 	}    
 }
     

@@ -1,6 +1,6 @@
 <?php
 
-use Resource\Native\Object;
+use Resource\Native\Obj;
 
 /**
  * The Probability Class, extends from abstract Object class.
@@ -16,7 +16,7 @@ use Resource\Native\Object;
  *
  */
  
-final class Probability extends Object{
+final class Probability extends Obj {
  
     /**
 	 * This will hold our possible outcomes along with thier probabilities. 

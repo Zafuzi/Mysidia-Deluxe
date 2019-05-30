@@ -14,7 +14,7 @@
  *
  */
  
-class Paragraph extends GUIContainer{
+class Paragraph extends GUIContainer {
 
     /**
 	 * The comments property, it is useful if the paragraph contains comments type GUIComponent.
@@ -83,7 +83,7 @@ class Paragraph extends GUIContainer{
      * @return String
      */
     public function __toString(){
-	    return new Mystring("This is The Paragraph class.");
+	    return new Str("This is The Paragraph class.");
 	}
 }
 ?>

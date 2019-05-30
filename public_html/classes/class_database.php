@@ -1,7 +1,7 @@
 <?php
 
 use Resource\Native\Objective;
-use Resource\Native\Mystring;
+use Resource\Native\Str;
 use Resource\Collection\LinkedList;
 use Resource\Collection\LinkedHashMap;
 
@@ -74,7 +74,7 @@ class Database extends PDO implements Objective{
      * @return String
      */
     public function getClassName(){
-        return new Mystring(get_class($this));
+        return new Str(get_class($this));
     }
 
 	/**
@@ -346,7 +346,7 @@ class Database extends PDO implements Objective{
     public function fetchList(PDOStatement $stmt){
         $list = new LinkedList;
         while($field = $stmt->fetchColumn()){
-            $list->add(new Mystring($field));
+            $list->add(new Str($field));
         }
         return $list;
     }
@@ -361,7 +361,7 @@ class Database extends PDO implements Objective{
         $map = new LinkedHashMap;
         while($fields = $stmt->fetch(PDO::FETCH_NUM)){
             if(count($fields) == 1) $fields[1] = $fields[0];
-            $map->put(new Mystring($fields[0]), new Mystring($fields[1]));
+            $map->put(new Str($fields[0]), new Str($fields[1]));
         }
         return $map;
     }

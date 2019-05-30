@@ -29,16 +29,21 @@ vertical-align:center;
 text-align:justify;
 color:#aaa;
 background:#222;
+text-shadow:0px 1px 0px #ccc;
 border-bottom:1px solid #ccc;
 }
 
 #logo b, strong {
-font-style: oblique;
+color:#1E90FF;
 }
 
 #admin {
+font-size:12px;
 vertical-align: center;
 text-align:right;
+color:#eee;
+background:#222;
+border-bottom:1px solid #ccc;
 }
 
 #menu {
@@ -57,24 +62,27 @@ font-weight:bold;
 text-decoration:none;
 }
 
-.accordionButton {  
+.accordionButton {    
+    width:92%;
     display:block;
+    float: left;
+    background:url("../media/accordion-bg.jpg") #000;
+    border-bottom: 1px solid #FFFFFF;
     cursor: pointer;
-    padding:10px 0 0 10px;
+    padding:10px;
     margin:1px;
     }
  
 .accordionContent {    
-    width:90%;
+    width:92%;
     display:block;
     float: left;
+    background:#aaa;
     display: none;
     padding:10px;
-	margin: 0 0 10px 7%;
+    margin:1px;
     }
-	
-.accordionContent a:before { content: "- ";}	
-	
+
 #admin a {
 color:#fff;
 text-decoration:none;
@@ -107,6 +115,7 @@ border:0px solid #ccc;
 border-radius:10px;
 -moz-border-radius:10px;
 width:200px;
+height:100px;
 padding:7px;
 margin:10px;
 float:left;

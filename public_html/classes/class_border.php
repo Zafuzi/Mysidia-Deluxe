@@ -13,7 +13,7 @@
  *
  */
 
-class Border extends Spacing{
+class Border extends Spacing {
 
     /**
 	 * The color property, defines the border color attribute.
@@ -118,7 +118,7 @@ class Border extends Spacing{
      * @return String
      */
     public function __toString(){
-	    return new Mystring("This is an instance of Mysidia Border class.");
+	    return new Str("This is an instance of Mysidia Border class.");
 	}    
 } 
 ?>

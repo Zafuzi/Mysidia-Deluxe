@@ -1,8 +1,8 @@
 <?php
 
-use Resource\Native\Object;
+use Resource\Native\Obj;
 
-abstract class MessageContainer extends Object implements Container{
+abstract class MessageContainer extends Obj implements Container{
   // The abstract MessageContainer class
   
   private function format($text){ 

@@ -1,6 +1,6 @@
 <?php
 
-use Resource\Native\Object;
+use Resource\Native\Obj;
 
 /**
  * The Router Class, it manages routes and assign important environment variables.
@@ -14,7 +14,7 @@ use Resource\Native\Object;
  * @todo Not sure, but will come in handy.
  */
 
-final class Router extends Object{
+final class Router extends Obj {
 
   	/**
 	 * The path property, specifies the path of the route.

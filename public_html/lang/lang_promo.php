@@ -4,7 +4,7 @@
 
 $lang['title'] = "Enter a Promo Code";
 $lang['default'] = "This page allows you to redeem a promo code for an adoptable or an item.  Please enter your promo code in the box below and click submit to begin.";
-$lang['avail'] = "Congrats, your code entered matches our database information. Now processing your codes for validation.<br>";
+$lang['avail'] = "<b>Code Processed!</b><br>";
 $lang['success'] = "Code entered successfully!";
 $lang['fail_title'] = "Promo Code Error";
 $lang['fail'] = "The promo code you entered does not match any record in our database...";

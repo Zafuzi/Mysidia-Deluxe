@@ -15,7 +15,7 @@ use Resource\Collection\ArrayList as ArrayList;
  *
  */
 
-class FriendTableHelper extends UserTableHelper{
+class FriendTableHelper extends UserTableHelper {
 
     /**
      * Constructor of FriendTableHelper Class, it simply serves as a wrap-up.
@@ -104,7 +104,7 @@ class FriendTableHelper extends UserTableHelper{
      * @return String
      */
     public function __toString(){
-	    return new Mystring("This is an instance of Mysidia FriendTableHelper class.");
+	    return new Str("This is an instance of Mysidia FriendTableHelper class.");
 	}    
 } 
 ?>

@@ -86,7 +86,7 @@ class SelectionList extends DropdownList{
      * @return String
      */
     public function __toString(){
-	    return new Mystring("This is an instance of Mysidia SelectionList class.");
+	    return new Str("This is an instance of Mysidia SelectionList class.");
 	}    
 }
     

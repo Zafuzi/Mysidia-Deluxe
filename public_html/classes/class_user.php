@@ -1,8 +1,8 @@
 <?php
 
-use Resource\Native\Object;
+use Resource\Native\Obj;
 
-abstract class User extends Object{
+abstract class User extends Obj {
   // The abstract class User
   public $uid = 0;
   public $username;

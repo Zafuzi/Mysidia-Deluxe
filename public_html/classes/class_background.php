@@ -13,7 +13,7 @@
  *
  */
 
-class Background extends GUIElement{
+class Background extends GUIElement {
 
     /**
 	 * The attachment property, speficies the background attachment property(scrolled or fixed).
@@ -240,7 +240,7 @@ class Background extends GUIElement{
      * @return String
      */
     public function __toString(){
-	    return new Mystring("This is an instance of Mysidia Background class.");
+	    return new Str("This is an instance of Mysidia Background class.");
 	}    
 } 
 ?>

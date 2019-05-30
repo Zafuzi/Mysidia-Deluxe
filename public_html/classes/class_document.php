@@ -15,7 +15,7 @@
  *
  */
  
-final class Document extends GUIContainer{
+final class Document extends GUIContainer {
 	
 	/**
 	 * The title property, holds the information of the document title.
@@ -89,7 +89,7 @@ final class Document extends GUIContainer{
      * @return String
      */
     public function __toString(){
-	    return new Mystring("This is a Document object.");
+	    return new Str("This is a Document object.");
 	}
 }
 ?>

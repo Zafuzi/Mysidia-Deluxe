@@ -1,7 +1,7 @@
 <?php
 
 namespace Resource\Utility;
-use Resource\Native\Object;
+use Resource\Native\Obj;
 use UrlException;
 
 /**
@@ -17,7 +17,7 @@ use UrlException;
  * @todo Not sure, but will come in handy.
  */
 
-final class URL extends Object{
+final class URL extends Obj {
 
 	/**
 	 * REGEX constant, it is used to identify valid and invalid url.

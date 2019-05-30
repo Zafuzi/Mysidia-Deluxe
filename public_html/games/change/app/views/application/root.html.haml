@@ -1,0 +1,21 @@
+#game
+.no-mobile
+.safari-mavericks
+  .msg
+    %h1
+      You seem to be running
+      %br
+      Safari on Mavericks
+    %p
+      We're extremely sorry, but we have some draw issues with Safari 7.0 on OSX Mavericks.
+    %p
+      Please try the game on
+      = link_to 'Chrome', 'http://www.google.com/chrome', target: :_blank
+      %span or
+      = link_to 'Firefox', 'http://www.mozilla.org/en-US/firefox/new/', target: :_blank
+      for the full experience.
+    %p.dismiss-p
+      %a.dismiss{:href => 'javascript:;'}
+        Dismiss
+
+= javascript_include_tag :application

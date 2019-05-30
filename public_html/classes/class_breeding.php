@@ -1,8 +1,8 @@
 <?php
 
-use Resource\Native\Object;
+use Resource\Native\Obj;
 
-final class Breeding extends Object{
+final class Breeding extends Obj {
 
     private $female;
     private $male;

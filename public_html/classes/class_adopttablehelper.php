@@ -131,7 +131,7 @@ class AdoptTableHelper extends TableHelper{
      * @return String
      */
     public function __toString(){
-	    return new Mystring("This is an instance of Mysidia AdoptTableHelper class.");
+	    return new Str("This is an instance of Mysidia AdoptTableHelper class.");
 	}    
 } 
 ?>

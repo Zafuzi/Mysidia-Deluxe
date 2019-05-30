@@ -1,88 +1,55 @@
-<?php
-
+ <?php
 class BankView extends View{
 
-	public function index(){
+    public function index(){
+      
+        $mysidia = Registry::get("mysidia");
+        $document = $this->document;      
+        $balance = $mysidia->user->getbank();
+        $cash = $mysidia->user->getcash();
+        $document->setTitle("<center>The Bank<br><img src='http://atrocity.mysidiahost.com/picuploads/png/fe24affe6cc0fdf9a752b91a0d5893f4.png'</center>");  
+        
+        $document->add(new Comment("<center><b>Sion says:</b> Welcome to the bank! Please choose an option below!
+        <br> Interest is set at 1% of current balance a day<br></b></center>"));
+        
+        if ($balance <= 0){
+            $document->add(new Comment("<h2><center></center>Current Balance: 0 Beads</h2>"));
+        }
+        else{
+            $document->add(new Comment("<h2><center>Current Balance: {$balance} Beads</center></h2>", FALSE));
+        }
+        $document->add(new paragraph);
+        $document->add(new Comment("<center>"));
+        if($mysidia->input->post("deposit")){
+            $amount = $mysidia->input->post("amount");
+            $mysidia->user->changecash(-$amount);
+            $mysidia->user->changebank(+$amount);
+            $document->add(new Comment("<h2><center>You deposited {$amount} Beads into your bank account</center></h2>", FALSE));
+            $document->add(new Comment("<br><center><a href='{$path}bank'>Return to Bank</a></center>  ", FALSE));
+            return TRUE;
+        }
 
-		$mysidia = Registry::get("mysidia");
-		$sitename = $mysidia->db->select("settings", array("value"), "name = 'sitename'")->fetchColumn();
-		$document = $this->document;
-		$document->add(new Comment("<title>{$sitename} | Bank</title>"));
-		$document->setTitle("The Bank");
-		$balance = $mysidia->user->bank;
-		$cash = $mysidia->user->getcash();
+        $depositForm = new FormBuilder("depositForm", "", "post");
+        $depositForm->buildComment("Amount: ", FALSE)
+            ->buildTextField("amount", FALSE)
+            ->buildButton("Deposit", "deposit", "submit");
+        $document->add($depositForm);
+        
+        if($mysidia->input->post("withdraw")){
+            $amount = $mysidia->input->post("amount");
+            $mysidia->user->changecash(+$amount);
+            $mysidia->user->changebank(-$amount);
+            $document->add(new Comment("<h2><center>You withdrew {$amount} Beads from your bank account</center></h2>", FALSE));
+            $document->add(new Comment("<br><center><a href='{$path}bank'>Return to Bank</a></center>  ", FALSE));
+            return TRUE;
+        }  
 
-		if ($balance == 0 || $balance == NULL){
-			$document->add(new Comment("<h2>Current Balance: $0</h2>"));
-		}
-		else{
-			$document->add(new Comment("<h2>Current Balance: $ {$balance}</h2>", FALSE));
-		} 
-	
-		$document->add(new paragraph);
-
-		if ($_SERVER["REQUEST_METHOD"] == "POST") {
-			$choice = $_REQUEST['submitbutton'];
-			$amount = $_REQUEST['amount'];
-		    switch($choice){
-				case "deposit":
-					if($amount > $cash){
-						$document->add(new Comment("You don't have that much to deposit!", TRUE));
-						$document->add(new Comment("<a href='{$home}bank'>Return to Bank</a>", FALSE));
-						return;
-					}
-					else{
-						$mysidia->db->update_increase("users", array("bank"), $amount, "username = '{$mysidia->user->username}'");
-						$mysidia->db->update_decrease("users", array("money"), $amount, "username = '{$mysidia->user->username}'");
-						$document->add(new Comment("You deposited $ {$amount} into your bank account.", TRUE));
-						$document->add(new Comment("<a href='{$home}bank'>Return to Bank?</a>", FALSE));
-						return;
-					}
-					break;
-				case "withdraw":
-					if($amount > $balance){
-						$document->add(new Comment("You don't have that much to withdraw!", TRUE));
-						$document->add(new Comment("<a href='{$home}bank'>Return to Bank</a>", FALSE));
-						return;
-					}
-					else{
-						$mysidia->db->update_increase("users", array("money"), $amount, "username = '{$mysidia->user->username}'");
-						$mysidia->db->update_decrease("users", array("bank"), $amount, "username = '{$mysidia->user->username}'");
-						$document->add(new Comment("You withdrew $ {$amount} from your bank account.", TRUE));
-						$document->add(new Comment("<a href='{$home}bank'>Return to Bank?</a>", FALSE));
-						return;
-					}
-					break;
-			}
-		}
-		
-		$document->add(new Comment("
-			<div class='row'>
-				<div class='col-sm-6'>
-					<div class='card'>
-						<div class='card-body'>
-							<h5 class='card-title'>Deposit</h5>
-							<p class='card-text'>Add money into the bank, so you can save it for later.</p>
-							<form class='form' action='bank' method='post'>
-								<input type='number' min='1' class='form-control' name='amount' id='amount' placeholder='Amount' required></br>
-								<button type='submit' name='submitbutton' value='deposit' class='btn btn-primary mb-2'>Deposit</button>
-							</form>
-						</div>
-					</div>
-				</div>
-				<div class='col-sm-6'>
-					<div class='card'>
-						<div class='card-body'>
-							<h5 class='card-title'>Withdraw</h5>
-							<p class='card-text'>Take money out of the bank, so you can use it on the site!</p>
-							<form class='form' action='bank' method='post'>
-								<input type='number' min='1' class='form-control' name='amount' id='amount' placeholder='Amount' required></br>
-								<button type='submit' name='submitbutton' value='withdraw' class='btn btn-primary mb-2'>Withdraw</button>
-							</form>
-						</div>
-					</div>
-				</div>
-			</div>"));
-	}
+        $withdrawForm = new FormBuilder("withdrawForm", "", "post");
+        $withdrawForm->buildComment("Amount: ", FALSE)
+            ->buildTextField("amount", FALSE)
+            ->buildButton("Withdraw", "withdraw", "submit");
+        $document->add($withdrawForm);
+        $document->add(new Comment("</center>"));
+    }
 }
 ?>

@@ -13,7 +13,7 @@
  *
  */
  
-class Form extends GUIContainer{
+class Form extends GUIContainer {
 	
 	/**
 	 * The action property, it specifies where form will be sent to.
@@ -182,7 +182,7 @@ class Form extends GUIContainer{
      * @return String
      */
     public function __toString(){
-	    return new Mystring("This is The Form class.");
+	    return new Str("This is The Form class.");
 	}
 }
 ?>

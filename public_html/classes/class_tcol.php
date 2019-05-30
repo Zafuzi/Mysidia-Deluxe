@@ -90,7 +90,7 @@ class TCol extends TableContainer{
      * @return String
      */
     public function __toString(){
-	    return new Mystring("This is The Table Column class.");
+	    return new Str("This is The Table Column class.");
 	}
 }
 ?>

@@ -19,7 +19,7 @@ use Resource\Utility\Comparable;
  *
  */
  
-final class Char extends Object implements Comparable, Primitive{
+final class Char extends Obj implements Comparable, Primitive{
     
   	/**
 	 * Size constant, specifies the size a byte value occupies.

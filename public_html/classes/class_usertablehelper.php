@@ -13,7 +13,7 @@
  *
  */
 
-class UserTableHelper extends TableHelper{
+class UserTableHelper extends TableHelper {
 
     /**
      * Constructor of UserTableHelper Class, it simply serves as a wrap-up.
@@ -81,7 +81,7 @@ class UserTableHelper extends TableHelper{
      * @return String
      */
     public function __toString(){
-	    return new Mystring("This is an instance of Mysidia UserTableHelper class.");
+	    return new Str("This is an instance of Mysidia UserTableHelper class.");
 	}    
 } 
 ?>

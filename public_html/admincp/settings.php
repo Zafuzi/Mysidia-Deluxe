@@ -1,6 +1,6 @@
 <?php
 
-use Resource\Native\Mystring;
+use Resource\Native\String;
 use Resource\Collection\LinkedList;
 use Resource\Collection\LinkedHashMap;
 
@@ -18,7 +18,7 @@ class ACPSettingsController extends AppController{
 	    $mysidia = Registry::get("mysidia");
 	    if($mysidia->input->post("submit")){
 		    $settings = array('theme', 'sitename', 'browsertitle', 'cost',  'slogan', 'admincontact', 
-			                  'systemuser', 'systememail', 'startmoney');
+			                  'systemuser', 'systememail', 'startmoney', 'maximumpets', 'premiumcost');
 			foreach($settings as $name){			
 				if($mysidia->input->post($name) != ($mysidia->settings->{$name})) $mysidia->db->update("settings", array("value" => $mysidia->input->post($name)), "name='{$name}'");	 
 			}	
@@ -69,17 +69,17 @@ class ACPSettingsController extends AppController{
 			
 		$poundsettings = $mysidia->db->select("pound_settings", array())->fetchAll(PDO::FETCH_OBJ);	
 		$enabled = new LinkedHashMap;
-		$enabled->put(new Mystring(" Yes"), new Mystring("yes"));
-		$enabled->put(new Mystring(" No"), new Mystring("no"));
+		$enabled->put(new String(" Yes"), new String("yes"));
+		$enabled->put(new String(" No"), new String("no"));
 		$cost = new LinkedHashMap;
-		$cost->put(new Mystring(" Increment"), new Mystring("increment"));
-		$cost->put(new Mystring(" Percent"), new Mystring("percent"));
+		$cost->put(new String(" Increment"), new String("increment"));
+		$cost->put(new String(" Percent"), new String("percent"));
 		$level = new LinkedHashMap;
-		$level->put(new Mystring(" Increment"), new Mystring("increment"));
-		$level->put(new Mystring(" Multiply"), new Mystring("multiply"));
+		$level->put(new String(" Increment"), new String("increment"));
+		$level->put(new String(" Multiply"), new String("multiply"));
 		$rename = new LinkedHashMap;
-		$rename->put(new Mystring(" Original Owner Only"), new Mystring("yes"));
-		$rename->put(new Mystring(" Everyone"), new Mystring("no"));
+		$rename->put(new String(" Original Owner Only"), new String("yes"));
+		$rename->put(new String(" Everyone"), new String("no"));
         $this->setField("poundsettings", new DataObject($poundsettings));
         $this->setField("enabled", $enabled);		
 		$this->setField("cost", $cost);

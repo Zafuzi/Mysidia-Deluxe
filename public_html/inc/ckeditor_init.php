@@ -21,12 +21,11 @@ $config->set('AutoFormat.Linkify', true);
 $config->set('Output.TidyFormat', true);
 $purifier = new HTMLPurifier($config);
 
-private function format($text){ 
-         $text = html_entity_decode($text); 
-         $text = str_replace("\r\n","",$text); 
-         $text = stripslashes($text); 
-         return $text; 
-    }
+function formattext($text){    
+    $text = html_entity_decode($text);
+    $text = stripslashes($text);
+    return $text;
+}
 
 
 ?>

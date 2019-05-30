@@ -13,7 +13,7 @@
  *
  */
 
-class Dimension extends GUIElement{
+class Dimension extends GUIElement {
 
 	/**
 	 * The width property, determines the width of the division block.
@@ -89,7 +89,7 @@ class Dimension extends GUIElement{
      * @return String
      */
     public function __toString(){
-	    return new Mystring("This is an instance of Mysidia Dimension class.");
+	    return new Str("This is an instance of Mysidia Dimension class.");
 	}    
 } 
 ?>

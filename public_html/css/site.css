@@ -1,0 +1,270 @@
+.speechbubble {
+position: relative;
+padding: 15px;
+text-align: center;
+background: #FFFFFF;
+-webkit-border-radius: 53px;
+-moz-border-radius: 53px;
+border-radius: 53px;
+border: #7F7F7F solid 2px;
+}
+
+.speechbubble:after {
+content: '';
+position: absolute;
+border-style: solid;
+border-width: 15px 15px 0;
+border-color: #FFFFFF transparent;
+display: block;
+width: 0;
+z-index: 1;
+margin-left: -15px;
+bottom: -15px;
+left: 50%;
+}
+
+.speechbubble:before {
+content: '';
+position: absolute;
+border-style: solid;
+border-width: 16px 16px 0;
+border-color: #7F7F7F transparent;
+display: block;
+width: 0;
+z-index: 0;
+margin-left: -16px;
+bottom: -18px;
+left: 50%;
+}
+
+.c-tabs-nav {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.c-tabs-nav__link {
+  flex: 1;
+  margin-right: 4px;
+  padding: 12px;
+  color: #fff;
+  background-color: #b3b3b3;
+  text-align: center;
+  transition: color 0.3s;
+  display: inline-block;
+}
+
+.c-tabs-nav__link:last-child {
+  margin-right: 0;
+}
+
+.c-tabs-nav__link:hover {
+  color: #6d6d6d;
+}
+
+.c-tabs-nav__link.is-active {
+  color: #dc446e;
+  background-color: #e7e7e7;
+}
+
+.c-tabs-nav__link i,
+.c-tabs-nav__link span {
+  margin: 0;
+  padding: 0;
+  line-height: 1;
+}
+
+.c-tabs-nav__link i {
+  font-size: 18px;
+}
+
+.c-tabs-nav__link span {
+  display: none;
+  font-size: 18px;
+}
+
+@media all and (min-width: 720px) {
+  .c-tabs-nav__link i {
+    margin-bottom: 12px;
+    font-size: 22px;
+  }
+  .c-tabs-nav__link span {
+    display: block;
+  }
+}
+
+/**
+ * Tab
+ */
+.c-tab {
+  display: none;
+}
+
+.c-tab.is-active {
+  display: block;
+}
+
+.c-tab__content {
+  padding: 1.5rem;
+}
+
+/**
+ * Tabs no-js fallback
+ */
+.c-tabs.no-js .c-tabs-nav {
+  display: none;
+}
+
+.c-tabs.no-js .c-tab {
+  display: block;
+  margin-bottom: 1.5rem;
+}
+
+.c-tabs.no-js .c-tab:last-child {
+  margin-bottom: 0;
+}
+
+.news fieldset{
+color:black;
+background-image: url(data:image/png;base64,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);
+border-radius:5px;
+border:white;
+background-color: white;
+/*border:2px dotted black;*/
+border-bottom: 3px solid brown;
+
+}
+
+.news .content .authorimg{
+float:left;
+border: 1px dotted black;
+padding:2px;
+margin-right:10px;
+margin-bottom:4px;
+}
+
+.news fieldset .title:before{
+content:'>>> ';
+font-size:11px;
+}
+
+.news{
+color:brown;
+}
+.news fieldset .content{
+text-align:justify;
+color:black;
+}
+
+.news .date {
+font-size:10px;
+font-weight: bold;
+color:brown;
+}
+
+.news .author a{
+color:orange;
+}
+
+.news .author a:hover{
+color:brown;
+}
+
+.news .title {
+font-size:25px;
+font-weight:bold;
+color:orange;
+
+}
+
+.news .author:before {
+content: ' | ';
+}
+.news .author {
+color:brown;
+font-size:10px;
+}
+
+.news .comment{
+font-size:10px;
+}
+
+.news .comment:before{
+content: ' | ';
+}
+
+.pages{
+color:brown;
+}
+.page{
+color:white;
+background-color:brown;
+border-radius:5px;
+border:2px solid brown;
+}
+.page:hover{
+color:orange;
+background-color:white;
+border:0px;
+}
+
+.cdate{
+font-size:10px;
+font-weight: bold;
+color:brown;
+}
+
+.cauthor{
+color:brown;
+font-size:10px;
+}
+.ccontent{
+font-size:10px;
+text-align:justify;
+color:black;
+}
+
+.ccontent img{
+float:left;
+border: 1px dotted black;
+padding:2px;
+margin-right:10px;
+margin-bottom:4px;
+}  
+
+
+
+.s_top {
+                overflow:hidden;
+                display: block;
+            }
+            .sc_npc_text{
+                width: 300px;
+                float: left;
+                position: relative;
+                height: 70px;
+                padding: 15px;
+                margin: 10px;
+                margin-top: 180px;
+                font-family: 'Trebuchet MS', Helvetica, sans-serif;
+                overflow: auto;
+            }
+            .sc_npc_img{
+                width: 40%;
+                float: left;
+            }
+
+            .sc_item {
+                display: inline-table;
+                padding: 5px;
+                text-align: center;
+                font-family: 'Trebuchet MS', Helvetica, sans-serif;
+                font-size: 14px;
+                margin-bottom: 3px;
+            }
+            .s_panel {
+                border-radius: 2px;
+                border: 1px solid #CCC;
+                background-color: #FBFDF2;
+            }

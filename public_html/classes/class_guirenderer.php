@@ -1,6 +1,6 @@
 <?php
 
-use Resource\Native\Object;
+use Resource\Native\Obj;
 
 /**
  * The Abstract GuiRenderer Class, extends from abstract object class.
@@ -16,7 +16,7 @@ use Resource\Native\Object;
  *
  */
  
-abstract class GUIRenderer extends Object implements Rendering{
+abstract class GUIRenderer extends Obj implements Rendering {
 
     /**
 	 * The tag property, stores the tag used in our rendering process.

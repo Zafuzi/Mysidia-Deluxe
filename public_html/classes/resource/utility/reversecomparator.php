@@ -2,7 +2,7 @@
 
 namespace Resource\Utility;
 use Resource\Native\Objective;
-use Resource\Native\Object;
+use Resource\Native\Obj;
 
 /**
  * The ReverseComparator Class, it is part of the utility package and extends from the Object Class.
@@ -16,7 +16,7 @@ use Resource\Native\Object;
  * @todo Not sure, but will come in handy.
  */
 
-class ReverseComparator extends Object implements Comparative{
+class ReverseComparator extends Obj implements Comparative{
 
 	/**
 	 * serialID constant, it serves as identifier of the object being ReverseComparator.

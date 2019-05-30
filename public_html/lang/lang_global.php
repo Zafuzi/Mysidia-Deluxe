@@ -21,5 +21,6 @@ $lang['global_access'] = "Direct access to this file is disallowed.";
 $lang['global_error'] = "An error has occurred.";
 $lang['global_action_complete'] = "Action Completed!";
 $lang['global_transaction_complete'] = "Transaction Completed!";
- 
-?>
+$lang['global_maximum_pets_reached'] = "Sorry, but you already own the maximum number of pets you can house.";
+$lang['global_sitewide_maximum_pets_reached'] = "Sorry, but you already own the maximum number of pets allowed. You can not increase your house size further.";
+$lang['global_size_increase_item_used'] = "Successfully increased the maximum number of pets you can own!";

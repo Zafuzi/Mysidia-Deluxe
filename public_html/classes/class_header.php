@@ -1,6 +1,6 @@
 <?php
 
-use Resource\Native\Mystring;
+use Resource\Native\Str;
 use Resource\Collection\ArrayList;
 
 /**
@@ -16,7 +16,7 @@ use Resource\Collection\ArrayList;
  *
  */
 
-class Header extends Widget{
+class Header extends Widget {
 
 	/**
 	 * The browserTitle property, it stores the information of browser title.
@@ -117,7 +117,7 @@ class Header extends Widget{
      * @return Void
      */
     public function addStyle($style){
-	    $this->styles->add(new Mystring($style));	
+	    $this->styles->add(new Str($style));	
     }
 	
 	/**
@@ -169,7 +169,7 @@ class Header extends Widget{
      * @return Void
      */
     public function addScript($script){
-	    $this->styles->add(new Mystring($script));
+	    $this->styles->add(new Str($script));
     }
 	
 	/**
